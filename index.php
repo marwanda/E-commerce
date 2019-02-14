@@ -11,7 +11,7 @@ require_once "include/layout/header.php";
 require_once "include/pages/{$page}.php";
 require_once "include/layout/footer.php";
 //test
-//hi man
+//hi mariwana
 ?>
 
 
