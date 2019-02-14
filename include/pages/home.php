@@ -10,13 +10,13 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('../../assets/img/shop/shop-banner-1.jpg')">
+            <div class="carousel-item active" style="background-image: url('assets/img/shop/shop-banner-1.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Sale Box</h3>
                 </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('../../assets/img/shop/shop-banner-2.jpg')">
+            <div class="carousel-item" style="background-image: url('assets/img/shop/shop-banner-2.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Cool Shop</h3>
                 </div>
@@ -50,7 +50,7 @@
 
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item">
-                    <a href="products-list.php">
+                    <a href="products-list">
                         <div class="service-item-icon"> <i class="fa fa-shopping-cart fa-3x"></i>
                         </div>
                     </a>
@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item">
-                    <a href="news-list.php">
+                    <a href="news-list">
                         <div class="service-item-icon"> <i class="fa fa-newspaper-o fa-3x"></i>
                         </div>
                     </a>
@@ -82,7 +82,7 @@
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item">
-                    <a href="project-form.php">
+                    <a href="project-form">
                         <div class="service-item-icon"> <i class="fa fa-handshake-o fa-3x"></i>
                         </div>
                     </a>
@@ -98,13 +98,13 @@
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item right-bord">
-                    <a href="ad-form.php">
+                    <a href="offers-form">
                         <div class="service-item-icon"> <i class="fa fa-share-square-o fa-3x"></i>
                         </div>
                     </a>
 
                     <div class="service-item-title">
-                        <h3>Share your Ads</h3>
+                        <h3>Suggest an Offer</h3>
                     </div>
                     <div class="service-item-desc">
                         <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>

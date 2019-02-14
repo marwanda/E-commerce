@@ -4,6 +4,7 @@
 $pages = array(
 
     "404" => "404",
+    "index" => "index",
     "login" => "login",
     "about-form"=>"about-form",
     "admin-form"=>"admin-form",

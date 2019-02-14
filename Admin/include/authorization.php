@@ -3,6 +3,7 @@
 $standalone_pages = array(
     $pages['404'],
     $pages['login'] ,
+    $pages['index'] ,
 
 );
 
@@ -45,12 +46,11 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 }
 elseif (isset($_SESSION['role']) && $_SESSION['role'] == 'super-admin') {
     $current_role_pages = $Super_Admin_pages;
-
 }
 
-//$page = isset($_GET['page']) ? $_GET['page'] : nu
+$page = isset($_GET['page']) ? $_GET['page'] : null;
 
-//$page = empty($page) ? 'home' : make_safe($page);
+$page = empty($page) ? 'orders-list' : make_safe($page);
 
 $page = in_array($page, $current_role_pages) ? $page : $pages['404'];
 

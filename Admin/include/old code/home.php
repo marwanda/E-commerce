@@ -1,4 +1,4 @@
-<?php include '../layout/header.php'?>
+
 <div id="our-team-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -99,5 +99,4 @@
     </div>
 </div>
 
-<?php include '../layout'?>
 

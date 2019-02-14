@@ -1,4 +1,4 @@
-<?php include "../layout/header.php"; ?>
+
 
     <div  class="container-fluid bg-light-gray">
         <div class="row">
@@ -77,4 +77,3 @@
 
 
 
-<?php include "../layout/footer.php"; ?>

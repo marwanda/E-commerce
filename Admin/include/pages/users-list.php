@@ -1,4 +1,3 @@
-<?php include '../layout/header.php'?>
 <div id="confirm-modal-user-status" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -38,7 +37,7 @@
                 <th class="text-left">Gender</th>
                 <th class="text-left">Age</th>
                 <th class="text-left" >Address</th>
-                <th class="text-left" >Purchases</th>
+                <th class="text-left" >Total Orders</th>
                 <th class="text-left" >Fails</th>
                 <th class="text-left" style="">Status</th>
             </tr>
@@ -78,5 +77,4 @@
 </div>
 
 
-<?php include '../layout/footer.php'?>
 

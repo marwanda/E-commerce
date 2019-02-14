@@ -1,4 +1,3 @@
-<?php include '../layout/header.php'?>
 
 <div class="content-inner chart-cont">
     <div class="col personal-info " align="center">
@@ -83,5 +82,4 @@
 </div>
 
 
-<?php include '../layout/footer.php'?>
 

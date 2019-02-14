@@ -1,4 +1,3 @@
-<?php include '../layout/header.php'?>
 <div id="confirm-modal-delete" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -1187,5 +1186,4 @@
 </div>
 
 
-<?php include '../layout/footer.php'?>
 

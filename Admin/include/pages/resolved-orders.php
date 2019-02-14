@@ -1,4 +1,3 @@
-<?php include '../layout/header.php'?>
 <div id="products-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -145,5 +144,4 @@
 </div>
 
 
-<?php include '../layout/footer.php'?>
 

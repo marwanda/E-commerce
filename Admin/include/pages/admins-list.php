@@ -1,4 +1,3 @@
-<?php include '../layout/header.php'?>
 <div id="confirm-modal-admin-status" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -67,5 +66,4 @@
         </table>
     </div>
 </div>
-<?php include '../layout/footer.php'?>
 

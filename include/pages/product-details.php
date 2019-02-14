@@ -1,5 +1,3 @@
-<?php include '../layout/header.php'?>
-
 <!--====================================================
                        HOME-P
 ======================================================-->
@@ -18,18 +16,18 @@
               <div class="preview col-md-6">
                 
                 <div class="preview-pic tab-content">
-                  <div class="tab-pane active" id="pic-1"><img src="img/shop/shop-item-1.jpg" /></div>
-                  <div class="tab-pane" id="pic-2"><img src="img/shop/shop-item-3.jpg" /></div>
-                  <div class="tab-pane" id="pic-3"><img src="img/shop/shop-item-4.jpg" /></div>
-                  <div class="tab-pane" id="pic-4"><img src="img/shop/shop-item-5.jpg" /></div>
-                  <div class="tab-pane" id="pic-5"><img src="img/shop/shop-item-2.jpg" /></div>
+                  <div class="tab-pane active" id="pic-1"><img src="assets/img/shop/shop-item-1.jpg" /></div>
+                  <div class="tab-pane" id="pic-2"><img src="assets/img/shop/shop-item-3.jpg" /></div>
+                  <div class="tab-pane" id="pic-3"><img src="assets/img/shop/shop-item-4.jpg" /></div>
+                  <div class="tab-pane" id="pic-4"><img src="assets/img/shop/shop-item-5.jpg" /></div>
+                  <div class="tab-pane" id="pic-5"><img src="assets/img/shop/shop-item-2.jpg" /></div>
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
-                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="img/shop/shop-item-1.jpg" /></a></li>
-                  <li><a data-target="#pic-2" data-toggle="tab"><img src="img/shop/shop-item-3.jpg" /></a></li>
-                  <li><a data-target="#pic-3" data-toggle="tab"><img src="img/shop/shop-item-4.jpg" /></a></li>
-                  <li><a data-target="#pic-4" data-toggle="tab"><img src="img/shop/shop-item-5.jpg" /></a></li>
-                  <li><a data-target="#pic-5" data-toggle="tab"><img src="img/shop/shop-item-2.jpg" /></a></li>
+                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="assets/img/shop/shop-item-1.jpg" /></a></li>
+                  <li><a data-target="#pic-2" data-toggle="tab"><img src="assets/img/shop/shop-item-3.jpg" /></a></li>
+                  <li><a data-target="#pic-3" data-toggle="tab"><img src="assets/img/shop/shop-item-4.jpg" /></a></li>
+                  <li><a data-target="#pic-4" data-toggle="tab"><img src="assets/img/shop/shop-item-5.jpg" /></a></li>
+                  <li><a data-target="#pic-5" data-toggle="tab"><img src="assets/img/shop/shop-item-2.jpg" /></a></li>
                 </ul>
               </div>
               <div class="details col-md-6">
@@ -90,5 +88,4 @@
       </div>
     </section>
 
-<?php include '../layout/footer.php'?>
 

@@ -1,11 +1,5 @@
-<?php
-
-
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $current_lang; ?>">
 
 <head>
 
@@ -14,24 +8,35 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Business Bootstrap Responsive Template</title>
+    <title><?php echo $page_title; ?></title>
+
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 
     <!-- Global Stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/animate/animate.min.css">
-    <link rel="stylesheet" href="assets/css/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl-carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/range-slider.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/products-list.css">
-    <link rel="stylesheet" href="assets/css/product-details.css">
-    <link rel="stylesheet" href="assets/css/services.css">
-    <link rel="stylesheet" href="assets/css/news.css">
-    <link rel="stylesheet" href="assets/css/about.css">
+<!--    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">-->
+<!--    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/animate/animate.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/owl-carousel/owl.carousel.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/owl-carousel/owl.theme.default.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/range-slider.css">-->
+<!--    <link rel="stylesheet" href="assets/css/style.css">-->
+<!--    <link rel="stylesheet" href="assets/css/products-list.css">-->
+<!--    <link rel="stylesheet" href="assets/css/product-details.css">-->
+<!--    <link rel="stylesheet" href="assets/css/services.css">-->
+<!--    <link rel="stylesheet" href="assets/css/news.css">-->
+<!--    <link rel="stylesheet" href="assets/css/about.css">-->
 
+    <?php
+
+    foreach ($shared_css as $css){
+        if (isset($css)) {
+            echo "<link href=\"{$css}\" rel=\"stylesheet\" />";
+        }
+    }
+
+
+    ?>
 
 
 </head>
@@ -73,8 +78,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" data-toggle="affix">
         <div class="container">
-            <a class="navbar-brand smooth-scroll" href="home.php">
-                <img src="assets/img/logo-s.png" alt="logo">
+            <a class="navbar-brand smooth-scroll" href="<?php echo $APP_ROOT. $pages['home'] ?>">
+                <img src="assets/img/logo3.png" alt="logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -83,35 +88,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link smooth-scroll" href="home.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT. $pages['home'] ?>">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="../../include/pages/products-list.php">Products</a>
-                            <a class="dropdown-item" href="../../include/pages/cart.php">Cart</a>
-                            <a class="dropdown-item" href="../../include/pages/orders.php">My Orders</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['products-list'] ?>">Products</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['cart'] ?>">Cart</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['orders'] ?>">My Orders</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">invest</a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="../../include/pages/project-form.php">Suggest a Project</a>
-                            <a class="dropdown-item" href="../../include/pages/offer-form.php">Suggest an offer</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['project-form'] ?>">Suggest a Project</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['offers-form'] ?>">Suggest an offer</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link smooth-scroll" href="../../include/pages/news-list.php">News</a>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT. $pages['news-list'] ?>">News</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="../../include/pages/about.php">Our team</a>
-                            <a class="dropdown-item" href="../../include/pages/companies.php">Leading companies</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['about'] ?>">Our team</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT. $pages['companies'] ?>">Leading companies</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link smooth-scroll" href="../../include/pages/profile.php">Profile</a>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT. $pages['profile'] ?>">Profile</a>
                     </li>
 
                     <li>
@@ -173,7 +178,7 @@
                     </button>
                 </div>
                 <div id="div-forms">
-                    <form action="../../requests/login.php" method="post" id="login-form">
+                    <form action="requests/login.php" method="post" id="login-form">
                         <h3 class="text-center">Login</h3>
                         <div class="modal-body">
                             <label for="username">Username</label>
@@ -183,7 +188,7 @@
                             <input id="login_password" class="form-control" type="password" placeholder="Enter password"
                                    required>
                             <div class="checkbox">
-                                <a href="../../include/pages/verification.php">Forget password?</a>
+                                <a href="<?php echo $APP_ROOT. $pages['verification'] ?>">Forget password?</a>
                             </div>
                         </div>
                         <div class="modal-footer text-center">
@@ -191,32 +196,32 @@
                                 <button type="submit" class="btn btn-general btn-white">Login</button>
                             </div>
                             <div>
-                                <a href="register.php" id="register_btn" class="btn btn-link">Register</a>
+                                <a href="<?php echo $APP_ROOT. $pages['register'] ?>" id="register_btn" class="btn btn-link">Register</a>
                             </div>
                         </div>
                     </form>
-                    <form id="register-form" style="display:none;">
-                        <h3 class="text-center">Register</h3>
-                        <div class="modal-body">
-                            <label for="username">Username</label>
-                            <input id="register_username" class="form-control" type="text" placeholder="Enter username"
-                                   required>
-                            <label for="register_email">E-mailId</label>
-                            <input id="register_email" class="form-control" type="text" placeholder="Enter eMail"
-                                   required>
-                            <label for="register_password">Password</label>
-                            <input id="register_password" class="form-control" type="password" placeholder="Password"
-                                   required>
-                        </div>
-                        <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-general btn-white">Register</button>
-                            </div>
-                            <div>
-                                <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            </div>
-                        </div>
-                    </form>
+<!--                    <form id="register-form" style="display:none;">-->
+<!--                        <h3 class="text-center">Register</h3>-->
+<!--                        <div class="modal-body">-->
+<!--                            <label for="username">Username</label>-->
+<!--                            <input id="register_username" class="form-control" type="text" placeholder="Enter username"-->
+<!--                                   required>-->
+<!--                            <label for="register_email">E-mailId</label>-->
+<!--                            <input id="register_email" class="form-control" type="text" placeholder="Enter eMail"-->
+<!--                                   required>-->
+<!--                            <label for="register_password">Password</label>-->
+<!--                            <input id="register_password" class="form-control" type="password" placeholder="Password"-->
+<!--                                   required>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <div>-->
+<!--                                <button type="submit" class="btn btn-general btn-white">Register</button>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
                 </div>
             </div>
         </div>

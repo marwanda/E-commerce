@@ -1,7 +1,7 @@
 <div data-id="<?php echo '' ?>" class=" desc-comp-offer wow fadeInUp product-card-home" data-wow-delay="0.6s">
     <div class="desc-comp-offer-cont custom-height text-center ">
         <div class="thumbnail-blogs">
-            <img src="../../assets/img/news/news-13.jpg" class="img-fluid" alt="...">
+            <img src="assets/img/news/news-13.jpg" class="img-fluid" alt="...">
         </div>
         <div class="card-body">
             <h3 class="text-center card-title-custom" href="#"><?php echo 'Item name' ?></h3>

@@ -1,4 +1,4 @@
-<?php include '../layout/header.php'?>
+
     <div class="container-fluid bg-light-gray">
         <div class=" row ">
             <div class="col"> <h1 class="mt-5 ml-5">Edit Profile</h1></div>
@@ -107,4 +107,3 @@
 
 
     </div>
-<?php include '../layout/footer.php'?>

@@ -1,4 +1,4 @@
-<?php include '../layout/header.php'?>
+
 
 <!--====================================================
                        HOME-P
@@ -29,5 +29,4 @@
         </div>
     </div>
 </section>
-<?php include '../layout/footer.php'?>
 
