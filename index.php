@@ -12,6 +12,7 @@ require_once "include/pages/{$page}.php";
 require_once "include/layout/footer.php";
 //test
 //hi mariwana
+//marwaa ya marwaaaa
 ?>
 
 
