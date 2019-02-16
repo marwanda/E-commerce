@@ -11,61 +11,61 @@
 <!--                </div>-->
                 <h3 class="mt-5 mb-5">Register</h3>
 
-                <form action="requests/register.php"  method="post" class="form-horizontal  col-8 " >
+                <form id="register-form-user" action="requests/register.php"  method="post" class="form-horizontal  col-8 " >
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Full name:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['full-name'] ?>:</label>
                         <div class="col-lg-8">
-                            <input required  class="form-control" name="full-name" type="text" value="">
+                            <input placeholder="<?php echo $lang['full-name'] ?>" required  class="form-control" name="full-name" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Mobile:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['mobile'] ?>:</label>
                         <div class="col-lg-8">
-                            <input required class="form-control"name="mobile" type="tel" value="">
+                            <input placeholder="<?php echo $lang['mobile'] ?>" required class="form-control"name="mobile" type="tel" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Email:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['email'] ?>:</label>
                         <div class="col-lg-8">
-                            <input  class="form-control"name="email" type="text" value="">
+                            <input placeholder="<?php  echo $lang['email'] ?>"  class="form-control"name="email" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Gender:</label>
+                        <label class="col-lg-8 control-label text-left "><?php  echo $lang['gender'] ?>:</label>
                         <div class="col-lg-8">
-                            <input required  class="text-left" type="radio" name="gender" value="male" ><label class="mr-5">Male</label>
-                            <input required class="text-left" class="ml-5" type="radio" value="female" name="gender"><label>Female</label>
+                            <input required  class="text-left" type="radio" name="gender" value="0" ><label class="mr-5"><?php echo $lang['male'] ?></label>
+                            <input required class="text-left" class="ml-5" type="radio" value="1" name="gender"><label><?php echo $lang['female'] ?></label>
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Birthday:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['birthday'] ?>:</label>
                         <div class="col-lg-8">
-                            <input  class="form-control" name="birthday" type="date" value="">
+                            <input placeholder="<?php echo $lang['birthday'] ?>"  class="form-control" name="birthday" type="date" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left ">Address:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['address'] ?>:</label>
                         <div class="col-lg-8">
-                            <input required class="form-control" name="address" type="text" value="">
+                            <input placeholder="<?php echo $lang['address'] ?>" required class="form-control" name="address" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-8 control-label text-left ">Password:</label>
+                        <label class="col-md-8 control-label text-left "><?php echo $lang['password'] ?>:</label>
                         <div class="col-md-8">
-                            <input required class="form-control" name="password" type="password" value="">
+                            <input id="register-password-user" placeholder="<?php echo $lang['password'] ?>" required class="form-control" name="password" type="password" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-8 control-label text-left ">Confirm password:</label>
+                        <label class="col-md-8 control-label text-left "><?php echo $lang['re-password'] ?>:</label>
                         <div class="col-md-8">
-                            <input required class="form-control" name="re-password" type="password" value="">
+                            <input id="register-re-password-user" placeholder="<?php echo $lang['re-password'] ?>" required class="form-control" name="re-password" type="password" value="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-8 control-label text-left "></label>
                         <div class="col-md-8">
-                            <input type="submit" class=" form-group btn btn-general btn-white" value="Submit">
+                            <input id="submit-registration-user" type="submit" class=" form-group btn btn-general btn-white" value="<?php echo $lang['submit'] ?>">
                             <span></span>
                         </div>
                     </div>

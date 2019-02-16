@@ -1,79 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include '../include/config.php';
+$full_name = isset($_POST['full-name']) ? make_safe($_POST['full-name']) : null;
+$password = isset($_POST['password']) ? make_safe($_POST['password']) : null;
+$mobile = isset($_POST['mobile']) ? make_safe($_POST['mobile']) : null;
+$email = isset($_POST['email']) ? make_safe($_POST['email']) : null;
+$gender = isset($_POST['gender']) ? make_safe($_POST['gender']) : null;
+$birthday = isset($_POST['birthday']) ? make_safe($_POST['birthday']) : null;
+$address = isset($_POST['address']) ? make_safe($_POST['address']) : null;
 
-<head>
+$_SESSION['phone']=$mobile;
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+$link = mysqli_connect("localhost", "root", "", "itsource");
+$sq = "'";
+$path = '../';
+$query = "INSERT INTO user ( name, password, email, phone, address) VALUES ( {$sq}{$full_name}{$sq}, {$sq}{$password}{$sq}, {$sq}{$email}{$sq}, {$sq}{$mobile}{$sq}, {$sq}{$address}{$sq})";
+if (mysqli_connect_errno()) {
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    mysqli_close($link);
+    redirect('register',$path);
+    exit;
+}
 
-    <title>Business Bootstrap Responsive Template</title>
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+if (mysqli_query($link, $query) === TRUE) {
+    $last_id = mysqli_insert_id($link);
+    $_SESSION['role']=1;
+    $_SESSION['user_id']=$last_id;
+    mysqli_close($link);
+    redirect('verification',$path);
+    exit;
+}
 
-    <!-- Global Stylesheets -->
-    <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+else {
+
+    $_SESSION['error_msg'] = $lang['general_error'];
+    mysqli_close($link);
+    redirect('home',$path);
+    exit();
+}
 
 
-</head>
-
-<body id="page-top">
-
-
-<div  class="container-fluid bg-light-gray " style="margin-top: 100px;
-">
-    <div class="row">
-
-        <div class="col personal-info " align="center">
-
-            <h4 class="mt-5 mb-5">Click send to send a verification code to <strong>0922335443</strong>,
-                <br>
-                <div class=" mt-3 ">
-                    <a href="" id="send-verification-code" >Send </a>or <a id="goback" onclick="goBack();" href="" > Go Back</a>
-                </div>
-
-                <br>
-
-                please insert your verification code to continue registration.</h4>
-
-            <form   class="form-horizontal col-8 "  >
-                <div class="form-group ">
-                    <label class="col-lg-8 control-label text-left ">Verification code</label>
-                    <div class="col-lg-8">
-                        <input required class="form-control" name="verification-code" type="text" value="">
-                    </div>
-                </div>
-                    <label class="col-md-8 control-label text-left "></label>
-                    <div class="col-md-8">
-                        <input id="submit-verification-code" type="" class=" form-group btn btn-general btn-white" value="Submit">
-
-                    </div>
-                <div class="row">
-                    <div  class="col-8 alert alert-info alert-dismissable bg-danger border-danger  " style=" color: #FFFFFF;margin: auto; opacity: 0.7">
-                        <a class="panel-close close" data-dismiss="alert">×</a>
-                        <strong>Wrong code!</strong>
-                    </div>
-                </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-</div>
-<script src="../js/jquery/jquery.min.js"></script>
-
-<script src="../js/bootstrap/bootstrap.min.js"></script>
-<script>
-    function goBack() {
-        window.history.back();
-    }
-    $('#goback').click(function (e) {
-        e.preventDefault();
-    })
-</script>
-
-</body>
-
-</html>
+?>

@@ -1,4 +1,13 @@
+<?php
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
 
+    echo '<script language="javascript">';
+    echo 'alert("'.$_SESSION['error_msg'].'")';
+    echo '</script>';
+    $_SESSION['error_msg']='';
+}
+//var_dump($_SESSION);
+?>
 <!--====================================================
                          HOME
 ======================================================-->
@@ -98,7 +107,7 @@
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item right-bord">
-                    <a href="offers-form">
+                    <a href="offer-form">
                         <div class="service-item-icon"> <i class="fa fa-share-square-o fa-3x"></i>
                         </div>
                     </a>

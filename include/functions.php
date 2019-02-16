@@ -130,11 +130,13 @@ function make_safe_array($data, $except = array())
     }
     return $new_array;
 }
-function redirect($pageName)
+
+function redirect($pageName,$path='')
 {
-    @header("Location: " . $pageName . "");
-    echo "<script language='JavaScript' type='text/JavaScript'>" .
-        "window.location='" . $pageName . "'</script>";
+
+    @header("Location: " .$path.$pageName . "");
+//    echo "<script language='JavaScript' type='text/JavaScript'>" .
+//        "window.location='" . $pageName . "'</script>";
 
     exit;
 }
@@ -410,7 +412,16 @@ function getBaseDirectoryName(){
     return explode('/', $_SERVER['REQUEST_URI'])[1];
 }
 
-
+function generatePIN($digits = 5){
+    $i = 0; //counter
+    $pin = ""; //our default pin is blank.
+    while($i < $digits){
+        //generate a random number between 0 and 9.
+        $pin .= mt_rand(0, 9);
+        $i++;
+    }
+    return $pin;
+}
 
 
 

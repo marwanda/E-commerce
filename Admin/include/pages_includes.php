@@ -17,8 +17,8 @@ $shared_css = array(
     $ASSET_URL."css/font-icon-style.css",
     $ASSET_URL."css/style.default.css",
     $ASSET_URL."css/ui-elements/card.css",
+    $ASSET_URL."css/ui-elements/buttons.css",
     $ASSET_URL."css/style.css",
-
     $rtl
     );
 

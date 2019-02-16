@@ -9,7 +9,7 @@
                 <!--                    <i class="fa fa-coffee"></i>-->
                 <!--                    This is an <strong>.alert</strong>. Use this to show important messages to the user.-->
                 <!--                </div>-->
-                <h3 class="mt-5 mb-5">Work with us, invest, suggest a new Idea</h3>
+                <h3 class="mt-5 mb-5">Invest, suggest a new Idea</h3>
 
                 <form action="requests/project.php"  method="post" class="form-horizontal  col-8 " >
                     <div class="form-group">

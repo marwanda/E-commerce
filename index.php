@@ -10,9 +10,11 @@ require_once "include/config.php";
 require_once "include/layout/header.php";
 require_once "include/pages/{$page}.php";
 require_once "include/layout/footer.php";
+
 //test
 //hi mariwana
 //marwaa ya marwaaaa
+
 ?>
 
 

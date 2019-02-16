@@ -13,13 +13,13 @@ $User_pages = array_merge(
         $pages['profile'],
         $pages['companies'],
         $pages['about'],
-        $pages['orders'],
+//        $pages['orders'],
         $pages['verification'],
         $pages['register'],
         $pages['cart'],
         $pages['news-details'],
         $pages['news-list'],
-        $pages['offers-form'],
+        $pages['offer-form'],
         $pages['order-details'],
         $pages['product-details'],
         $pages['products-list'],
@@ -38,7 +38,7 @@ $Guest_User_pages = array_merge(
         $pages['register'],
         $pages['news-details'],
         $pages['news-list'],
-        $pages['offers-form'],
+        $pages['offer-form'],
         $pages['product-details'],
         $pages['products-list'],
         $pages['project-form'],
@@ -46,22 +46,26 @@ $Guest_User_pages = array_merge(
 
 );
 
-if (isset($_SESSION['role']) && $_SESSION['role'] == 'user') {
+/** roles:
+1 inactive user
+2 active user
+3 vip user
+4 admin
+5 super admin */
+
+if (isset($_SESSION['role']) && $_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
 
     $current_role_pages = $User_pages;
 }
+else
+    $current_role_pages = $Guest_User_pages;
 
 //$current_role_pages = $admin_pages;
-
-$page = isset($_GET['page']) ? $_GET['page'] : null;
-
 //$page = empty($page) ? 'home' : make_safe($page);
-
-$page = empty($page) ? 'home' : $page;
-
 //$page = in_array($page, $current_role_pages) ? $page : $pages['404'];
-
 //$page_name=basename($_SERVER['PHP_SELF']);
 //$page = isset($page_name) ? $page_name : null;
 
+$page = isset($_GET['page']) ? $_GET['page'] : null;
+$page = empty($page) ? 'home' : $page;
 $page = in_array($page, $current_role_pages) ? $page : $pages['404'];

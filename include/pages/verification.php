@@ -1,79 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
+if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role'] == 2)
+    redirect('home');
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
 
-    <title>Business Bootstrap Responsive Template</title>
-    <link rel="shortcut icon" href="../../assets/img/favicon.ico">
+    echo '<script language="javascript">';
+    echo 'alert("' . $_SESSION['msg'] . '")';
+    echo '</script>';
+    $_SESSION['msg'] = '';
+}
 
-    <!-- Global Stylesheets -->
-    <link href="../../assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-
-
-</head>
-
-<body id="page-top">
+//var_dump($_SESSION);
+if ($_POST) {
+    $code = isset($_POST['verification-code']) ? make_safe($_POST['verification-code']) : null;
+    $link = mysqli_connect("localhost", "root", "", "itsource");
+    $sq = "'";
+    $query = "select * from user where id = {$_SESSION['user_id']} and code = {$code}";
+    $query2 = "update user set role = 2 where id = {$_SESSION['user_id']}";
 
 
-<div  class="container-fluid bg-light-gray " style="margin-top: 100px;
-">
-    <div class="row">
+    if (mysqli_connect_errno()) {
+
+        $_SESSION['msg'] = mysqli_connect_error();
+        mysqli_close($link);
+        echo '<script language="javascript">';
+        echo 'alert("' . $_SESSION['msg'] . '")';
+        echo '</script>';
+        $_SESSION['msg'] = '';
+        redirect('verification');
+        exit;
+
+    }
+    if ($result = mysqli_query($link, $query)) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+
+
+            if (mysqli_query($link, $query2) === TRUE) {
+                $_SESSION['role'] = 2;
+                mysqli_close($link);
+                redirect('home');
+                exit();
+            }
+
+
+        }
+
+        $_SESSION['msg'] = $lang['wrong_code'];
+        echo '<script language="javascript">';
+        echo 'alert("' . $_SESSION['msg'] . '")';
+        echo '</script>';
+        $_SESSION['msg'] = '';
+        mysqli_close($link);
+
+
+    } else {
+
+        $_SESSION['error_msg'] = $lang['general_error'];
+        mysqli_close($link);
+        redirect('home');
+
+    }
+
+}
+//
+?>
+<div class="container-fluid bg-light-gray " style="margin-bottom: 70px">
 
         <div class="col personal-info " align="center">
 
-            <h4 class="mt-5 mb-5">Click send to send a verification code to <strong>0922335443</strong>,
-                <br>
-                <div class=" mt-3 ">
-                    <a href="" id="send-verification-code" >Send </a>or <a id="goback" onclick="goBack();" href="" > Go Back</a>
-                </div>
+            <div class="row text-center">
+                <h5 style="margin: auto" class="mt-5 mb-5"><?php echo $lang['verification_info1'] ?>
+                    <input id="mobile_number_verification" style="width: 50%; margin: auto;"
+                           class="form-control mt-3 mb-1" value="<?php if(isset($_SESSION['phone'])) echo $_SESSION['phone'];?>" placeholder="<?php if(!isset($_SESSION['phone'])) echo $lang['enter_mobile']; ?>" </input>
+                    <div class=" mt-3 ">
+                        <a href="" id="send-verification-code"><?php echo $lang['send'] ?></a>
+<!--or <a id="goback" onclick="goBack();" href="" > Go Back</a>-->
+                    </div>
 
-                <br>
+                    <br>
 
-                please insert your verification code to continue registration.</h4>
+                    <?php echo $lang['verification_info2'] ?>
+                </h5>
+            </div>
 
-            <form   class="form-horizontal col-8 "  >
+            <form method="post" class="form-horizontal col-8 ">
                 <div class="form-group ">
                     <label class="col-lg-8 control-label text-left ">Verification code</label>
                     <div class="col-lg-8">
-                        <input required class="form-control" name="verification-code" type="text" value="">
+                        <input placeholder="<?php echo $lang['verification_code'] ?>" required class="form-control"
+                               name="verification-code" type="number" value="">
                     </div>
                 </div>
+                <div class="form-group ">
                     <label class="col-md-8 control-label text-left "></label>
                     <div class="col-md-8">
-                        <input id="submit-verification-code" type="" class=" form-group btn btn-general btn-white" value="Submit">
+                        <input id="submit-verification-code" type="submit" class=" form-group btn btn-general btn-white"
+                               value="<?php echo $lang['submit'] ?>">
 
                     </div>
-                <div class="row">
-                    <div  class="col-8 alert alert-info alert-dismissable bg-danger border-danger  " style=" color: #FFFFFF;margin: auto; opacity: 0.7">
-                        <a class="panel-close close" data-dismiss="alert">×</a>
-                        <strong>Wrong code!</strong>
-                    </div>
-                </div>
                 </div>
             </form>
+            <div class="row  ">
+                <div class="col-8 alert alert-info alert-dismissable bg-danger border-danger  "
+                     style=" color: #FFFFFF;margin: auto; opacity: 0.7">
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                    <strong><?php echo $lang['wrong_code'] ?></strong>
+                </div>
+            </div>
         </div>
-    </div>
+
 
 </div>
-<script src="../../assets/js/jquery/jquery.min.js"></script>
-
-<script src="../../assets/js/bootstrap/bootstrap.min.js"></script>
 <script>
-    function goBack() {
-        window.history.back();
-    }
-    $('#goback').click(function (e) {
-        e.preventDefault();
-    })
+    // function goBack() {
+    //     window.history.back();
+    // }
+    //
+    // $('#goback').click(function (e) {
+    //     e.preventDefault();
+    // })
 </script>
-
-</body>
-
-</html>

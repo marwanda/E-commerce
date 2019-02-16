@@ -1963,3 +1963,8 @@ font-size: large;
     float: left;
     margin-left: 96px;
 }
+
+.hidden
+{
+  display: none;
+}
