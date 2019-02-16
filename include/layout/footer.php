@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="footer-copyrights">
-                        <p>Copyrights &copy; 2019 All Rights Reserved by itSource.</p>
+                        <p><?php echo $lang['footer_copyright']?></p>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,8 @@ $shared_css = array(
     $ASSET_URL."css/news.css",
     $ASSET_URL."css/about.css",
     $ASSET_URL."css/style.css",
+//    $ASSET_URL."css/rtl.css",
+
 
     $rtl
 );

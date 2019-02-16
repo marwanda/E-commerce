@@ -53,9 +53,9 @@
                         <ul class="list-inline top-contacts">
                             <?php if(isset($_SESSION['role']) && $_SESSION['role']==3){?>
                                 <li>
-                                <span> Congrats you're VIP now! <a id="vip-read-more" href="#" style="color: #2196f3;"
+                                <span> <?php echo $lang['you_can_be_vip_user']?> <a id="vip-read-more" href="#" style="color: #2196f3;"
                                                                    data-toggle="modal" data-target="#vip-modal"
-                                                                   class="">read more</a></span>
+                                                                   class=""><?php echo $lang['read_more']?></a></span>
                                 </li>
                            <?php } ?>
 
@@ -68,9 +68,9 @@
                         <ul class="list-inline top-data">
                             <li><a href="#" target="_empty"><i class="fa top-social fa-facebook"></i></a></li>
                             <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
-                            <li><a href="requests/logout.php" class="log-top" >Logout</a>
+                            <li><a href="requests/logout.php" class="log-top" ><?php echo $lang['logout']?></a>
                                 <?php }else{ ?>
-                            <li><a href="#" class="log-top" data-toggle="modal" data-target="#login-modal">Login</a>
+                            <li><a href="#" class="log-top" data-toggle="modal" data-target="#login-modal"><?php echo $lang['login']?></a>
                                 <?php } ?>
 
                             </li>
@@ -84,12 +84,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" data-toggle="affix">
         <div class="container">
-
-
             <a class="navbar-brand smooth-scroll" href="<?php echo $APP_ROOT . $pages['home'] ?>">
-                <img src="assets/img/logo3.png" alt="logo">
+                <img class="header-logo" src="assets/img/logo3.png" alt="logo">
             </a>
-            <a style="border-radius: 50px;" href="requests/change-lang.php" class="btn btn-general btn-green"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -98,15 +95,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link smooth-scroll"
-                                            href="<?php echo $APP_ROOT . $pages['home'] ?>">Home</a></li>
+                                            href="<?php echo $APP_ROOT . $pages['home'] ?>"><?php echo $lang['home']?></a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['shop']?></a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item"
-                               href="<?php echo $APP_ROOT . $pages['products-list'] ?>">Products</a>
+                               href="<?php echo $APP_ROOT . $pages['products-list'] ?>"><?php echo $lang['products']?></a>
                             <?php if(isset($_SESSION['role']) && $_SESSION['role']==2){?>
-                                <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['cart'] ?>">Cart</a>
+                                <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['cart'] ?>"><?php echo $lang['cart']?></a>
                     <?php } ?>
 
 <!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['orders'] ?><!--">My Orders</a>-->
@@ -114,28 +111,29 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">invest</a>
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['invest']?></a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['project-form'] ?>">Suggest a
-                                Project</a>
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['offers-form'] ?>">Suggest an
-                                offer</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['project-form'] ?>"><?php echo $lang['suggest_a_project']?></a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['offers-form'] ?>"><?php echo $lang['suggest_an_offer']?></a>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>">News</a>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>"><?php echo $lang['news']?></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['about']?></a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['about'] ?>">Our team</a>
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['companies'] ?>">Leading companies</a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['about'] ?>"><?php echo $lang['our_team']?></a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['companies'] ?>"><?php echo $lang['leading_companies']?></a>
                         </div>
                     </li>
                     <?php if(isset($_SESSION['role']) && $_SESSION['role']==2){?>
-                        <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>">Profile</a>
+                        <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
+                    <li class="nav-item">
+                        <a href="requests/change-lang.php" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
+                    </li>
 
                     <li>
                         <div class="top-menubar-nav">
@@ -197,16 +195,16 @@
                                    placeholder="<?php echo $lang['enter_password']?>"
                                    required>
                             <div class="checkbox">
-                                <a href="<?php  echo $APP_ROOT . $pages['verification'] ?>">Forget password?</a>
+                                <a href="<?php  echo $APP_ROOT . $pages['verification'] ?>"><?php echo $lang['forgot_password']?></a>
                             </div>
                         </div>
                         <div class="modal-footer text-center">
                             <div>
-                                <button type="submit" class="btn btn-general btn-white">Login</button>
+                                <button type="submit" class="btn btn-general btn-white"><?php echo $lang['login']?></button>
                             </div>
                             <div>
                                 <a href="<?php echo $APP_ROOT . $pages['register'] ?>" id="register_btn"
-                                   class="btn btn-link">Register</a>
+                                   class="btn btn-link"><?php echo $lang['register']?></a>
                             </div>
                         </div>
                     </form>
@@ -243,10 +241,10 @@
         <div align="center" class="modal-content" style="margin-top: 100px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">VIP Account</h4>
+                <h4 class="modal-title" dir="auto"><?php echo $lang['vip_account']?></h4>
             </div>
             <div class="modal-body">
-                You have spacial price now!
+                <?php echo $lang['vip_special_price']?>
             </div>
         </div>
 

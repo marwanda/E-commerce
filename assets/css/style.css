@@ -30,7 +30,7 @@ body {
 }
 
 body {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Hind';
 }  
 
 h1, h2, h3, h4, h5 {
@@ -205,6 +205,10 @@ p {
         }
     }
 
+    .header-logo {
+        width: 80%;
+    }
+
 
     /*Navbar*/
     .affix {
@@ -237,7 +241,7 @@ p {
 
 
     .navbar-nav>li {
-        height: 65px;
+        height: 76px;
         line-height: 65px;
         border-bottom: 3px solid rgba(0, 0, 0, 0);
         transition: all .5s ease-in-out;
@@ -250,7 +254,7 @@ p {
     }
 
     .navbar-nav>li>a {
-        color: #808282 !important; 
+        color: #808282;
         font-size: 14.5px;
         font-weight: 700;
         font-family: "hine", sans-serif;
@@ -261,7 +265,7 @@ p {
 
     .navbar-nav>li>a:hover,
     .navbar-nav>li>a:active {
-        color: #2196f3!important;
+        color: #2196f3;
     }
 
     
@@ -322,7 +326,7 @@ p {
     }
 
     .vesco-top-nav ul.navbar-nav>li>a.active {
-        color: #2196f3!important;
+        color: #2196f3;
     }
       
     @media (min-width: 992px){
@@ -551,8 +555,13 @@ p {
     .btn-green:hover,
     .btn-green:focus {
         background-color: #2196f3;
-        color: #fff;
+        color: #fff !important;
         cursor: pointer;
+    }
+
+    .header-btn {
+        margin-top: 15px !important;
+        border-radius: 50px;
     }
      
 /*====================================================
