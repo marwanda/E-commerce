@@ -253,6 +253,11 @@ p {
         background: #f0f0f0;
     }
 
+    .lang-nav-item:hover {
+        background: transparent !important;
+        border-bottom: transparent !important;
+    }
+
     .navbar-nav>li>a {
         color: #808282;
         font-size: 14.5px;
@@ -1976,4 +1981,8 @@ font-size: large;
 .hidden
 {
   display: none;
+}
+
+.align-elements {
+    text-align: left;
 }

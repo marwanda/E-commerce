@@ -29,7 +29,7 @@ $lang = array(
     'login' => 'Login',
 
     //register
-    'full-name'=>'Full Name',
+    'full_name'=>'Full Name',
     'male'=>'Male',
     'female'=>'Female',
     'mobile'=>'Mobile',
@@ -77,5 +77,12 @@ $lang = array(
     'latest_technology_news' => 'Latest Technology News',
     'latest_products' => 'Latest Products',
     'footer_copyright' => 'Copyrights: 2019 All Rights Reserved.',
-
+    'file' => 'File',
+    'project_form_title' => 'Invest, suggest a new Idea',
+    'discover_about' => 'Discover more about us',
+    'name' => 'Name',
+    'job_title' => 'Job Title',
+    'discover_more' => 'Discover More',
+    'company_name' => 'Company Name',
+    'business' => 'Business',
 );

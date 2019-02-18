@@ -26,7 +26,7 @@ $lang= array(
     'login' => 'تسجيل الدخول',
 
     //register
-    'full-name'=>'الاسم الكامل',
+    'full_name'=>'الاسم الكامل',
     'male'=>'ذكر',
     'female'=>'أنثى',
     'mobile'=>'الهاتف المحمول',
@@ -38,7 +38,6 @@ $lang= array(
     're-password'=>'تأكيد كلمة السرّ',
 
     //Pages
-    '404' => '404',
     'home' => 'الرئيسية',
     'shop' => 'المتجر',
     'products' => 'المنتجات',
@@ -52,13 +51,11 @@ $lang= array(
     'about'=>'حولنا',
     'our_team'=>'فريقنا',
     'leading_companies'=>'الشركات الرائدة',
-    'login' => 'تسجيل الدخول',
 
     //general
     'search' => 'بحث',
     'go' => 'اذهب',
     'username' => 'اسم المستخدم',
-    'password' => 'كلمة المرور',
     'forgot_password' => 'نسيت كلمة المرور؟',
     'register' => 'إنشاء حساب',
     'read_more' => 'اقرأ المزيد',
@@ -75,7 +72,12 @@ $lang= array(
     'latest_products' => 'أجدد المنتجات',
     'latest_news' => 'أجدد الأخبار',
     'footer_copyright' => 'جميع الحقوق محفوظة 2019',
-
-
-
+    'file' => 'ملف',
+    'project_form_title' => 'استثمر, اقترح فكرة جديدة',
+    'discover_about' => 'اكتشف المزيد حولنا',
+    'name' => 'الاسم',
+    'job_title' => 'اسم الوظيفة',
+    'discover_more' => 'اكشتف المزيد',
+    'company_name' => 'اسم الشركة',
+    'business' => 'الأعمال',
 );

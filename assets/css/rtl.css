@@ -55,6 +55,7 @@ header{
 
 .form-control{
     direction: rtl;
+    padding: 0px 5px;
 }
 .page-breadcrumb {
     direction: rtl;
@@ -227,3 +228,10 @@ figcaption i {
     letter-spacing: -1px;
 }
 
+.align-elements {
+    text-align: right;
+}
+
+.noUi-origin {
+    direction: ltr;
+}

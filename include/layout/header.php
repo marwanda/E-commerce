@@ -131,7 +131,7 @@
                         <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item">
+                    <li class="nav-item lang-nav-item">
                         <a href="requests/change-lang.php" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
                     </li>
 
