@@ -4,12 +4,14 @@
         <div class="row">
 
             <div class="col personal-info " align="center">
+
 <!--                <div class="alert alert-info alert-dismissable">-->
 <!--                    <a class="panel-close close" data-dismiss="alert">×</a>-->
 <!--                    <i class="fa fa-coffee"></i>-->
 <!--                    This is an <strong>.alert</strong>. Use this to show important messages to the user.-->
 <!--                </div>-->
-                <h3 class="mt-5 mb-5">Register</h3>
+
+                <h3 class="mt-5 mb-5"><?php echo $lang['register']?></h3>
 
                 <form id="register-form-user" action="requests/register.php"  method="post" class="form-horizontal  col-8 " >
                     <div class="form-group">

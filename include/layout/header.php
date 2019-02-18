@@ -87,6 +87,7 @@
             <a class="navbar-brand smooth-scroll" href="<?php echo $APP_ROOT . $pages['home'] ?>">
                 <img class="header-logo" src="assets/img/logo3.png" alt="logo">
             </a>
+<!--            <a style="border-radius: 50px;" href="--><?php //if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?><!--" class="btn btn-general btn-green">--><?php //if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?><!--</a>-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -114,7 +115,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['invest']?></a>
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['project-form'] ?>"><?php echo $lang['suggest_a_project']?></a>
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['offers-form'] ?>"><?php echo $lang['suggest_an_offer']?></a>
+                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['offer-form'] ?>"><?php echo $lang['suggest_an_offer']?></a>
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>"><?php echo $lang['news']?></a>
@@ -131,8 +132,8 @@
                         <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item lang-nav-item">
-                        <a href="requests/change-lang.php" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
+                    <li class="nav-item">
+                        <a href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
                     </li>
 
                     <li>

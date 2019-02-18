@@ -7,7 +7,13 @@ $ASSET_URL = $APP_ROOT.'assets/';
 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 define("DEFAULT_LANGUAGE", "en");
 
-if(!isset($_SESSION['lang']))
+if(isset($_GET['lang']) || !empty($_GET['lang']))
+{
+    $_SESSION['lang']=$_GET['lang'];
+}
+
+
+if(!isset($_SESSION['lang']) || empty($_SESSION['lang']))
 $_SESSION['lang'] = DEFAULT_LANGUAGE;
 
 setcookie('language', DEFAULT_LANGUAGE);

@@ -1,4 +1,84 @@
+<?php
 
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+
+    echo '<script language="javascript">';
+    echo "alert('".$_SESSION['error_msg']."')";
+    echo '</script>';
+    $_SESSION['error_msg']='';
+}
+
+//$phone='';
+//$name='';
+//$email='';
+//$gender='';
+//$birthday='';
+//$address='';
+
+
+
+
+$link = mysqli_connect("localhost", "root", "", "itsource");
+$sq = "'";
+$path = '../';
+$query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar, s.name_en, s.status, s.category_id, c.name_ar, c.name_en, c.status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id order by date desc";
+
+if (mysqli_connect_errno()) {
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    echo '<script language="javascript">';
+    echo 'alert("'.$_SESSION['error_msg'].'")';
+    echo '</script>';
+    $_SESSION['error_msg']='';
+}
+
+
+if ($result = mysqli_query($link, $query)) {
+
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        $name=$row['phone'];
+        $price=$row['name'];
+        $price_vip=$row['email'];
+        $description_ar=$row['gender'];
+        $description_en=$row['gender'];
+        $sub_id=$row['birthdate'];
+        $sub_name=$row['birthdate'];
+        $cat_id=$row['birthdate'];
+        $cat_name=$row['birthdate'];
+        $quantity=$row['address'];
+        $date=$row['address'];
+        $status=$row['address'];
+
+    }
+
+//    $_SESSION['error_msg'] = $lang['Can_nor_edit'];
+//    echo '<script language="javascript">';
+//    echo 'alert("'.$_SESSION['error_msg'].'")';
+//    echo '</script>';
+//    $_SESSION['error_msg']='';
+//    mysqli_close($link);
+//    exit();
+
+}
+
+/* free result set */
+//    mysqli_free_result($result);
+
+else {
+
+    $_SESSION['error_msg'] = $lang['general_error'];
+    redirect('home');
+    mysqli_close($link);
+    exit();
+
+}
+
+
+
+//var_dump($_SESSION);
+
+
+?>
 <div id="home-p" class="home-p pages-head3 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Shoping Box</h1>

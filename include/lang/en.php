@@ -27,6 +27,8 @@ $lang = array(
     'enter_mobile' => 'Enter Mobile Number',
     'enter_password' => 'Enter Password',
     'login' => 'Login',
+    'logout' => 'Logout',
+    'forget_password' => 'Forget password?',
 
     //register
     'full_name'=>'Full Name',
@@ -39,6 +41,16 @@ $lang = array(
     'address'=>'Address',
     'password'=>'Password',
     're-password'=>'Password Confirmation',
+    'register'=>'Register',
+
+
+
+    //profile
+
+    'edit_profile'=>'Edit Profile',
+    'personal_info'=>'Personal Information',
+    'Can_nor_edit'=>'can not edit',
+
 
     //Pages
     'home' => 'Home',
@@ -61,11 +73,10 @@ $lang = array(
     'go' => 'Go',
     'username' => 'Username',
     'forgot_password' => 'Forgot Password?',
-    'register' => 'Register',
     'read_more' => 'Read More',
-    'you_can_be_vip_user' => 'You can be a VIP user!',
+    'you_can_be_vip_user' => 'You have Got a VIP account!',
     'vip_account' => 'VIP Account',
-    'vip_special_price' => 'You have spacial price now!',
+    'vip_special_price' => 'VIP Account is given to the most Interactive users, you will get special products prices',
     'home_big_title' => 'Our Company provides',
     'home_title_text' => 'We are an innovative company. We develop and design websites for costumers around the world. Our clients are some of the most forward-looking companies in the world.',
     'latest_product' => 'Latest Products',
@@ -76,7 +87,7 @@ $lang = array(
     'online_shopping' => 'Online Shopping',
     'latest_technology_news' => 'Latest Technology News',
     'latest_products' => 'Latest Products',
-    'footer_copyright' => 'Copyrights: 2019 All Rights Reserved.',
+    'footer_copyright' => 'Copyrights: All Rights Reserved for IT-Source 2019.',    'footer_copyright' => 'Copyrights: 2019 All Rights Reserved.',
     'file' => 'File',
     'project_form_title' => 'Invest, suggest a new Idea',
     'discover_about' => 'Discover more about us',
@@ -85,4 +96,12 @@ $lang = array(
     'discover_more' => 'Discover More',
     'company_name' => 'Company Name',
     'business' => 'Business',
+
+    /** project **/
+    'file_type' => 'You can only upload word, pdf, text and exel files.',
+    'maximum_size' => 'Maximum upload file size limit is 2 MB',
+
+
+
 );
+

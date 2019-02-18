@@ -1,12 +1,13 @@
 <?php
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-
     echo '<script language="javascript">';
-    echo 'alert("'.$_SESSION['error_msg'].'")';
+    echo "alert('".$_SESSION['error_msg']."')";
     echo '</script>';
     $_SESSION['error_msg']='';
+//var_dump( $_SESSION['error_msg']);
 }
-//var_dump($_SESSION);
+
+
 ?>
 <!--====================================================
                          HOME
@@ -46,15 +47,16 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
 <!--====================================================
                      WHAT WE DO
 ======================================================-->
-<section id="business-growth-p1" class="business-growth-p1 bg-gray">
+<section id="business-growth-p1" class="business-growth-p1 bg-gray ">
     <div class="container ">
-        <div class="row title-bar">
-            <div class="col-md-12">
-                <h1 class="wow fadeInUp"><?php echo $lang['home_big_title'] ?></h1>
-                <div class="heading-border"></div>
-                <p class="wow fadeInUp" data-wow-delay="0.4s"><?php echo $lang['home_title_text'] ?></p>
-            </div>
-        </div>
+<!--        <div class="row title-bar">-->
+<!--            <div class="col-md-12">-->
+<!--                <h1 class="wow fadeInUp">--><?php //echo $lang['home_big_title'] ?><!--</h1>-->
+<!--                <div class="heading-border"></div>-->
+<!--                <p class="wow fadeInUp" data-wow-delay="0.4s">--><?php //echo $lang['home_title_text'] ?><!--</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
         <div class="row wow animated fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
 
             <div class="col-md-3 col-sm-6 service-padding">
@@ -129,7 +131,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
             <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.2s">
                 <h2><?php echo $lang['latest_products'] ?></h2>
                 <div class="heading-border-light"></div>
-                <button class="btn btn-general btn-green" role="button"><?php echo $lang['watch_more'] ?></button>
+               <a href="products-list"><button  class="btn btn-general btn-green" role="button"><?php echo $lang['watch_more'] ?></button></a>
             </div>
             <?php
             //                  foreach ($result_latest['data'] as $item) {
@@ -151,7 +153,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
             <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.2s">
                 <h2><?php echo $lang['latest_news'] ?></h2>
                 <div class="heading-border-light"></div>
-                <button class="btn btn-general btn-green t" role="button"><?php echo $lang['watch_more'] ?></button>
+                <a href="news-list"><button class="btn btn-general btn-green" role="button"><?php echo $lang['watch_more'] ?></button></a>
             </div>
             <?php
             //                  foreach ($result_latest['data'] as $item) {

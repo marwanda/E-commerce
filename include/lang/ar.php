@@ -5,7 +5,7 @@ $lang= array(
 
     '404' => '404',
     'general_error'=>'خطأ عام',
-    'site_name' => 'ITsource',
+    'site_name' => 'IT-Source',
     'submit' => 'تثبيت',
     'send' => 'إرسال',
 
@@ -24,6 +24,9 @@ $lang= array(
     'enter_mobile' => 'أدخل رقم الهاتف المحمول',
     'enter_password' => 'أدخل كلمة المرور',
     'login' => 'تسجيل الدخول',
+    'forget_password' => 'نسيت كلمة المرور؟',
+    'logout' => 'تسجيل الخروج',
+
 
     //register
     'full_name'=>'الاسم الكامل',
@@ -36,8 +39,18 @@ $lang= array(
     'address'=>'العنوان',
     'password'=>'كلمة السر',
     're-password'=>'تأكيد كلمة السرّ',
+    'register'=>'التسجيل',
+
+    //profile
+
+
+  'edit_profile'=>'تعديل الملف الشخصي',
+    'personal_info'=>'المعلومات الشخصية',
+    'Can_nor_edit'=>'عذراً لا يمكنك التعديل حالياً',
+
 
     //Pages
+    '404' => '404',
     'home' => 'الرئيسية',
     'shop' => 'المتجر',
     'products' => 'المنتجات',
@@ -57,11 +70,10 @@ $lang= array(
     'go' => 'اذهب',
     'username' => 'اسم المستخدم',
     'forgot_password' => 'نسيت كلمة المرور؟',
-    'register' => 'إنشاء حساب',
     'read_more' => 'اقرأ المزيد',
-    'you_can_be_vip_user' => 'يمكنك ان تملك حساب VIP!',
+    'you_can_be_vip_user' => 'أصبح لديك حساب VIP!',
     'vip_account' => 'حساب VIP',
-    'vip_special_price' => 'لديك الآن سعر خاص!',
+    'vip_special_price' => 'حساب VIP يمنح للمستخدمين الأكثر تفاعلأ, ستحصل على تخفيض في أسعار المنتجات!',
     'home_big_title' => 'تؤمن شركتنا',
     'home_title_text' => 'نحن شركة مبتكرة. نحن نطور ونصمم مواقع الويب لمصممو الأزياء في جميع أنحاء العالم. عملائنا هم بعض من أكثر الشركات تطلعا في العالم.',
     'watch_more' => 'مشاهدة المزيد',
@@ -71,7 +83,7 @@ $lang= array(
     'latest_technology_news' => 'آخر أخبار التكنولوحيا',
     'latest_products' => 'أجدد المنتجات',
     'latest_news' => 'أجدد الأخبار',
-    'footer_copyright' => 'جميع الحقوق محفوظة 2019',
+    'footer_copyright' => 'حقوق الملكية: جميع الحقوق محفوظة لشركة IT-Source 2019',
     'file' => 'ملف',
     'project_form_title' => 'استثمر, اقترح فكرة جديدة',
     'discover_about' => 'اكتشف المزيد حولنا',
@@ -80,4 +92,9 @@ $lang= array(
     'discover_more' => 'اكشتف المزيد',
     'company_name' => 'اسم الشركة',
     'business' => 'الأعمال',
+
+    /** project **/
+    'file_type' => 'تستطيع رفع ملف من الانواع التالية: pdf , word , exel, text',
+'maximum_size' => '2 ميغا بايت الحد الاقصى لحجم الملف المرفوع',
+
 );

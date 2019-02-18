@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+    echo '<script language="javascript">';
+    echo "alert('".$_SESSION['error_msg']."')";
+    echo '</script>';
+    $_SESSION['error_msg']='';
+
+}
+?>
 <div  class="container-fluid bg-light-gray">
     <div class="row">
 
@@ -9,7 +18,7 @@
             <!--                </div>-->
             <h3 class="mt-5 mb-5">Invest, suggest a new offer</h3>
 
-            <form action="requests/offer.php"  method="post" class="form-horizontal  col-8 " >
+            <form action="requests/offer.php"  method="post" class="form-horizontal  col-8 " enctype="multipart/form-data" >
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Full name:</label>
                     <div class="col-lg-8">
@@ -37,7 +46,7 @@
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left "></label>
                     <div class="col-md-8">
-                        <input required type="submit" class=" form-group btn btn-general btn-white" value="Submit">
+                        <input required type="submit" name="submit-offer" class=" form-group btn btn-general btn-white" value="Submit">
                         <span></span>
                     </div>
                 </div>

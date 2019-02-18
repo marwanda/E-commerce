@@ -1,14 +1,17 @@
 <?php
+
 include '../include/config.php';
 $mobile = isset($_POST['phone']) ? make_safe($_POST['phone']) : null;
 $password = isset($_POST['password']) ? make_safe($_POST['password']) : null;
-
 $link = mysqli_connect("localhost", "root", "", "itsource");
 $sq = "'";
 $path = '../';
 $query = "select * from user where phone = {$sq}{$mobile}{$sq} and password = {$sq}{$password}{$sq}";
+
 if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    mysqli_close($link);
+    redirect('home',$path);
     exit();
 }
 

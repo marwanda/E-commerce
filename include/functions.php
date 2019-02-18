@@ -287,8 +287,86 @@ function upload_image($pic, $path, $size)
         }
 
     }
+
+    if(isset($file))
+    {
+
+    }
+
     return $result;
 }
+
+
+//function upload_file($file, $path)
+//{
+//    require_once 'libs/upload/upload.php';
+//    global $error_code;
+//    global $lang;
+//    global $FILES_ROOT;
+//    $result = array();
+//    $file_name = guid();
+////    if (!file_exists($FILES_ROOT . "images/$path/")) {
+////        mkdir($FILES_ROOT . "images/$path/", 0777, true);
+////    }
+//    while (file_exists($FILES_ROOT . "images/$path/" . $file_name . ".png")) {
+//        $file_name = guid();
+//    }
+//    if (isset($file)) {
+//
+//        @$handle = new upload($file);
+//        if ($handle->uploaded) {
+//            $handle->file_new_name_body = $file_name;
+////            $handle->mime_check = true;
+////            $handle->allowed = array('image/*');
+////            $handle->image_convert = 'png';
+////            $handle->image_resize = true;
+////            $handle->image_ratio = true;
+////            $handle->dir_auto_create = true;
+////            $handle->image_ratio_fill = true;
+////            $handle->image_x = $size['thumb']['image_x'];
+////            $handle->image_y = $size['thumb']['image_y'];
+//            $handle->process("files/$path" );
+////            $handle->image_ratio = true;
+////
+////            $handle->file_new_name_body = $file_name;
+////            $handle->mime_check = true;
+////            $handle->image_resize = true;
+////            $handle->image_convert = 'png';
+////            $handle->dir_auto_create = true;
+////            $handle->image_ratio_crop = true;
+////            $handle->dir_auto_create = true;
+////
+////            $handle->image_x = $size['medium']['image_x'];
+////            $handle->image_y = $size['medium']['image_y'];
+////            $handle->process("files/images/$path/" . '/medium');
+////
+////            $handle->file_new_name_body = $file_name;
+////            $handle->mime_check = true;
+////            $handle->image_resize = true;
+////            $handle->image_convert = 'png';
+////            $handle->dir_auto_create = true;
+////            $handle->image_ratio_crop = true;
+////            $handle->dir_auto_create = true;
+////
+////
+////            $handle->image_x = $size['large']['image_x'];
+////            $handle->image_y = $size['large']['image_y'];
+////            $handle->process("files/images/$path/" . '/large');
+//            if ($handle->processed) {
+//                $data['file_name'] = $file_name . ".png";
+//                $result = response($error_code['success'], $lang['success'], $data);
+//
+//            } else {
+//                $result = response($error_code['upload_error'], $handle->error);
+//
+//            }
+//        }
+//
+//    }
+//
+//
+//    return $result;
+//}
 
 function check_required_fields($fields)
 {
@@ -422,6 +500,69 @@ function generatePIN($digits = 5){
     }
     return $pin;
 }
+
+function upload_file($file,$path,$allowed_files,&$msg)
+{
+    global $lang;
+    global $FILES_ROOT;
+
+$fileSize = $file["size"] / 1024;
+//var_dump($file);
+//exit;
+if($file['type']=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    {
+        $fileExt=array(1=>'xlsx');
+
+    }
+else
+$fileExt = explode('/', $file["type"]);
+
+$fileType = $file["type"];
+$fileTmpName = $file["tmp_name"];
+
+
+//$allowed_files = array(
+//
+//    "application/pdf",
+//    "application/doc",
+//    "application/docx",
+//    "application/txt",
+//    "application/msword",
+//    "application/xlsx",
+//);
+
+$newFileName = guid();
+$newFileName = $newFileName . '.' . $fileExt[1];
+
+if (in_array($fileType, $allowed_files)) {
+    if ($fileSize <= 2000) {
+
+        //File upload path
+        $uploadPath = $FILES_ROOT . $path.$newFileName;
+
+        //function for upload file
+        if(move_uploaded_file($fileTmpName, '../'.$uploadPath))
+        {
+            return $uploadPath;
+        }
+
+    } else {
+        $msg=$lang['maximum_size'];
+    }
+
+} else {
+    $msg=$lang['file_type'];
+
+}
+
+
+}
+
+
+
+
+
+
 
 
 
