@@ -10,7 +10,7 @@
 
     <title><?php echo $page_title; ?></title>
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $APP_ROOT ?>assets/img/favicon.ico">
 
     <!-- Global Stylesheets -->
     <!--    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">-->
@@ -68,7 +68,7 @@
                         <ul class="list-inline top-data">
                             <li><a href="#" target="_empty"><i class="fa top-social fa-facebook"></i></a></li>
                             <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
-                            <li><a href="requests/logout.php" class="log-top" ><?php echo $lang['logout']?></a>
+                            <li><a href="<?php echo $page=='product-details'? '../':''?>requests/logout.php" class="log-top" ><?php echo $lang['logout']?></a>
                                 <?php }else{ ?>
                             <li><a href="#" class="log-top" data-toggle="modal" data-target="#login-modal"><?php echo $lang['login']?></a>
                                 <?php } ?>
@@ -85,7 +85,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" data-toggle="affix">
         <div class="container">
             <a class="navbar-brand smooth-scroll" href="<?php echo $APP_ROOT . $pages['home'] ?>">
-                <img class="header-logo" src="assets/img/logo3.png" alt="logo">
+                <img class="header-logo" src="<?php echo $APP_ROOT ?>assets/img/logo3.png" alt="logo">
             </a>
 <!--            <a style="border-radius: 50px;" href="--><?php //if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?><!--" class="btn btn-general btn-green">--><?php //if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?><!--</a>-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -103,7 +103,7 @@
                         <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item"
                                href="<?php echo $APP_ROOT . $pages['products-list'] ?>"><?php echo $lang['products']?></a>
-                            <?php if(isset($_SESSION['role']) && $_SESSION['role']==2){?>
+                            <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
                                 <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['cart'] ?>"><?php echo $lang['cart']?></a>
                     <?php } ?>
 
@@ -128,7 +128,7 @@
                             <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['companies'] ?>"><?php echo $lang['leading_companies']?></a>
                         </div>
                     </li>
-                    <?php if(isset($_SESSION['role']) && $_SESSION['role']==2){?>
+                    <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
                         <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
@@ -185,7 +185,7 @@
                     </button>
                 </div>
                 <div id="div-forms">
-                    <form action="requests/login.php" method="post" id="login-form">
+                    <form action="<?php echo $page=='product-details'? '../':''?>requests/login.php" method="post" id="login-form">
                         <h3 class="text-center"><?php echo $lang['login']?></h3>
                         <div class="modal-body">
                             <label for="mobile"><?php echo $lang['mobile']?></label>

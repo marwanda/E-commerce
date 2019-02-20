@@ -8,5 +8,4 @@ $lang = array(
     'about'=>'About Us',
     'login' => 'Login',
 
-
 );

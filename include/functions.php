@@ -221,20 +221,24 @@ function normalize_files( &$files )
     return $_files;
 }
 
-function upload_image($pic, $path, $size)
-{
+function upload_image($pic, $path, $size){
+
     require_once 'libs/upload/upload.php';
     global $error_code;
     global $lang;
     global $FILES_ROOT;
+
     $result = array();
     $file_name = guid();
 //    if (!file_exists($FILES_ROOT . "images/$path/")) {
 //        mkdir($FILES_ROOT . "images/$path/", 0777, true);
 //    }
-    while (file_exists($FILES_ROOT . "images/$path/" . $file_name . ".png")) {
+
+    while (file_exists( $FILES_ROOT."images/".$path."/" . $file_name . ".png")) {
+
         $file_name = guid();
     }
+
     if (isset($pic)) {
 
         @$handle = new upload($pic);
@@ -249,7 +253,7 @@ function upload_image($pic, $path, $size)
             $handle->image_ratio_fill = true;
             $handle->image_x = $size['thumb']['image_x'];
             $handle->image_y = $size['thumb']['image_y'];
-            $handle->process("files/images/$path" . '/thumb');
+            $handle->process('files'."/images/".$path . '/thumb');
             $handle->image_ratio = true;
 
             $handle->file_new_name_body = $file_name;
@@ -262,7 +266,7 @@ function upload_image($pic, $path, $size)
 
             $handle->image_x = $size['medium']['image_x'];
             $handle->image_y = $size['medium']['image_y'];
-            $handle->process("files/images/$path/" . '/medium');
+            $handle->process('files'."/images/".$path . '/medium');
 
             $handle->file_new_name_body = $file_name;
             $handle->mime_check = true;
@@ -275,8 +279,9 @@ function upload_image($pic, $path, $size)
 
             $handle->image_x = $size['large']['image_x'];
             $handle->image_y = $size['large']['image_y'];
-            $handle->process("files/images/$path/" . '/large');
+            $handle->process('files'."/images/".$path . '/large');
             if ($handle->processed) {
+
                 $data['file_name'] = $file_name . ".png";
                 $result = response($error_code['success'], $lang['success'], $data);
 
@@ -285,11 +290,6 @@ function upload_image($pic, $path, $size)
 
             }
         }
-
-    }
-
-    if(isset($file))
-    {
 
     }
 

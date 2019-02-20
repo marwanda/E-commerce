@@ -9,49 +9,42 @@ $page_title = $lang['site_name'];
 
 $shared_css = array(
     "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i",
-    $ASSET_URL."font-awesome-4.7.0/css/font-awesome.min.css",
-    $ASSET_URL."css/bootstrap/bootstrap.min.css",
-    $ASSET_URL."css/animate/animate.min.css",
-    $ASSET_URL."css/owl-carousel/owl.carousel.min.css",
-    $ASSET_URL."css/owl-carousel/owl.theme.default.min.css",
-    $ASSET_URL."css/range-slider.css",
-    $ASSET_URL."css/products-list.css",
-    $ASSET_URL."css/product-details.css",
-    $ASSET_URL."css/services.css",
-    $ASSET_URL."css/news.css",
-    $ASSET_URL."css/about.css",
-    $ASSET_URL."css/style.css",
+    $ASSET_URL . "font-awesome-4.7.0/css/font-awesome.min.css",
+    $ASSET_URL . "css/bootstrap/bootstrap.min.css",
+    $ASSET_URL . "css/animate/animate.min.css",
+    $ASSET_URL . "css/owl-carousel/owl.carousel.min.css",
+    $ASSET_URL . "css/owl-carousel/owl.theme.default.min.css",
+    $ASSET_URL . "css/range-slider.css",
+    $ASSET_URL . "css/products-list.css",
+    $ASSET_URL . "css/product-details.css",
+    $ASSET_URL . "css/services.css",
+    $ASSET_URL . "css/news.css",
+    $ASSET_URL . "css/about.css",
+    $ASSET_URL . "css/style.css",
 //    $ASSET_URL."css/rtl.css",
 
 
     $rtl
 );
 $shared_js = array(
-    $ASSET_URL."js/jquery/jquery.min.js",
-    $ASSET_URL."js/popper/popper.min.js",
-    $ASSET_URL."js/bootstrap/bootstrap.min.js",
-    $ASSET_URL."js/bootstrap-dropdownhover.min.js",
-    $ASSET_URL."js/wow/wow.min.js",
-    $ASSET_URL."js/owl-carousel/owl.carousel.min.js",
-    $ASSET_URL."js/jquery-easing/jquery.easing.min.js",
-    $ASSET_URL."js/scrolling-nav.js",
-    $ASSET_URL."js/jquery.lwtCountdown-1.0.js",
-    $ASSET_URL."js/range-slider.js",
-    $ASSET_URL."js/custom.js",
+    $ASSET_URL . "js/jquery/jquery.min.js",
+    $ASSET_URL . "js/popper/popper.min.js",
+    $ASSET_URL . "js/bootstrap/bootstrap.min.js",
+    $ASSET_URL . "js/bootstrap-dropdownhover.min.js",
+    $ASSET_URL . "js/wow/wow.min.js",
+    $ASSET_URL . "js/owl-carousel/owl.carousel.min.js",
+    $ASSET_URL . "js/jquery-easing/jquery.easing.min.js",
+    $ASSET_URL . "js/scrolling-nav.js",
+    $ASSET_URL . "js/jquery.lwtCountdown-1.0.js",
+    $ASSET_URL . "js/range-slider.js",
+    $ASSET_URL . "js/custom.js",
     $rtl_js,
 //    $rtl_js1
 );
 
 
-$page_css = array(
-
-
-);
-$page_js = array(
-
-
-
-);
+$page_css = array();
+$page_js = array();
 
 //$page_title = $lang['site_name'];
 //$page_header_title = '';

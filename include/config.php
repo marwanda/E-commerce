@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "functions.php";
-$APP_ROOT = "";
+$APP_ROOT = "/E-commerce-new/";
 $FILES_ROOT = $APP_ROOT.'files/';
 $ASSET_URL = $APP_ROOT.'assets/';
 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -24,8 +24,6 @@ if(!isset($_SESSION['role']))
 
 require_once "page_names.php";
 require_once "enum.php";
-//require_once "lang/en.php";
-require_once "lang/ar.php";
 
 if($current_lang=='en')
 require_once "lang/en.php";

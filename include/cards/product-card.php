@@ -1,16 +1,37 @@
-<div class="col-lg-4 col-md-6 mb-4">
-    <div data-id="<?php echo '' ?>" class="card ">
-        <a href="<?php echo $APP_ROOT . 'product-details' ?>"><img class="card-img-top" src="assets/img/shop/shop-item-1.jpg" alt=""></a>
+<div data-id="<?php echo $id ?>" class="col-lg-4 col-md-6 mb-4 product-card">
+    <div class="card ">
+        <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>"><img class="card-img-top"
+                                                                          src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>"
+                                                                          alt=""></a>
         <div class="card-body text-center">
             <div class="card-title">
-                <a href="<?php echo $APP_ROOT . 'product-details' ?>"><h4
-                            class="card-title-custom"><?php echo 'HP laptop 420XG' ?></h4></a>
+                <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>"><h4
+                            class="card-title-custom"><?php echo $name ?></h4></a>
             </div>
-            <h5 class="primary-color"><?php echo '30000 S.P' ?></h5>
+            <h5 class="primary-color"><?php if (isset($_SESSION['role']) && $_SESSION['role'] == 3) {
+                    echo $price_vip . ' ' . $lang['sp'];
+                } else {
+                    echo $price . ' ' . $lang['sp'];
+                } ?> </h5>
             <div class="cart-icon text-center">
-                <a href="#"
-                   class="<?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 2 || $_SESSION['role'] == 3)) {
-                       ?>add-to-cart <?php } else { ?>add-to-cart-login <?php } ?>"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                <div class="row">
+                    <p class="desc text-center "><?php echo $_SESSION['lang'] == 'en' ? $cat_name_en . ' - ' . $sub_name_en : $cat_name_ar . ' - ' . $sub_name_ar ?></p>
+                </div>
+                <div class="row">
+                    <?php
+                    if ($status != 1)
+                    {
+                        ?>
+                        <p><?php echo $lang['product_unavailable']; ?></p><?php
+                    }else{
+                    ?>
+                    <a href="#" data-id="<?php echo $id ?>" class="add-to-cart"
+                       class="<?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 2 || $_SESSION['role'] == 3)) {
+                           ?>add-to-cart <?php } else { ?>add-to-cart-login <?php } ?>"><i
+                                class="fa fa-cart-plus"></i><?php echo $lang['add_to_cart'];
+                        }
+                        ?></a>
+                </div>
             </div>
         </div>
     </div>

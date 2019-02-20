@@ -1,13 +1,21 @@
-<div data-id="<?php echo '' ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp product-card-home" data-wow-delay="0.6s">
+<div data-id="<?php echo $id ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp product-card-home" data-wow-delay="0.6s">
+    <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>">
     <div class="desc-comp-offer-cont custom-height text-center ">
         <div class="thumbnail-blogs">
-            <img src="assets/img/news/news-13.jpg" class="img-fluid" alt="...">
+
+                <img src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>" class="img-fluid" alt="...">
+
+
         </div>
         <div class="card-body">
-            <h3 class="text-center card-title-custom" href="#"><?php echo 'Item name' ?></h3>
-            <p class="desc text-center "><?php echo 'Category' ?> - <?php echo 'Subcategory' ?></p>
+            <h3 class="text-center card-title-custom" href="#"><?php echo $name ?></h3>
+            <p class="desc text-center "><?php echo $_SESSION['lang'] == 'en' ? $cat_name_en . ' - ' . $sub_name_en : $cat_name_ar . ' - ' . $sub_name_ar ?></p>
 
-            <span class="desc text-center primary-color">1200 SP</span>
+            <span class="desc text-center primary-color"><?php if (isset($_SESSION['role']) && $_SESSION['role'] == 3) {
+                    echo $price_vip . ' ' . $lang['sp'];
+                } else {
+                    echo $price . ' ' . $lang['sp'];
+                } ?> </span>
 <!--            <div class="row card-text primary-color" >-->
 <!--                <div class="col-6 text-left "><span class="ml-2"><i class="fa fa-eye mr-2 " aria-hidden="true"></i>50-->
 <!--</span>-->
@@ -20,4 +28,5 @@
         </div>
 
     </div>
+</a>
 </div>

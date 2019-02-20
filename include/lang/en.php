@@ -40,7 +40,7 @@ $lang = array(
     'birthday'=>'Birthday',
     'address'=>'Address',
     'password'=>'Password',
-    're-password'=>'Password Confirmation',
+    're_password'=>'Password Confirmation',
     'register'=>'Register',
 
 
@@ -101,6 +101,10 @@ $lang = array(
     'file_type' => 'You can only upload word, pdf, text and exel files.',
     'maximum_size' => 'Maximum upload file size limit is 2 MB',
 
+    /** products**/
+    'sp'=>'S.P',
+    'add_to_cart'=>'Add to cart',
+    'product_unavailable'=>'Not available currently',
 
 
 );

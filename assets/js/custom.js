@@ -1,4 +1,7 @@
-var siteURL='';
+var siteURL = '/E-commerce-new/';
+var siteFilesURL=siteURL+'files/'
+
+
 // ====================================================
 // ANIMATION
 // ====================================================
@@ -355,20 +358,16 @@ $(document).on('submit', '#register-form-user', function (e) {
     //     $('#register-form-user').submit();
 
 
-
 });
 
-$(document).on('click','#send-verification-code',function (e) {
+$(document).on('click', '#send-verification-code', function (e) {
     e.preventDefault();
 
-    if($('#mobile_number_verification').val()=='')
-    {
+    if ($('#mobile_number_verification').val() == '') {
 
         alert(lang.enterMobile)
-    }
-    else
-    {
-        $data ={ mobile: $('#mobile_number_verification').val()};
+    } else {
+        $data = {mobile: $('#mobile_number_verification').val()};
         $.ajax({
             method: "POST",
             url: "requests/generate-code.php",
@@ -383,27 +382,150 @@ $(document).on('click','#send-verification-code',function (e) {
 /// ** products management **///
 
 
-
-$(document).on('click','.add-to-cart',function (e) {
+///** cart **///
+$(document).on('click', '.add-to-cart', function (e) {
     e.preventDefault();
-alert ('to do 1')
-     // $data ={ };
-     //    $.ajax({
-     //        method: "POST",
-     //        url: "requests/add-to-cart.php",
-     //        data: $data
-     //    }).done(function (msg) {
-     //        alert(msg)
-     //    });
+    alert('to do 1')
+    // $data ={ };
+    //    $.ajax({
+    //        method: "POST",
+    //        url: "requests/add-to-cart.php",
+    //        data: $data
+    //    }).done(function (msg) {
+    //        alert(msg)
+    //    });
 
 })
 
 
-
-$(document).on('click','.add-to-cart-login',function (e) {
+$(document).on('click', '.add-to-cart-login', function (e) {
     e.preventDefault();
     $('#login-modal').modal({
         show: true
     });
 })
+
+//** category and subcategory population**//
+
+
+var select_clicked_cat = false;
+var select_clicked_sub = false;
+
+$(document).on('click', '#category-select', function () {
+
+    if (select_clicked_cat == false) {
+
+        $.ajax({
+            method: "POST",
+            url: "requests/categories.php",
+            data: {}
+        }).done(function (msg) {
+
+
+            jQuery(JSON.parse(msg)).each(function (i, item) {
+                $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>')
+            });
+
+        })
+        select_clicked_cat = true;
+    }
+})
+
+
+$(document).on('change', '#category-select', function () {
+    select_clicked_sub = false;
+    if ($(this).val() != -1) {
+        $("#subcategory-select").prop("disabled", false);
+    } else {
+        $("#subcategory-select").prop('disabled', true);
+    }
+
+
+})
+
+
+$(document).on('click', '#subcategory-select', function () {
+
+
+    if (select_clicked_sub == false) {
+
+        $.ajax({
+            method: "POST",
+            url: "requests/subcategories.php",
+            data: {cat_id: $('#category-select').val()}
+        }).done(function (msg) {
+
+            jQuery(JSON.parse(msg)).each(function (i, item) {
+                $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>')
+            });
+
+        })
+        select_clicked_sub = true;
+    }
+})
+
+
+
+$(document).on('click', '#find', function () {
+
+    let cat_id = $('#category-select').val();
+    let sub_id = $('#subcategory-select').val();
+    let sort = $('#sort_selecet').val();
+    let sr_min = $('#slider-range-value1').text();
+    let sr_max = $('#slider-range-value2').text();
+
+    $data = {
+
+        cat_id: cat_id,
+        sub_id: sub_id,
+        sort: sort,
+        sr_min: sr_min,
+        sr_max: sr_max,
+
+    };
+
+
+    $.ajax({
+        method: "POST",
+        url: "requests/products-listing.php",
+        data: $data
+    }).done(function (msg) {
+
+        $('#products_container').empty();
+
+        jQuery(JSON.parse(msg)).each(function (i, item) {
+
+
+
+            $.ajax({
+                method: "POST",
+                url: "requests/generate-product-card.php",
+                data: item
+            }).done(function (msg) {
+
+                $('#products_container').append(msg);
+
+            })
+            // $('#products_container').append('');
+        });
+    })
+
+
+})
+
+// $(document).on('click','.add-to-cart',function (e) {
+//     e.preventDefault();
+//
+//
+//         $data ={ mobile: $('#mobile_number_verification').val()};
+//         $.ajax({
+//             method: "POST",
+//             url: "requests/add-to-cart.php",
+//             data: $data
+//         }).done(function (msg) {
+//
+//         });
+//
+// })
+
 

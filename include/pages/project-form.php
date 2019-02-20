@@ -4,8 +4,8 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
     echo "alert('".$_SESSION['error_msg']."')";
     echo '</script>';
     $_SESSION['error_msg']='';
-
 }
+
 ?>
 <div class="container-fluid bg-light-gray">
     <div class="row">
@@ -40,8 +40,8 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
                 <div class="form-group">
                     <label class="col-md-8 control-label align-elements "></label>
                     <div class="col-md-8">
-                        <input  name="submit-project" required type="submit" class=" form-group btn btn-general btn-white" value="Submit">
-                               value="<?php echo $lang['submit'] ?>">
+                        <input  name="submit-project" required type="submit" class=" form-group btn btn-general btn-white"  value="<?php echo $lang['submit'] ?>">
+
                         <span></span>
                     </div>
                 </div>

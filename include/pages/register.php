@@ -15,9 +15,9 @@
 
                 <form id="register-form-user" action="requests/register.php"  method="post" class="form-horizontal  col-8 " >
                     <div class="form-group">
-                        <label class="col-lg-8 control-label text-left "><?php echo $lang['full-name'] ?>:</label>
+                        <label class="col-lg-8 control-label text-left "><?php echo $lang['full_name'] ?>:</label>
                         <div class="col-lg-8">
-                            <input placeholder="<?php echo $lang['full-name'] ?>" required  class="form-control" name="full-name" type="text" value="">
+                            <input placeholder="<?php echo $lang['full_name'] ?>" required  class="form-control" name="full-name" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -59,9 +59,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-8 control-label text-left "><?php echo $lang['re-password'] ?>:</label>
+                        <label class="col-md-8 control-label text-left "><?php echo $lang['re_password'] ?>:</label>
                         <div class="col-md-8">
-                            <input id="register-re-password-user" placeholder="<?php echo $lang['re-password'] ?>" required class="form-control" name="re-password" type="password" value="">
+                            <input id="register-re-password-user" placeholder="<?php echo $lang['re_password'] ?>" required class="form-control" name="re-password" type="password" value="">
                         </div>
                     </div>
                     <div class="form-group">

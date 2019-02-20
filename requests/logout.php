@@ -7,5 +7,12 @@
  */
 include "../include/config.php";
 $path='../';
-session_destroy();
+
+
+unset($_SESSION['user_id']);
+unset($_SESSION['role']);
+unset($_SESSION['phone']);
+unset($_SESSION['error_msg']);
+
+//var_dump($_SESSION);
 redirect('home',$path);

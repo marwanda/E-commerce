@@ -38,7 +38,7 @@ $lang= array(
     'birthday'=>'تاريخ الميلاد',
     'address'=>'العنوان',
     'password'=>'كلمة السر',
-    're-password'=>'تأكيد كلمة السرّ',
+    're_password'=>'تأكيد كلمة السرّ',
     'register'=>'التسجيل',
 
     //profile
@@ -96,5 +96,10 @@ $lang= array(
     /** project **/
     'file_type' => 'تستطيع رفع ملف من الانواع التالية: pdf , word , exel, text',
 'maximum_size' => '2 ميغا بايت الحد الاقصى لحجم الملف المرفوع',
+
+    /** products**/
+    'sp'=>'ل.س',
+    'add_to_cart'=>'إضافة إاى السلة',
+    'product_unavailable'=>'غير متوفر حالياً',
 
 );

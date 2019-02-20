@@ -88,9 +88,9 @@ else {
 
             <form id="" action="requests/edit-profile.php"  method="post" class="form-horizontal  col-8 " >
                 <div class="form-group">
-                    <label class="col-lg-8 control-label text-left "><?php echo $lang['full-name'] ?>:</label>
+                    <label class="col-lg-8 control-label text-left "><?php echo $lang['full_name'] ?>:</label>
                     <div class="col-lg-8">
-                        <input placeholder="<?php echo $lang['full-name'] ?>" required  class="form-control" name="full-name" type="text" value="<?php echo isset($name)?$name: null; ?>">
+                        <input placeholder="<?php echo $lang['full_name'] ?>" required  class="form-control" name="full-name" type="text" value="<?php echo isset($name)?$name: null; ?>">
                     </div>
                 </div>
                 <div class="form-group">

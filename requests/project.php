@@ -40,6 +40,7 @@ if ($msg != '') {
         exit;
     }
 
+
     if (mysqli_query($link, $query) === TRUE) {
         mysqli_close($link);
         $_SESSION['error_msg']=$lang['successfully_done'];
