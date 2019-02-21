@@ -50,7 +50,6 @@ $lang= array(
 
 
     //Pages
-    '404' => '404',
     'home' => 'الرئيسية',
     'shop' => 'المتجر',
     'products' => 'المنتجات',
@@ -70,6 +69,7 @@ $lang= array(
     'go' => 'اذهب',
     'username' => 'اسم المستخدم',
     'forgot_password' => 'نسيت كلمة المرور؟',
+    'register' => 'إنشاء حساب',
     'read_more' => 'اقرأ المزيد',
     'you_can_be_vip_user' => 'أصبح لديك حساب VIP!',
     'vip_account' => 'حساب VIP',

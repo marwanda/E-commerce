@@ -45,7 +45,7 @@
 <header>
 
     <!-- Top Navbar  -->
-    <div class="top-menubar">
+    <div class="top-menubar" id="top-menubar">
         <div class="topmenu">
             <div class="container">
                 <div class="row">
