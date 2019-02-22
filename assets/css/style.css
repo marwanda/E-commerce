@@ -1946,10 +1946,12 @@ p {
 
 .product-card-img {
     height: 230px;
+    width: 100%;
 }
 
 .home-product-card-img {
     height: 200px;
+    width: 100%;
 }
 
 .fixed-height{
