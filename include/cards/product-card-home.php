@@ -2,10 +2,7 @@
     <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>">
     <div class="desc-comp-offer-cont custom-height text-center ">
         <div class="thumbnail-blogs">
-
-                <img src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>" class="img-fluid" alt="...">
-
-
+            <img src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>" class="img-fluid home-product-card-img" alt="...">
         </div>
         <div class="card-body">
             <h3 class="text-center card-title-custom" href="#"><?php echo $name ?></h3>

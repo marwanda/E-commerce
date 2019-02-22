@@ -1944,6 +1944,14 @@ p {
     line-height: 1.6;
 }
 
+.product-card-img {
+    height: 230px;
+}
+
+.home-product-card-img {
+    height: 200px;
+}
+
 .fixed-height{
     max-height: 940px; overflow: auto;
 }

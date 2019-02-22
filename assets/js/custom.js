@@ -426,7 +426,8 @@ $(document).on('click', '#category-select', function () {
                 $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>')
             });
 
-        })
+        });
+        $('#category-select').selectpicker('refresh');
         select_clicked_cat = true;
     }
 })
