@@ -120,5 +120,13 @@ $lang = array(
     'description' => 'Description',
 
 
+    /** cart **/
+    'product' => 'Product',
+    'price' => 'Price',
+    'quantity' => 'Quantity',
+    'subtotal' => 'Subtotal',
+    'prev_page' => 'Previous Page',
+    'next_page' => 'Next Page',
+
 
 );

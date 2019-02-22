@@ -115,4 +115,14 @@ $lang= array(
     'last_update' => 'آخر تعديل: ',
     'description' => 'الوصف',
 
+    /** cart **/
+    'product' => 'المنتج',
+    'price' => 'السعر',
+    'quantity' => 'الكمية',
+    'subtotal' => 'المجموع',
+    'prev_page' => 'السابق',
+    'next_page' => 'التالي',
+
+
+
 );

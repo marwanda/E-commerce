@@ -40,12 +40,12 @@ h1, h2, h3, h4, h5 {
 } 
 
 a {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Hind', 'Cairo';
     color: #2196f3;
 }
 
 p {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Hind', 'Cairo';
     color: #64707b;
     font-size: 15px;
     font-weight: 300;
@@ -53,7 +53,7 @@ p {
 
 @media (min-width: 1600px) {
     p {
-        font-family: 'Hind', sans-serif;
+        font-family: 'Hind', 'Cairo';
         color: #64707b;
         font-size: 16px;
         font-weight: 300;
@@ -1921,14 +1921,13 @@ p {
 }
 
 
-.news-card-text
-{
+.news-card-text {
     display: block;
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
     max-height: 4em;
-    line-height: 1.8em;
+    line-height: 1.9em;
 }
 
 .custom-height

@@ -47,16 +47,16 @@ else
 
                 <div data-id="<?php ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp news-card"
                      data-wow-delay="0.6s">
-                    <div class="desc-comp-offer-cont custom-height" style="height: 360px;">
+                    <div class="desc-comp-offer-cont custom-height" style="">
                         <div class="thumbnail-blogs" style="height:145px;">
                             <img src="<?php echo $itm->enclosure['url'] ?>" class="img-fluid" alt="...">
                         </div>
-                        <div class="">
+                        <div class="card-body">
                             <a href="<?php echo $itm->link; ?>"><h3 class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3></a>
                             <p class="desc news-card-text"><?php echo $itm->description ?></p>
-                            <span class="mr-2"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
+                            <div class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
-                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>
