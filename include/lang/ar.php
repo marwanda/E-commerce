@@ -8,6 +8,8 @@ $lang= array(
     'site_name' => 'IT-Source',
     'submit' => 'تثبيت',
     'send' => 'إرسال',
+    'all' => 'الكل',
+
 
     //Verification
 
@@ -39,7 +41,6 @@ $lang= array(
     'address'=>'العنوان',
     'password'=>'كلمة السر',
     're_password'=>'تأكيد كلمة السرّ',
-    'register'=>'التسجيل',
 
     //profile
 
@@ -50,7 +51,6 @@ $lang= array(
 
 
     //Pages
-    '404' => '404',
     'home' => 'الرئيسية',
     'shop' => 'المتجر',
     'products' => 'المنتجات',
@@ -70,6 +70,7 @@ $lang= array(
     'go' => 'اذهب',
     'username' => 'اسم المستخدم',
     'forgot_password' => 'نسيت كلمة المرور؟',
+    'register' => 'إنشاء حساب',
     'read_more' => 'اقرأ المزيد',
     'you_can_be_vip_user' => 'أصبح لديك حساب VIP!',
     'vip_account' => 'حساب VIP',
@@ -84,6 +85,7 @@ $lang= array(
     'latest_products' => 'أجدد المنتجات',
     'latest_news' => 'أجدد الأخبار',
     'footer_copyright' => 'حقوق الملكية: جميع الحقوق محفوظة لشركة IT-Source 2019',
+    'stay_connected' => 'تواصل معنا',
     'file' => 'ملف',
     'project_form_title' => 'استثمر, اقترح فكرة جديدة',
     'discover_about' => 'اكتشف المزيد حولنا',
@@ -99,7 +101,28 @@ $lang= array(
 
     /** products**/
     'sp'=>'ل.س',
-    'add_to_cart'=>'إضافة إاى السلة',
+    'min_price' => 'الأدنى:',
+    'max_price' => 'الأعلى:',
+    'add_to_cart'=>'إضافة إلى السلة',
     'product_unavailable'=>'غير متوفر حالياً',
+    'price_range' => 'مجال السعر',
+    'categories' => 'الفئات',
+    'subcategories' => 'الفئات الفرعية',
+    'sort_as' => 'ترتيب حسب',
+    'latest_first' => 'الأحدث أولا',
+    'oldest_first' => 'الأقدم أولا',
+    'current_price' => 'السعر الحالي: ',
+    'last_update' => 'آخر تعديل: ',
+    'description' => 'الوصف',
+
+    /** cart **/
+    'product' => 'المنتج',
+    'price' => 'السعر',
+    'quantity' => 'الكمية',
+    'subtotal' => 'المجموع',
+    'prev_page' => 'السابق',
+    'next_page' => 'التالي',
+
+
 
 );

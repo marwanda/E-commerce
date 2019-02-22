@@ -12,6 +12,7 @@ $lang = array(
     'send' => 'Send',
     'successfully_done' => 'successfully done',
     'arabic' => 'العربية',
+    'all' => 'All',
 
     //Verification
 
@@ -87,7 +88,8 @@ $lang = array(
     'online_shopping' => 'Online Shopping',
     'latest_technology_news' => 'Latest Technology News',
     'latest_products' => 'Latest Products',
-    'footer_copyright' => 'Copyrights: All Rights Reserved for IT-Source 2019.',    'footer_copyright' => 'Copyrights: 2019 All Rights Reserved.',
+    'footer_copyright' => 'Copyrights: All Rights Reserved for IT-Source 2019.',
+    'stay_connected' => 'Stay Connected',
     'file' => 'File',
     'project_form_title' => 'Invest, suggest a new Idea',
     'discover_about' => 'Discover more about us',
@@ -103,9 +105,28 @@ $lang = array(
 
     /** products**/
     'sp'=>'S.P',
+    'min_price' => 'Min:',
+    'max_price' => 'Max:',
     'add_to_cart'=>'Add to cart',
     'product_unavailable'=>'Not available currently',
+    'price_range' => 'Price Range',
+    'categories' => 'Categories',
+    'subcategories' => 'Subcategories',
+    'sort_as' => 'Sort As',
+    'latest_first' => 'Latest First',
+    'oldest_first' => 'Oldest First',
+    'current_price' => 'Current Price: ',
+    'last_update' => 'Last Update: ',
+    'description' => 'Description',
+
+
+    /** cart **/
+    'product' => 'Product',
+    'price' => 'Price',
+    'quantity' => 'Quantity',
+    'subtotal' => 'Subtotal',
+    'prev_page' => 'Previous Page',
+    'next_page' => 'Next Page',
 
 
 );
-

@@ -10,7 +10,7 @@
 
     <title><?php echo $page_title; ?></title>
 
-    <link rel="shortcut icon" href="<?php echo $APP_ROOT ?>assets/img/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $APP_ROOT ?>assets/img/logo3.png">
 
     <!-- Global Stylesheets -->
     <!--    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">-->
@@ -45,7 +45,7 @@
 <header>
 
     <!-- Top Navbar  -->
-    <div class="top-menubar">
+    <div class="top-menubar" id="top-menubar">
         <div class="topmenu">
             <div class="container">
                 <div class="row">
@@ -132,7 +132,7 @@
                         <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item">
+                    <li class="nav-item lang-nav-item">
                         <a href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
                     </li>
 

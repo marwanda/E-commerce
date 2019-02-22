@@ -17,10 +17,10 @@
         <table id="cart" class="table table-hover table-condensed">
           <thead>
             <tr>
-              <th style="width:50%">Product</th>
-              <th style="width:10%">Price</th>
-              <th style="width:8%">Quantity</th>
-              <th style="width:22%" class="text-center">Subtotal</th>
+              <th style="width:50%"><?php echo $lang['product']?></th>
+              <th style="width:10%"><?php echo $lang['price']?></th>
+              <th style="width:8%"><?php echo $lang['quantity']?></th>
+              <th style="width:22%" class="text-center"><?php echo $lang['subtotal']?></th>
               <th style="width:10%"></th>
             </tr>
           </thead>
@@ -28,7 +28,7 @@
             <tr>
               <td data-th="Product">
                 <div class="row">
-                  <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+                  <div class="col-sm-2 hidden-xs cart-table-img-col"><img src="http://placehold.it/100x100" alt="..." class="cart-table-img"/></div>
                   <div class="col-sm-10 prod-desc">
                     <h6 class="nomargin">Product 1</h6>
                     <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
@@ -57,10 +57,10 @@
           </tbody>
           <tfoot> 
             <tr>
-              <td><a href="#" class="btn btn-general btn-white"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+              <td><a href="#" class="btn btn-general btn-white"><i class="fa fa-angle-left nxt-arrow"></i><?php echo $lang['next_page']?></a></td>
               <td colspan="2" class="hidden-xs"></td>
               <td class="hidden-xs text-center"><strong>Total $150.99</strong></td>
-              <td><a href="#" class="btn btn-general btn-green">Checkout <i class="fa fa-angle-right"></i></a></td>
+              <td><a href="#" class="btn btn-general btn-green"><?php echo $lang['prev_page']?> <i class="fa fa-angle-right prev-arrow"></i></a></td>
             </tr>
           </tfoot>
         </table>

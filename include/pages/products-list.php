@@ -57,7 +57,7 @@ if (mysqli_connect_errno()) {
 <div id="home-p" class="home-p pages-head3 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"
-            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Shoping Box</h1>
+            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['online_shopping']?></h1>
     </div><!--/end container-->
 </div>
 <!--====================================================
@@ -68,36 +68,36 @@ if (mysqli_connect_errno()) {
         <div class="row">
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3>Categories</h3>
+                    <h3><?php echo $lang['categories']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="category-select" class="form-control">
-                    <option value="-1" selected>All</option>
+                <select id="category-select" class="form-control select-form">
+                    <option value="-1" selected><?php echo $lang['all']?></option>
                 </select>
             </div>
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3>Subcategory</h3>
+                    <h3><?php echo $lang['subcategories']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select disabled id="subcategory-select" class="form-control">
-                    <option value="-1" selected>All</option>
+                <select disabled id="subcategory-select" class="form-control select-form">
+                    <option value="-1" selected><?php echo $lang['all']?></option>
                 </select>
             </div>
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3>Sort as</h3>
+                    <h3><?php echo $lang['sort_as']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="sort_selecet" class="form-control">
-                    <option selected value="1">Latest first</option>
-                    <option value="2">Oldest first</option>
+                <select id="sort_selecet" class="form-control select-form">
+                    <option selected value="1"><?php echo $lang['latest_first']?></option>
+                    <option value="2"><?php echo $lang['oldest_first']?></option>
                 </select>
             </div>
 
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3>Price range</h3>
+                    <h3><?php echo $lang['price_range']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
                 <div class="row">
@@ -105,12 +105,12 @@ if (mysqli_connect_errno()) {
                         <div id="slider-range" class="mt-2"></div>
                     </div>
                 </div>
-                <div class="row slider-labels-slider small-text-slider">
-                    <div class="col-6 ">
-                        <label>Min: </label> <span id="slider-range-value1"></span><span> SP</span>
+                <div class="slider-labels-slider small-text-slider">
+                    <div class="min-slide-side">
+                        <label><?php echo $lang['min_price']?></label> <span id="slider-range-value1"></span><span><?php echo ' ' . $lang['sp']?></span>
                     </div>
-                    <div class="col-6 text-right ">
-                        <label>Max: </label> <span id="slider-range-value2"></span><span> SP</span>
+                    <div class="max-slide-side">
+                        <label><?php echo $lang['max_price']?></label> <span id="slider-range-value2"></span><span><?php echo ' ' . $lang['sp']?></span>
                     </div>
                 </div>
                 <div class="row">
