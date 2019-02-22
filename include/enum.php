@@ -2,16 +2,16 @@
 $image_sizes = array(
     'services' => array(
         'large' => array(
-            'image_x' => '400',
-            'image_y' => '500'
+            'image_x' => '500',
+            'image_y' => '400'
         ),
         'medium' => array(
-            'image_x' => '480',
-            'image_y' => '270'
+            'image_x' => '348',
+            'image_y' => '232'
         ),
         'thumb' => array(
-            'image_x' => '253',
-            'image_y' => '202'
+            'image_x' => '97',
+            'image_y' => '78'
         ),
     ),
 );

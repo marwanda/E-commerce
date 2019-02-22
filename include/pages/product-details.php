@@ -90,7 +90,7 @@ else
                     if ($result = mysqli_query($link, $query2)) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             array_push($arr2,$row['name']);
-                            echo '<div class="tab-pane" id="pic-'.$i.'" data-toggle="tab"><img src="'.$FILES_ROOT.'images/products/large/'.$row['name'].'" /></div>';
+                            echo '<div class="tab-pane" id="pic-'.$i.'" data-toggle="tab"><img src="'.$FILES_ROOT.'images/products/thumb/'.$row['name'].'" /></div>';
                             $i++;
                         }
                     }
@@ -104,7 +104,7 @@ else
 <!--                  <div class="tab-pane" id="pic-5"><img src="--><?php //echo $APP_ROOT ?><!--assets/img/shop/shop-item-2.jpg" /></div>-->
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
-                    <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?php echo $FILES_ROOT.'images/products/large/'.$pic?>" /></a></li>
+                    <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?php echo $FILES_ROOT.'images/products/thumb/'.$pic?>" /></a></li>
                     <?php
                     $i=2;
                     if (isset($arr2)) {

@@ -31,6 +31,7 @@ $lang = array(
     'logout' => 'Logout',
     'forget_password' => 'Forget password?',
 
+
     //register
     'full_name'=>'Full Name',
     'male'=>'Male',

@@ -13,6 +13,7 @@ unset($_SESSION['user_id']);
 unset($_SESSION['role']);
 unset($_SESSION['phone']);
 unset($_SESSION['error_msg']);
+unset($_SESSION['order_id']);
 
 //var_dump($_SESSION);
 redirect('home',$path);

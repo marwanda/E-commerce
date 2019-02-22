@@ -261,7 +261,7 @@ function upload_image($pic, $path, $size){
             $handle->image_resize = true;
             $handle->image_convert = 'png';
             $handle->dir_auto_create = true;
-            $handle->image_ratio_crop = true;
+            $handle->image_ratio_crop = false;
             $handle->dir_auto_create = true;
 
             $handle->image_x = $size['medium']['image_x'];
@@ -273,7 +273,7 @@ function upload_image($pic, $path, $size){
             $handle->image_resize = true;
             $handle->image_convert = 'png';
             $handle->dir_auto_create = true;
-            $handle->image_ratio_crop = true;
+            $handle->image_ratio_crop = false;
             $handle->dir_auto_create = true;
 
 
