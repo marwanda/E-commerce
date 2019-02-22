@@ -1,5 +1,5 @@
 var siteURL = '/E-commerce-new/';
-var siteFilesURL=siteURL+'files/'
+var siteFilesURL = siteURL + 'files/'
 
 
 // ====================================================
@@ -439,6 +439,8 @@ $(document).on('change', '#category-select', function () {
     } else {
         $("#subcategory-select").prop('disabled', true);
     }
+    $('#subcategory-select').empty();
+    $('#subcategory-select').append('<option value="-1">' + lang.all + '</option>')
 
 
 })
@@ -447,14 +449,13 @@ $(document).on('change', '#category-select', function () {
 $(document).on('click', '#subcategory-select', function () {
 
 
-    if (select_clicked_sub == false) {
 
+    if (select_clicked_sub == false) {
         $.ajax({
             method: "POST",
             url: "requests/subcategories.php",
             data: {cat_id: $('#category-select').val()}
         }).done(function (msg) {
-
             jQuery(JSON.parse(msg)).each(function (i, item) {
                 $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>')
             });
@@ -463,7 +464,6 @@ $(document).on('click', '#subcategory-select', function () {
         select_clicked_sub = true;
     }
 })
-
 
 
 $(document).on('click', '#find', function () {
@@ -494,7 +494,6 @@ $(document).on('click', '#find', function () {
         $('#products_container').empty();
 
         jQuery(JSON.parse(msg)).each(function (i, item) {
-
 
 
             $.ajax({
