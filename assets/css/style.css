@@ -1854,8 +1854,8 @@ p {
     /*footer bottom*/
 
     #footer-bottom {
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 30px 0;
+        padding: 12px 0;
+        border-top: 1px solid;
     }
 
     #footer-copyrights p {
@@ -1981,8 +1981,168 @@ font-size: large;
 .hidden
 {
   display: none;
+
 }
 
 .align-elements {
     text-align: left;
+}
+
+.news-card-title {
+    direction: rtl;
+}
+
+.min-slide-side, .max-slide-side {
+    display: inline;
+}
+
+.max-slide-side {
+    float: right;
+}
+
+.noUi-handle {
+    cursor: pointer;
+}
+
+.product-details-desc {
+    margin-bottom: 4em;
+}
+
+.male_label {
+    margin-right: 10px;
+}
+
+/*footer */
+
+.padding-vertical-1 {
+    padding-top: 2em;
+}
+
+.footer-section > .container {
+    padding-left: 0;
+}
+
+.social-icon li {
+    display: inline;
+    margin-right: 4em;
+}
+
+.social-icon li a {
+    color: gray;
+    background: #242424;
+    line-height: 1.1;
+    text-align: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.social-icon li a:hover {
+    background-color: #2196f3;
+    color: #fff
+}
+
+.stay-connected {
+    margin-right: -.5em;
+}
+
+.connect-us {
+    text-align: right;
+}
+
+.contact-us-title {
+    margin-right: 3em;
+}
+
+.contact-us > li {
+    font-weight: 600;
+}
+
+footer {
+    width: 100%;
+    border-top: 1px solid #909090;
+    background: #1a1a1a;
+}
+
+.footer-links {
+    margin-top: 2em;
+}
+
+.social-icon mt-sm-4 li {
+
+    margin-right: 3px;
+
+}
+
+footer .divider {
+    width: 1px;
+    height: 80%;
+    display: inline-block;
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 0;
+    right: 3em;
+}
+
+.copyright {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 0em;
+}
+
+.contact-us-title:hover {
+    color: #bbb;
+    text-decoration: none;
+}
+
+
+@media only screen and (max-width: 992px) {
+    footer {
+        text-align: center;
+    }
+
+    footer .divider {
+        display: none;
+    }
+
+    .social-icon li {
+        margin: 0 15px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    .contact-us-title {
+        margin-right: 0em;
+        margin-left: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .footer-links {
+        justify-content: center !important;
+        margin-left: 4em;
+    }
+
+    .stay-connected {
+        text-align: center;
+    }
+
+    .social-icon {
+        text-align: center;
+    }
+
+    .connect-us {
+        margin-top: 2em;
+    }
+
+    .footer-links {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .left_sec > img {
+        width: 90%;
+    }
 }

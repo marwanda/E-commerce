@@ -52,7 +52,7 @@ else
                             <img src="<?php echo $itm->enclosure['url'] ?>" class="img-fluid" alt="...">
                         </div>
                         <div class="">
-                            <a href="<?php echo $itm->link; ?>"><h3 class="card-title-custom"><?php echo $itm->title; ?></h3></a>
+                            <a href="<?php echo $itm->link; ?>"><h3 class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3></a>
                             <p class="desc news-card-text"><?php echo $itm->description ?></p>
                             <span class="mr-2"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>

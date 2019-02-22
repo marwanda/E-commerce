@@ -70,7 +70,7 @@ else
 ======================================================-->
     <div id="home-p" class="home-p pages-head3 text-center">
       <div class="container">
-        <h1 class="wow fadeInUp" data-wow-delay="0.1s">Shoping Box</h1>
+        <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['online_shopping']?></h1>
       </div><!--/end container-->
     </div> 
 
@@ -128,11 +128,11 @@ else
               <div class="details col-md-6">
                 <h3 class="product-title mb-5"><?php echo $name?></h3>
                   <h6 class="price mb-5"><?php echo $_SESSION['lang']=='en'? $cat_name_en. ' - '.$sub_name_en : $cat_name_ar. ' - '.$sub_name_ar  ?></h6>
-                  <h6 class="price mb-5">current price: <span><?php echo $_SESSION['role']==3? $price_vip : $price .' '.$lang['sp'] ?></span></h6>
-                  <h6 class="price mb-5">Last update: <span><?php echo $date ?></span>
+                  <h6 class="price mb-5"><?php echo $lang['current_price']?><span><?php echo $_SESSION['role']==3? $price_vip : $price .' '.$lang['sp'] ?></span></h6>
+                  <h6 class="price mb-5"><?php echo $lang['last_update']?><span><?php echo $date ?></span>
                   </h6>
                   <div class="action " style="margin-top: 116px">
-                      <div class="title-but add-to-cart" data-id="<?php echo $id ?>"><button class="btn btn-general btn-white " role="button"><i class="fa fa-cart-plus"></i> Add to Cart</button></div>
+                      <div class="title-but add-to-cart" data-id="<?php echo $id ?>"><button class="btn btn-general btn-white " role="button"><i class="fa fa-cart-plus"></i> <?php echo $lang['add_to_cart'] ?></button></div>
                   </div>
                 </div>
 
@@ -140,11 +140,11 @@ else
               <div class="col-md-12">
                 <div class="service-h-tab"> 
                   <nav class="nav nav-tabs" id="myTab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Desciption</a>
+                    <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"><?php echo $lang['description'] ?></a>
                   </nav>
                   <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                      <p><?php echo $_SESSION['lang']=='en'? $description_en:$description_ar?></p>
+                      <p class="product-details-desc"><?php echo $_SESSION['lang']=='en'? $description_en:$description_ar?></p>
                     </div>
                   </div>
                 </div>

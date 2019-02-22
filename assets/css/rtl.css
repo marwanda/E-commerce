@@ -55,8 +55,12 @@ header{
 
 .form-control{
     direction: rtl;
-    padding: 3px 5px;
 }
+
+.select-form {
+    padding: 2px;
+}
+
 .page-breadcrumb {
     direction: rtl;
 }
@@ -235,3 +239,58 @@ figcaption i {
 .noUi-origin {
     direction: ltr;
 }
+
+.min-slide-side {
+    float: left;
+}
+
+.male_label {
+    margin-left: 10px;
+}
+
+/* footer */
+
+.contact-us-title {
+    margin-left: 3em;
+    margin-right: 1em;
+}
+
+.connect-us {
+    text-align: left;
+}
+
+.stay-connected {
+    margin-right: 0;
+    margin-left: 2em;
+}
+
+.social-icon li {
+    margin-left: 6em;
+    margin-right: initial;
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    .contact-us-title {
+        margin-left: 0em;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-section > .container {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .stay-connected {
+        margin-left: 0em;
+    }
+
+    .footer-links {
+        margin-left: 0em;
+    }
+}
+
+
+

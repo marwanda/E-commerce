@@ -11,34 +11,28 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
     <div class="row">
 
         <div class="col personal-info " align="center">
-            <!--                <div class="alert alert-info alert-dismissable">-->
-            <!--                    <a class="panel-close close" data-dismiss="alert">×</a>-->
-            <!--                    <i class="fa fa-coffee"></i>-->
-            <!--                    This is an <strong>.alert</strong>. Use this to show important messages to the user.-->
-            <!--                </div>-->
-            <h3 class="mt-5 mb-5">Invest, suggest a new offer</h3>
-
+            <h3 class="mt-5 mb-5"><?php echo $lang['project_form_title']?></h3>
             <form action="requests/offer.php"  method="post" class="form-horizontal  col-8 " enctype="multipart/form-data" >
                 <div class="form-group">
-                    <label class="col-lg-8 control-label text-left ">Full name:</label>
+                    <label class="col-lg-8 control-label align-elements "><?php echo $lang['full_name'] ?></label>
                     <div class="col-lg-8">
                         <input required  class="form-control" name="full-name" type="text" value="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-8 control-label text-left ">Mobile:</label>
+                    <label class="col-lg-8 control-label align-elements "><?php echo $lang['mobile'] ?></label>
                     <div class="col-lg-8">
                         <input required class="form-control"name="mobile" type="tel" value="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-8 control-label text-left ">Email:</label>
+                    <label class="col-lg-8 control-label align-elements "><?php echo $lang['email'] ?></label>
                     <div class="col-lg-8">
                         <input  class="form-control"name="email" type="text" value="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-8 control-label text-left ">File:</label>
+                    <label class="col-lg-8 control-label align-elements "><?php echo $lang['file'] ?></label>
                     <div class="col-lg-8">
                         <input  class="form-control" name="file" type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" value="">
                     </div>
@@ -46,7 +40,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left "></label>
                     <div class="col-md-8">
-                        <input required type="submit" name="submit-offer" class=" form-group btn btn-general btn-white" value="Submit">
+                        <input required type="submit" name="submit-offer" class=" form-group btn btn-general btn-white" value="<?php echo $lang['submit'] ?>">
                         <span></span>
                     </div>
                 </div>
