@@ -411,7 +411,7 @@ $(document).on('click', '.add-to-cart-login', function (e) {
 var select_clicked_cat = false;
 var select_clicked_sub = false;
 
-$(document).on('click', '#category-select', function () {
+$(document).on('shown.bs.select', '#category-select', function () {
 
     if (select_clicked_cat == false) {
 
@@ -423,31 +423,37 @@ $(document).on('click', '#category-select', function () {
 
 
             jQuery(JSON.parse(msg)).each(function (i, item) {
-                $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>')
-            });
+                $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>');
+                $('#category-select').selectpicker('refresh');
 
+            });
         });
-        $('#category-select').selectpicker('refresh');
+
         select_clicked_cat = true;
     }
+
 })
 
 
-$(document).on('change', '#category-select', function () {
+$(document).on('changed.bs.select', '#category-select', function () {
     select_clicked_sub = false;
     if ($(this).val() != -1) {
         $("#subcategory-select").prop("disabled", false);
+        $('#subcategory-select').selectpicker('refresh');
     } else {
         $("#subcategory-select").prop('disabled', true);
+        $('#subcategory-select').selectpicker('refresh');
     }
     $('#subcategory-select').empty();
-    $('#subcategory-select').append('<option value="-1">' + lang.all + '</option>')
+    $('#subcategory-select').append('<option value="-1">' + lang.all + '</option>');
+    $('#subcategory-select').selectpicker('refresh');
+
 
 
 })
 
 
-$(document).on('click', '#subcategory-select', function () {
+$(document).on('shown.bs.select', '#subcategory-select', function () {
 
 
 
@@ -458,7 +464,9 @@ $(document).on('click', '#subcategory-select', function () {
             data: {cat_id: $('#category-select').val()}
         }).done(function (msg) {
             jQuery(JSON.parse(msg)).each(function (i, item) {
-                $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>')
+                $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>');
+                $('#subcategory-select').selectpicker('refresh');
+
             });
 
         })

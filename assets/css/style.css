@@ -1514,6 +1514,15 @@ p {
         border: 1px solid #ddd;
     }
 
+    .product-gallery-thumbs {
+        cursor: pointer;
+    }
+
+    .product-details-large-pic {
+        width: 540px;
+        height: 360px;
+    }
+
     .service-h-tab .nav-tabs>a.active {
         color: #fff;
         border: 1px solid #2196f3;
@@ -1970,27 +1979,22 @@ font-size: large;
 
 
 
-.user-404-padding
-{
+.user-404-padding {
     padding: 110px;
 }
 
 
-.tabel-width
-{
+.tabel-width {
     width: 20%;
 }
 
-.register-form-customregister-form-custom
-{
+.register-form-customregister-form-custom {
     float: left;
     margin-left: 96px;
 }
 
-.hidden
-{
+.hidden {
   display: none;
-
 }
 
 .align-elements {

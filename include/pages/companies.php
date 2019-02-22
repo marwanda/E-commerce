@@ -26,17 +26,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
@@ -45,17 +45,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
@@ -64,17 +64,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
@@ -83,17 +83,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
@@ -102,17 +102,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
@@ -121,17 +121,17 @@
                 <tr>
                     <td>D-Link</td>
                     <td>IT</td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>0966989698</option>
                             <option>0966989698</option>
                             <option>0966989698</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                             <option>john@example.com</option>
                         </select></td>
-                    <td><select class="form-control">
+                    <td><select class="form-control select-form">
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>
                             <option>Damascus Bahsa</option>

@@ -71,7 +71,7 @@ if (mysqli_connect_errno()) {
                     <h3><?php echo $lang['categories']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="category-select" class="form-control select-form">
+                <select id="category-select" class="selectpicker">
                     <option value="-1" selected><?php echo $lang['all']?></option>
                 </select>
             </div>
@@ -80,7 +80,7 @@ if (mysqli_connect_errno()) {
                     <h3><?php echo $lang['subcategories']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select disabled id="subcategory-select" class="form-control select-form">
+                <select disabled id="subcategory-select" class="selectpicker">
                     <option value="-1" selected><?php echo $lang['all']?></option>
                 </select>
             </div>
@@ -89,7 +89,7 @@ if (mysqli_connect_errno()) {
                     <h3><?php echo $lang['sort_as']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="sort_selecet" class="form-control select-form">
+                <select id="sort_selecet" class="selectpicker">
                     <option selected value="1"><?php echo $lang['latest_first']?></option>
                     <option value="2"><?php echo $lang['oldest_first']?></option>
                 </select>

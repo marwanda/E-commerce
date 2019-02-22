@@ -21,7 +21,7 @@ $shared_css = array(
     $ASSET_URL . "css/news.css",
     $ASSET_URL . "css/about.css",
     $ASSET_URL . "css/style.css",
-//    $ASSET_URL."css/rtl.css",
+    $ASSET_URL . "css/bootstrap-select.css",
 
     $rtl
 );
@@ -30,6 +30,7 @@ $shared_js = array(
     $ASSET_URL . "js/popper/popper.min.js",
     $ASSET_URL . "js/bootstrap/bootstrap.min.js",
     $ASSET_URL . "js/bootstrap-dropdownhover.min.js",
+    $ASSET_URL . "js/bootstrap-select.js",
     $ASSET_URL . "js/wow/wow.min.js",
     $ASSET_URL . "js/owl-carousel/owl.carousel.min.js",
     $ASSET_URL . "js/jquery-easing/jquery.easing.min.js",

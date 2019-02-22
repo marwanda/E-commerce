@@ -83,14 +83,14 @@ else
               <div class="preview col-md-6">
                 
                 <div class="preview-pic tab-content">
-                  <div class="tab-pane active" id="pic-1"><img src="<?php echo $FILES_ROOT.'images/products/large/'.$pic?>" /></div>
+                  <div class="tab-pane active" id="pic-1"><img class="product-details-large-pic" src="<?php echo $FILES_ROOT.'images/products/large/'.$pic?>" /></div>
 
                     <?php
                     $i=2;
                     if ($result = mysqli_query($link, $query2)) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             array_push($arr2,$row['name']);
-                            echo '<div class="tab-pane" id="pic-'.$i.'" data-toggle="tab"><img src="'.$FILES_ROOT.'images/products/thumb/'.$row['name'].'" /></div>';
+                            echo '<div class="tab-pane" id="pic-'.$i.'" data-toggle="tab"><img class="product-details-large-pic" src="'.$FILES_ROOT.'images/products/large/'.$row['name'].'" /></div>';
                             $i++;
                         }
                     }
@@ -104,13 +104,13 @@ else
 <!--                  <div class="tab-pane" id="pic-5"><img src="--><?php //echo $APP_ROOT ?><!--assets/img/shop/shop-item-2.jpg" /></div>-->
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
-                    <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?php echo $FILES_ROOT.'images/products/thumb/'.$pic?>" /></a></li>
+                    <li class="active"><a class="product-gallery-thumbs" data-target="#pic-1" data-toggle="tab"><img src="<?php echo $FILES_ROOT.'images/products/large/'.$pic?>" /></a></li>
                     <?php
                     $i=2;
                     if (isset($arr2)) {
                        foreach ($arr2 as $pic)
                        {
-                            echo '<li><a data-target="#pic-'.$i.'" data-toggle="tab"><img src="' . $FILES_ROOT . 'images/products/thumb/' . $pic. '" /></a></li>';
+                            echo '<li><a class="product-gallery-thumbs" data-target="#pic-'.$i.'" data-toggle="tab"><img src="' . $FILES_ROOT . 'images/products/thumb/' . $pic. '" /></a></li>';
                             $i++;
                             }
 
