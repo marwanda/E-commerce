@@ -10,9 +10,10 @@ $lang = array(
     'site_name' => 'ITsource',
     'submit' => 'Submit',
     'send' => 'Send',
-    'successfully_done' => 'successfully done',
+    'successfully_done' => 'Successfully done',
     'arabic' => 'العربية',
     'all' => 'All',
+    'already_exist' => 'Already added',
 
     //Verification
 
@@ -30,6 +31,7 @@ $lang = array(
     'login' => 'Login',
     'logout' => 'Logout',
     'forget_password' => 'Forget password?',
+    'pending_order' => 'You still have a pending order!',
 
 
     //register

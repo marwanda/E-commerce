@@ -3,6 +3,9 @@ var lang = {
     //** general **//
 
     successfully_done: 'successfully done',
+    general_error: 'General error',
+    already_added: 'Already added!',
+    pending_order: 'You have an unprocessed pending order!',
 
     //** verification **//
 

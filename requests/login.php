@@ -18,15 +18,22 @@ if (mysqli_connect_errno()) {
 
 
 if ($result = mysqli_query($link, $query)) {
+
     if (mysqli_num_rows($result) > 0) {
+
         while ($row = mysqli_fetch_assoc($result)) {
 //var_dump($row);
 //exit;
             $_SESSION['phone'] = $row['phone'];
             $_SESSION['user_id'] = $row['id'];
 
+//            if(!isset($row['role']))
+
             if ($row['role'] == 1) {
+
                 $_SESSION['role'] = 1;
+                redirect('verification',$path);
+                exit;
 //            mysqli_close($link);
 
             } else if ($row['role'] == 2) {
@@ -39,6 +46,8 @@ if ($result = mysqli_query($link, $query)) {
 
             }
         }
+        if($_SESSION['role']==2 || $_SESSION['role']==3)
+        {
             $query2 = "select o.id from itsource.order o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and o.status=1 or o.status=2";
             $date = date('Y-m-d', time());
             $query3 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
@@ -51,15 +60,15 @@ if ($result = mysqli_query($link, $query)) {
                     while ($row1 = mysqli_fetch_assoc($result2)) {
 
 
-                            $_SESSION['order_id'] = $row1['id'];
-                            mysqli_close($link);
-                            redirect($_SERVER['HTTP_REFERER']);
-                            exit();
+                        $_SESSION['order_id'] = $row1['id'];
+                        mysqli_close($link);
+                        redirect($_SERVER['HTTP_REFERER']);
+                        exit();
 
-
-                        }
 
                     }
+
+                }
                 else
                 {
                     if (mysqli_query($link, $query3) === TRUE) {
@@ -68,7 +77,7 @@ if ($result = mysqli_query($link, $query)) {
                         mysqli_close($link);
                         redirect($_SERVER['HTTP_REFERER']);
                         exit;
-                }
+                    }
 
 
                 }
@@ -83,6 +92,8 @@ if ($result = mysqli_query($link, $query)) {
                 redirect('home', $path);
                 exit();
             }
+        }
+
 
 
     }

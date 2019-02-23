@@ -128,7 +128,7 @@ else
               <div class="details col-md-6">
                 <h3 class="product-title mb-5"><?php echo $name?></h3>
                   <h6 class="price mb-5"><?php echo $_SESSION['lang']=='en'? $cat_name_en. ' - '.$sub_name_en : $cat_name_ar. ' - '.$sub_name_ar  ?></h6>
-                  <h6 class="price mb-5"><?php echo $lang['current_price']?><span><?php echo $_SESSION['role']==3? $price_vip : $price .' '.$lang['sp'] ?></span></h6>
+                  <h6 class="price mb-5"><?php echo $lang['current_price']?><span><?php echo $_SESSION['role']==3? $price_vip.' '.$lang['sp'] : $price .' '.$lang['sp'] ?></span></h6>
                   <h6 class="price mb-5"><?php echo $lang['last_update']?><span><?php echo $date ?></span>
                   </h6>
                   <div class="action " style="margin-top: 116px">

@@ -9,6 +9,7 @@ $lang= array(
     'submit' => 'تثبيت',
     'send' => 'إرسال',
     'all' => 'الكل',
+    'already_exist' => ' تمت إضافته مسبقاً',
 
 
     //Verification
@@ -28,7 +29,7 @@ $lang= array(
     'login' => 'تسجيل الدخول',
     'forget_password' => 'نسيت كلمة المرور؟',
     'logout' => 'تسجيل الخروج',
-
+    'pending_order' => 'لديك طلب في وضع الانتظار!',
 
     //register
     'full_name'=>'الاسم الكامل',

@@ -22,9 +22,9 @@
                     <p><?php echo $lang['product_unavailable']; ?></p><?php
                 }else{
                 ?>
-                <a href="#" data-id="<?php echo $id ?>" class="add-to-cart"
-                   class="<?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 2 || $_SESSION['role'] == 3)) {
-                       ?>add-to-cart <?php } else { ?>add-to-cart-login <?php } ?>"><i
+                <a href="#" data-id="<?php echo $id ?>"
+                   class="<?php if (isset($_SESSION['role']) && (($_SESSION['role'] == 2 || $_SESSION['role'] == 3))) {
+                       echo 'add-to-cart'; } else { echo 'add-to-cart-login'; } ?>"><i
                             class="fa fa-cart-plus"></i><?php echo $lang['add_to_cart'];
                     }
                     ?></a>
