@@ -10,6 +10,7 @@ $lang= array(
     'send' => 'إرسال',
     'all' => 'الكل',
     'already_exist' => ' تمت إضافته مسبقاً',
+    'total' => 'المجموع',
 
 
     //Verification

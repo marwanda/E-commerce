@@ -117,6 +117,7 @@ else
                     }
 
 
+
                     ?>
 <!--                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="--><?php //echo $FILES_ROOT.'images/products/thumb/'.$pic?><!--" /></a></li>-->
 <!--                  <li><a data-target="#pic-2" data-toggle="tab"><img src="--><?php //echo $APP_ROOT ?><!--assets/img/shop/shop-item-3.jpg" /></a></li>-->
@@ -131,9 +132,20 @@ else
                   <h6 class="price mb-5"><?php echo $lang['current_price']?><span><?php echo $_SESSION['role']==3? $price_vip.' '.$lang['sp'] : $price .' '.$lang['sp'] ?></span></h6>
                   <h6 class="price mb-5"><?php echo $lang['last_update']?><span><?php echo $date ?></span>
                   </h6>
-                  <div class="action " style="margin-top: 116px">
-                      <div class="title-but add-to-cart" data-id="<?php echo $id ?>"><button class="btn btn-general btn-white " role="button"><i class="fa fa-cart-plus"></i> <?php echo $lang['add_to_cart'] ?></button></div>
-                  </div>
+                  <?php
+                  if ($status != 1)
+                  {
+                      ?>
+                      <p><?php echo $lang['product_unavailable']; ?></p><?php
+                  }else{
+                  ?>
+                      <div class="action " style="margin-top: 116px">
+                          <div class="title-but"> <button data-id="<?php echo $id ?>" class="btn btn-general btn-white <?php if (isset($_SESSION['role']) && (($_SESSION['role'] == 2 || $_SESSION['role'] == 3))) {
+                                  echo 'add-to-cart'; } else { echo 'add-to-cart-login'; } ?>" role="button"><i class="fa fa-cart-plus"></i> <?php echo $lang['add_to_cart'] ?></button></div>
+                      </div>
+<input type="hidden" id="pd" value="1">
+                  <?php }?>
+
                 </div>
 
               </div>

@@ -6,6 +6,9 @@ var lang = {
     general_error: 'General error',
     already_added: 'Already added!',
     pending_order: 'You have an unprocessed pending order!',
+    sp: 'S.P',
+    total: 'Total',
+
 
     //** verification **//
 

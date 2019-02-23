@@ -386,14 +386,22 @@ $(document).on('click', '#send-verification-code', function (e) {
 $(document).on('click', '.add-to-cart', function (e) {
     e.preventDefault();
     $p_id = $(this).data('id')
-
+    if($('#pd').val()==1)
+    {
+        $path='../requests/add-to-cart.php';
+    }
+    else
+    {
+        $path='requests/add-to-cart.php';
+    }
     $data = {
         product_id: $p_id,
         action: 'add',
     };
+
     $.ajax({
         method: "POST",
-        url: "requests/add-to-cart.php",
+        url: $path,
         data: $data
     }).done(function (msg) {
 
@@ -403,14 +411,14 @@ $(document).on('click', '.add-to-cart', function (e) {
             alert(lang.already_added)
         } else if (msg == 3) {
             alert(lang.pending_order)
-        } else {
+        } else if (msg == -1) {
             alert(lang.general_error)
-        }
+        } else
+            alert(msg)
 
     });
 
 })
-
 
 
 $(document).on('click', '.add-to-cart-login', function (e) {
@@ -421,7 +429,6 @@ $(document).on('click', '.add-to-cart-login', function (e) {
 })
 
 //** category and subcategory population**//
-
 
 
 var select_clicked_cat = false;
@@ -535,19 +542,105 @@ $(document).on('click', '#find', function () {
 
 })
 
-// $(document).on('click','.add-to-cart',function (e) {
-//     e.preventDefault();
-//
-//
-//         $data ={ mobile: $('#mobile_number_verification').val()};
-//         $.ajax({
-//             method: "POST",
-//             url: "requests/add-to-cart.php",
-//             data: $data
-//         }).done(function (msg) {
-//
-//         });
-//
-// })
+// cart management
 
+$(document).on('click', '.refresh-cart', function () {
+
+    $cart_id = $(this).data('cid');
+    $product_id = $(this).data('pid');
+    $quantity = $(this).parent().siblings('td.quantity').children('.quantity-value').val();
+    $price = parseInt($(this).parent().siblings('td.product-price').text());
+
+    $.ajax({
+        method: "POST",
+        url: "requests/add-to-cart.php",
+        data: {
+            cart_id: $cart_id,
+            product_id: $product_id,
+            quantity: $quantity,
+            action: 'refresh',
+        }
+    }).done(function (msg) {
+        $new_price = $price * $quantity;
+        alert(msg)
+    })
+
+
+})
+
+
+$(document).ready(function () {
+
+    $subs = $('.sub-price');
+    $total = 0;
+    for ($i = 0; $i < $subs.length; $i++) {
+
+        $total = $total + parseInt($subs.eq($i).text())
+
+    }
+
+    $('#total-price').text(lang.total + ' ' + $total+ " "+lang.sp);
+    $('#total-price-hidden').val($total);
+})
+
+
+
+$(document).on('keyup mouseup', '.quantity-value', function () {
+
+    $price = parseInt($(this).parent().siblings('td.product-price').text());
+    $quantity = $(this).val();
+    $(this).parent().siblings('td.sub-price').text($price * $quantity + ' ' + lang.sp);
+
+    $subs = $('.sub-price');
+    $total = 0;
+    for ($i = 0; $i < $subs.length; $i++) {
+
+        $total = $total + parseInt($subs.eq($i).text())
+
+    }
+// console.log($total)
+    $('#total-price').text(lang.total + ' ' + $total+ ' '+lang.sp);
+    $('#total-price-hidden').val($total);
+
+})
+
+$(document).on('click', '.delete-cart', function () {
+
+    $cart_id = $(this).data('cid');
+    $product_id = $(this).data('pid');
+    $elem= $(this).parent().siblings().parent()
+    $sub_price=parseInt($(this).parent().siblings('td.sub-price').text())
+    $total=parseInt($('#total-price-hidden').val());
+    $new_total=$total-$sub_price;
+    $('#total-price').text(lang.total + ' ' + $new_total+' '+lang.sp);
+    $('#total-price-hidden').val($new_total);
+
+
+
+    $.ajax({
+        method: "POST",
+        url: "requests/add-to-cart.php",
+        data: {
+            cart_id: $cart_id,
+            product_id: $product_id,
+            action: 'delete',
+        }
+    }).done(function (msg) {
+
+        $elem.fadeOut(500,function () {
+
+            $(this).remove();
+
+        })
+
+    })
+
+
+})
+
+
+$(document).on('click', 'submit-cart', function () {
+
+
+})
 

@@ -14,6 +14,8 @@ $lang = array(
     'arabic' => 'العربية',
     'all' => 'All',
     'already_exist' => 'Already added',
+    'total' => 'Total',
+
 
     //Verification
 

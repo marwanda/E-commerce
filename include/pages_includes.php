@@ -3,7 +3,7 @@
 //exploding js arrays in the footer
 $id = isset($_GET['id']) ? make_safe($_GET['id']) : null;
 $rtl = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? $ASSET_URL.'css/rtl.css' : null;
-$rtl_js = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? 'assets/js/lang/ar.js' : 'assets/js/lang/en.js';
+$rtl_js = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? $ASSET_URL.'js/lang/ar.js' : $ASSET_URL.'/js/lang/en.js';
 //$rtl_js1 = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? 'assets/site/js/lang/ar.js' : 'assets/site/js/lang/en.js';
 $page_title = $lang['site_name'];
 

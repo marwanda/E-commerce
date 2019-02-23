@@ -1,20 +1,22 @@
-<tr>
+<tr class="cart-card">
     <td data-th="Product">
         <div class="row">
-            <div class="col-sm-2 hidden-xs cart-table-img-col"><img src="http://placehold.it/100x100" alt="..." class="cart-table-img"/></div>
+            <div class="col-sm-2 hidden-xs cart-table-img-col"><a href="<?php echo $APP_ROOT.'product-details/'.$product_id ?>"><img src="<?php echo $FILES_ROOT.'images/products/large/'.$pic?>" alt="" class="cart-table-img pic-cart"/></a>
+            </div>
             <div class="col-sm-10 prod-desc">
-                <h6 class="nomargin">Product name</h6>
-                <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                <h6 class="nomargin"><?php echo $name ?></h6>
+                <p><?php if ($_SESSION['lang'] = 'en') echo $description_en; else echo $description_ar; ?></p>
             </div>
         </div>
     </td>
-    <td data-th="Price">$34.12</td>
-    <td data-th="Quantity">
-        <input type="number" class="form-control text-center" value="1">
+    <td data-th="Price" class="product-price"><?php if (isset($_SESSION['role']) && $_SESSION['role'] == 3) echo $price_vip. ' ' . $lang['sp']; else echo $price. ' ' . $lang['sp']; ?> </td>
+    <td data-th="Quantity" class="quantity">
+
+        <input type="number" class="form-control text-center quantity-value" min="1" value="<?php echo $quantity ?>">
     </td>
-    <td data-th="Subtotal" class="text-center">$34.12</td>
+    <td data-th="Subtotal" class="text-center sub-price"><?php if($_SESSION['role']==3) echo $price_vip*$quantity .' '.$lang['sp']; else echo $price*$quantity .' '.$lang['sp'] ?></td>
     <td class="actions" data-th="">
-        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+        <button data-pid="<?php echo $product_id; ?> " data-cid="<?php echo $cart_id; ?> " class="btn btn-info btn-sm refresh-cart"><i class="fa fa-refresh"></i></button>
+        <button data-pid="<?php echo $product_id; ?> "  data-cid="<?php echo $cart_id; ?>" class="btn btn-danger btn-sm delete-cart"><i class="fa fa-trash-o"></i></button>
     </td>
 </tr>

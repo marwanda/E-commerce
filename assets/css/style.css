@@ -2154,7 +2154,7 @@ footer .divider {
     }
 }
 
-.card-link: hover{
+.card-link:hover{
     text-decoration: none;
  }
 
@@ -2166,4 +2166,11 @@ footer .divider {
     .left_sec > img {
         width: 90%;
     }
+}
+
+.pic-cart
+{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }
