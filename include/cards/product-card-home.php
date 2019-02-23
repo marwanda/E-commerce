@@ -1,5 +1,5 @@
 <div data-id="<?php echo $id ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp product-card-home" data-wow-delay="0.6s">
-    <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>">
+    <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>" class="card-link">
     <div class="desc-comp-offer-cont custom-height text-center ">
         <div class="thumbnail-blogs">
             <img src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>" class="img-fluid home-product-card-img" alt="...">

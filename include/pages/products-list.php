@@ -71,7 +71,7 @@ if (mysqli_connect_errno()) {
                     <h3><?php echo $lang['categories']?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="category-select" class="selectpicker">
+                <select id="category-select" class="selectpicker" menuPlacement = "top">
                     <option value="-1" selected><?php echo $lang['all']?></option>
                 </select>
             </div>

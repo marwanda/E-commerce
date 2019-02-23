@@ -2154,6 +2154,14 @@ footer .divider {
     }
 }
 
+.card-link: hover{
+    text-decoration: none;
+ }
+
+.dropdown > .dropdown-menu.show {
+    transform: translate3d(0px, 35px, 0px) !important;
+}
+
 @media (max-width: 768px) {
     .left_sec > img {
         width: 90%;
