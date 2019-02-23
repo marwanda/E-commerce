@@ -13,7 +13,7 @@ $_SESSION['phone']=$mobile;
 $link = mysqli_connect("localhost", "root", "", "itsource");
 $sq = "'";
 $path = '../';
-$query = "INSERT INTO user ( name, password, email, phone, address, gender, birthdate) VALUES ( {$sq}{$full_name}{$sq}, {$sq}{$password}{$sq}, {$sq}{$email}{$sq}, {$sq}{$mobile}{$sq}, {$sq}{$address}{$sq}, {$sq}{$gender}{$sq}, {$sq}{$birthday}{$sq})";
+$query = "INSERT INTO user ( name, password, email, phone, address, gender, birthdate, role) VALUES ( {$sq}{$full_name}{$sq}, {$sq}{$password}{$sq}, {$sq}{$email}{$sq}, {$sq}{$mobile}{$sq}, {$sq}{$address}{$sq}, {$sq}{$gender}{$sq}, {$sq}{$birthday}{$sq}, 1)";
 
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = mysqli_connect_error();
