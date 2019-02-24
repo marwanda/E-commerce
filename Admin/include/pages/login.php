@@ -1,13 +1,5 @@
-<!--
-author: Boostraptheme
-author URL: https://boostraptheme.com
-License: Creative Commons Attribution 4.0 Unported
-License URL: https://creativecommons.org/licenses/by/4.0/
--->
-
 <!DOCTYPE html>
 <html>
-
 <head>
     
     <meta charset="utf-8">
@@ -17,21 +9,28 @@ License URL: https://creativecommons.org/licenses/by/4.0/
     <meta name="robots" content="all,follow">
 
     <title>Bootstrap Admin Template </title>
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $_ASSETS_URL ?>img/favicon.ico">
     
     <!-- global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/font-icon-style.css">
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="<?php echo $_ASSETS_URL ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $_ASSETS_URL ?>font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $_ASSETS_URL ?>css/font-icon-style.css">
+    <link rel="stylesheet" href="<?php echo $_ASSETS_URL ?>css/style.default.css" id="theme-stylesheet">
 
     <!-- Core stylesheets -->
-    <link rel="stylesheet" href="css/pages/login.css">
+    <link rel="stylesheet" href="<?php echo $_ASSETS_URL ?>css/pages/login.css">
 </head>
 
-<body> 
-
+<body>
+<?php
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+    echo '<script language="javascript">';
+    echo "alert('" . $_SESSION['error_msg'] . "')";
+    echo '</script>';
+    $_SESSION['error_msg'] = '';
+}
+?>
 <!--====================================================
                         PAGE CONTENT
 ======================================================--> 
@@ -42,16 +41,16 @@ License URL: https://creativecommons.org/licenses/by/4.0/
             <div class="col-md-12 ">
                 <div class="contact-h-cont">
                   <h3 class="text-center"><img src="img/logo.png" class="img-fluid" alt=""></h3><br>
-                  <form>
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" class="form-control" id="username" placeholder="Enter Username"> 
+                  <form action="requests/login.php" method="post">
+                    <div class="form-group text-left">
+                      <label for="username" class="text-left">Username</label>
+                      <input required type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
                     </div>  
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Password</label>
-                      <input class="form-control" type="password" value="hunter2" id="example-password-input"> 
+                    <div class="form-group text-left">
+                      <label for="exampleInputEmail1" class="text-left">Password</label>
+                      <input required placeholder="Enter password" class="form-control" type="password" value="" name="password" id="password">
                     </div>   
-                    <button class="btn btn-general btn-blue" role="button"><i fa fa-right-arrow></i>Login</button>
+                    <button class="btn btn-general btn-blue" type="submit" role="button"><i fa fa-right-arrow></i>Login</button>
                   </form>
                 </div>
             </div>
@@ -60,9 +59,9 @@ License URL: https://creativecommons.org/licenses/by/4.0/
       </section>
       
     <!--Global Javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/tether.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?php echo $_ASSETS_URL ?>js/jquery.min.js"></script>
+    <script src="<?php echo $_ASSETS_URL ?>js/tether.min.js"></script>
+    <script src="<?php echo $_ASSETS_URL ?>js/bootstrap.min.js"></script>
 </body>
 
 </html>
