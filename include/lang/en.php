@@ -15,6 +15,10 @@ $lang = array(
     'all' => 'All',
     'already_exist' => 'Already added',
     'total' => 'Total',
+    'admin_msg' => 'Admin message:',
+    'yes' => 'Yes',
+    'no' => 'No',
+
 
 
     //Verification
@@ -34,6 +38,8 @@ $lang = array(
     'logout' => 'Logout',
     'forget_password' => 'Forget password?',
     'pending_order' => 'You still have a pending order!',
+    'pending' => 'Pending..',
+
 
 
     //register
@@ -132,6 +138,9 @@ $lang = array(
     'subtotal' => 'Subtotal',
     'prev_page' => 'Previous Page',
     'next_page' => 'Next Page',
+    'send_note' => 'Send your notes to the admin:',
+    'send_note_ex' => 'For example: the color you want..',
+    'are_you_sure' => 'Are You Sure!?',
 
 
 );

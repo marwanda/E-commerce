@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = '';
 }
 
-//var_dump($_SESSION);
+var_dump($_SESSION);
 ?>
 <!--====================================================
                          HOME

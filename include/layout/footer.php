@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-2 text-start margin-bottom-1">
-                <img src="assets/img/logo3.png" class="card-img" alt="">
+                <img src="<?php echo $APP_ROOT?>assets/img/logo3.png" class="card-img" alt="">
             </div>
             <div class="col-sm-12 col-md-4 text-center margin-bottom-1">
                 <div class="footer-links d-flex justify-content-start">

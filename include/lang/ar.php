@@ -11,6 +11,9 @@ $lang= array(
     'all' => 'الكل',
     'already_exist' => ' تمت إضافته مسبقاً',
     'total' => 'المجموع',
+    'admin_msg' => 'رسالة من المسؤول:',
+    'yes' => 'نعم',
+    'no' => 'لا',
 
 
     //Verification
@@ -31,6 +34,7 @@ $lang= array(
     'forget_password' => 'نسيت كلمة المرور؟',
     'logout' => 'تسجيل الخروج',
     'pending_order' => 'لديك طلب في وضع الانتظار!',
+    'pending' => 'في وضع الانتظار..',
 
     //register
     'full_name'=>'الاسم الكامل',
@@ -124,6 +128,9 @@ $lang= array(
     'subtotal' => 'المجموع',
     'prev_page' => 'السابق',
     'next_page' => 'التالي',
+    'send_note' => 'أرسل ملاحظاتك للمسؤول:',
+    'send_note_ex' => 'مثال: اللون الذي ترغب به..',
+    'are_you_sure' => 'هل أنت متأكد من تثبيت الطلب؟!',
 
 
 

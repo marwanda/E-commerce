@@ -386,13 +386,10 @@ $(document).on('click', '#send-verification-code', function (e) {
 $(document).on('click', '.add-to-cart', function (e) {
     e.preventDefault();
     $p_id = $(this).data('id')
-    if($('#pd').val()==1)
-    {
-        $path='../requests/add-to-cart.php';
-    }
-    else
-    {
-        $path='requests/add-to-cart.php';
+    if ($('#pd').val() == 1) {
+        $path = '../requests/add-to-cart.php';
+    } else {
+        $path = 'requests/add-to-cart.php';
     }
     $data = {
         product_id: $p_id,
@@ -562,7 +559,12 @@ $(document).on('click', '.refresh-cart', function () {
         }
     }).done(function (msg) {
         $new_price = $price * $quantity;
-        alert(msg)
+        if (msg == 1) {
+            alert(lang.successfully_done)
+        } else if (msg == -1)
+            alert(lang.general_error)
+        else
+            alert(msg)
     })
 
 
@@ -579,10 +581,9 @@ $(document).ready(function () {
 
     }
 
-    $('#total-price').text(lang.total + ' ' + $total+ " "+lang.sp);
+    $('#total-price').text(lang.total + ' ' + $total + " " + lang.sp);
     $('#total-price-hidden').val($total);
 })
-
 
 
 $(document).on('keyup mouseup', '.quantity-value', function () {
@@ -599,7 +600,7 @@ $(document).on('keyup mouseup', '.quantity-value', function () {
 
     }
 // console.log($total)
-    $('#total-price').text(lang.total + ' ' + $total+ ' '+lang.sp);
+    $('#total-price').text(lang.total + ' ' + $total + ' ' + lang.sp);
     $('#total-price-hidden').val($total);
 
 })
@@ -608,13 +609,12 @@ $(document).on('click', '.delete-cart', function () {
 
     $cart_id = $(this).data('cid');
     $product_id = $(this).data('pid');
-    $elem= $(this).parent().siblings().parent()
-    $sub_price=parseInt($(this).parent().siblings('td.sub-price').text())
-    $total=parseInt($('#total-price-hidden').val());
-    $new_total=$total-$sub_price;
-    $('#total-price').text(lang.total + ' ' + $new_total+' '+lang.sp);
+    $elem = $(this).parent().siblings().parent()
+    $sub_price = parseInt($(this).parent().siblings('td.sub-price').text())
+    $total = parseInt($('#total-price-hidden').val());
+    $new_total = $total - $sub_price;
+    $('#total-price').text(lang.total + ' ' + $new_total + ' ' + lang.sp);
     $('#total-price-hidden').val($new_total);
-
 
 
     $.ajax({
@@ -627,11 +627,19 @@ $(document).on('click', '.delete-cart', function () {
         }
     }).done(function (msg) {
 
-        $elem.fadeOut(500,function () {
+        if(msg==1)
+        {
+            $elem.fadeOut(500, function () {
 
-            $(this).remove();
+                $(this).remove();
 
-        })
+            })
+        }
+        else
+        {
+            alert(lang.general_error)
+        }
+
 
     })
 
@@ -639,8 +647,70 @@ $(document).on('click', '.delete-cart', function () {
 })
 
 
-$(document).on('click', 'submit-cart', function () {
+$(document).on('click', '.submit-cart', function (e) {
+
+
+    e.preventDefault();
 
 
 })
+
+
+
+$(document).on('click', '#submit-cart', function (e) {
+    var $new_array=[];
+    e.preventDefault();
+
+
+    $cart_id = $('#cid').val();
+    $note = $('#cart-note').val();
+    $quantity_products_arr = $('.quantity-value');
+
+
+    for ($i = 0; $i < $quantity_products_arr.length; $i++) {
+
+        $array={
+            pid :$quantity_products_arr.eq($i).data('pid'),
+            q: $quantity_products_arr.eq($i).val()
+        };
+
+        // Array.prototype.push.apply($new_array, $array);
+        $new_array.push($array);
+
+    }
+
+
+    $.ajax({
+        method: "POST",
+        url: "requests/add-to-cart.php",
+        data: {
+            cart_id: $cart_id,
+            note: $('#cart-note').val(),
+            qp_array: $new_array,
+            action: 'submit',
+        }
+    }).done(function (msg) {
+
+
+        $('#cart-note').val('');
+         if(msg==-1)
+            alert(lang.general_error)
+        else
+            console.log(msg)
+
+        window.location.href=siteURL+'cart';
+
+        })
+
+})
+
+$(document).on('click', '#cancel-cart', function (e) {
+
+    e.preventDefault();
+    $('#confirmation-modal').modal('hide');
+
+})
+
+
+
 
