@@ -8,7 +8,7 @@ include "../include/config.php";
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
 $sq = "'";
-$path = '../';
+$path ='../';
 $query = "select o.status from itsource.order o where o.id = {$_SESSION['order_id']}";
 if ($result = mysqli_query($link, $query)) {
 

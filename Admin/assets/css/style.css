@@ -438,3 +438,8 @@ License URL: https://creativecommons.org/licenses/by/4.0/
 .table{
     margin-top: 100px;
 }
+
+.thumb{
+    height: 75px;
+    width: 85px;
+}
