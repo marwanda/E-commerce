@@ -50,8 +50,7 @@ $Guest_User_pages = array_merge(
 1 inactive user
 2 active user
 3 vip user
-4 admin
-5 super admin */
+*/
 
 if (isset($_SESSION['role']) && $_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
 
