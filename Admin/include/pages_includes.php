@@ -2,8 +2,8 @@
 //exploding css arrays in the header
 //exploding js arrays in the footer
 $id = isset($_GET['id']) ? make_safe($_GET['id']) : null;
-$rtl = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? 'assets/css/rtl.css' : null;
-$rtl_js = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? 'assets/js/lang/ar.js' : 'assets/js/lang/en.js';
+$rtl = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? $ASSET_URL.'css/rtl.css' : null;
+$rtl_js = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? $ASSET_URL.'js/lang/ar.js' : $ASSET_URL.'js/lang/en.js';
 //$rtl_js1 = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? 'assets/site/js/lang/ar.js' : 'assets/site/js/lang/en.js';
 $page_title = $lang['site_name'];
 
@@ -18,6 +18,8 @@ $shared_css = array(
     $ASSET_URL."css/style.default.css",
     $ASSET_URL."css/ui-elements/card.css",
     $ASSET_URL."css/ui-elements/buttons.css",
+    $ASSET_URL."css/pages/login.css",
+    $ASSET_URL."css/pages/404.css",
     $ASSET_URL."css/style.css",
     $rtl
     );
@@ -45,8 +47,6 @@ $page_css = array(
 
     );
 $page_js = array(
-
-
 
     );
 

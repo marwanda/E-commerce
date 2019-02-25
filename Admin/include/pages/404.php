@@ -1,10 +1,3 @@
-<!--
-author: Boostraptheme
-author URL: https://boostraptheme.com
-License: Creative Commons Attribution 4.0 Unported
-License URL: https://creativecommons.org/licenses/by/4.0/
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -45,7 +38,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
                     <p class="animated wow fadeInRight" data-wow-delay="0.5s" data-wow-duration=".5s">Oops! something wrong.</p>
                     <div class="animated wow fadeInUp text-center" data-wow-delay="0.7s" data-wow-duration=".7s">
                       <span>
-                        <a class="btn btn-general btn-blue" href="#about" role="button">Go to Home</a> 
+                        <a class="btn btn-general btn-blue" href="<?php echo $APP_ROOT ?>orders-list" role="button">Go to Home</a>
                       </span>
                     </div>
                 </div>
