@@ -49,7 +49,7 @@ else
                      data-wow-delay="0.6s">
                     <div class="desc-comp-offer-cont custom-height" style="">
                         <div class="thumbnail-blogs" style="height:145px;">
-                            <img src="<?php echo $itm->enclosure['url'] ?>" class="img-fluid" alt="...">
+                            <img src="<?php echo $APP_ROOT . 'assets/img/news-image.jpg' ?>" class="news-card-img" alt="...">
                         </div>
                         <div class="card-body">
                             <a href="<?php echo $itm->link; ?>"><h3 class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3></a>

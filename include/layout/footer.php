@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <a href="#top-menubar" id="back-to-top" class="btn btn-sm btn-green btn-back-to-top smooth-scrolls hidden-sm hidden-xs" title="home" role="button">
+    <a href="#top-menubar" id="back-to-top" class="btn btn-sm btn-back-to-top smooth-scrolls hidden-sm hidden-xs" title="home" role="button">
         <i class="fa fa-angle-up"></i>
     </a>
 </footer>

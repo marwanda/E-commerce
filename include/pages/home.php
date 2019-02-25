@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
     echo '<script language="javascript">';
-    echo "alert('" . $_SESSION['error_msg'] . "')";
+    echo "swal('" . $_SESSION['error_msg'] . "')";
     echo '</script>';
     $_SESSION['error_msg'] = '';
 
@@ -208,6 +208,7 @@ var_dump($_SESSION);
         </div>
     </div>
 </section>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 <!--====================================================

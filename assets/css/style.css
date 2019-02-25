@@ -999,6 +999,10 @@ p {
             border-bottom: 0px;
         }
 
+        .login-modal-header {
+            direction: rtl;
+        }
+
         .modal-body {
             position: relative;
             padding: 25px 45px;
@@ -1523,6 +1527,10 @@ p {
         height: 360px;
     }
 
+    .product-details-add-button {
+        margin-top: 2.5em;
+    }
+
     .service-h-tab .nav-tabs>a.active {
         color: #fff;
         border: 1px solid #2196f3;
@@ -1889,6 +1897,8 @@ p {
         padding: 3px 15px;
         border-radius: 0;
         display: none;
+        color: #fff;
+        background: #2196f3;
     }
 
     @media (min-width: 1600px) {
@@ -1937,6 +1947,11 @@ p {
     overflow: hidden;
     max-height: 4em;
     line-height: 1.9em;
+}
+
+.news-card-img {
+    width: 100%;
+    height: 150px;
 }
 
 .custom-height
@@ -2107,6 +2122,20 @@ footer .divider {
     color: #bbb;
     text-decoration: none;
 }
+
+.card-link:hover{
+    text-decoration: none;
+}
+
+.dropdown > .dropdown-menu.show {
+    transform: translate3d(0px, 35px, 0px) !important;
+}
+
+.nav-item > .dropdown-menu.show {
+    transform: initial !important;
+}
+
+
 
 
 @media only screen and (max-width: 992px) {

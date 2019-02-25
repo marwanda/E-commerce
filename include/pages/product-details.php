@@ -140,7 +140,7 @@ else
                   }else{
                   ?>
                       <div class="action " style="margin-top: 116px">
-                          <div class="title-but"> <button data-id="<?php echo $id ?>" class="btn btn-general btn-white <?php if (isset($_SESSION['role']) && (($_SESSION['role'] == 2 || $_SESSION['role'] == 3))) {
+                          <div class="title-but"> <button data-id="<?php echo $id ?>" class="btn btn-general product-details-add-button btn-white <?php if (isset($_SESSION['role']) && (($_SESSION['role'] == 2 || $_SESSION['role'] == 3))) {
                                   echo 'add-to-cart'; } else { echo 'add-to-cart-login'; } ?>" role="button"><i class="fa fa-cart-plus"></i> <?php echo $lang['add_to_cart'] ?></button></div>
                       </div>
 <input type="hidden" id="pd" value="1">

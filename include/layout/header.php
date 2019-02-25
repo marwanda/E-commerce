@@ -240,7 +240,7 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div align="center" class="modal-content" style="margin-top: 100px">
-            <div class="modal-header">
+            <div class="modal-header login-modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" dir="auto"><?php echo $lang['vip_account']?></h4>
             </div>

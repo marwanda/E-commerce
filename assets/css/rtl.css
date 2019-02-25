@@ -283,6 +283,26 @@ figcaption i {
     transform: rotate(180deg);
 }
 
+.filter-option-inner-inner {
+    float: right
+}
+
+.dropdown-toggle::after {
+    float: left;
+    margin-top: 7px;
+}
+
+.nav-link::after {
+    float: initial;
+    margin-top: 0px;
+}
+
+.product-details-add-button {
+    margin-top: 0em;
+}
+
+
+
 @media (max-width: 992px) and (min-width: 768px) {
     .contact-us-title {
         margin-left: 0em;
