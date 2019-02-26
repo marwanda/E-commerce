@@ -1515,6 +1515,8 @@ p {
     }
 
     .product-gallery-thumbs {
+        width: 95px;
+        height: 85px;
         cursor: pointer;
     }
 
