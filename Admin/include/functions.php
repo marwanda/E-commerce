@@ -221,7 +221,7 @@ function normalize_files( &$files )
     return $_files;
 }
 
-function upload_image($pic, $path, $size){
+function upload_image($pic, $path, $size,$root='../../'){
 
     require_once '../libs/upload/upload.php';
     global $error_code;
@@ -279,7 +279,7 @@ function upload_image($pic, $path, $size){
 
             $handle->image_x = $size['large']['image_x'];
             $handle->image_y = $size['large']['image_y'];
-            $handle->process('../../files/'."images/".$path . '/large');
+            $handle->process($root.'files/'."images/".$path . '/large');
             if ($handle->processed) {
 
                 $data['file_name'] = $file_name . ".png";

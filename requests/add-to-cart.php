@@ -1,7 +1,7 @@
 <?php
 include "../include/config.php";
 //$_POST['action']='add';
-//$_POST['product_id']=2;
+//$_POST['product_id']=6;
 
 
 
@@ -17,7 +17,7 @@ if ($result = mysqli_query($link, $query)) {
 
         if ($row['status'] == 2) {
 
-            echo -1;
+            echo 3;
             exit;
         }
     }

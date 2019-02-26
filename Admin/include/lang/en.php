@@ -143,4 +143,12 @@ $lang = array(
     'are_you_sure' => 'Are You Sure!?',
 
 
+
+
+    //Admin
+
+    'only_image' => 'You can not upload files that are not images',
+    'pics_did_not_upload' => 'one or more pictures did not upload',
+
+
 );

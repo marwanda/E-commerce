@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = '';
 }
 
-//var_dump($_SESSION);
+var_dump($_SESSION);
 ?>
 <!--====================================================
                          HOME
@@ -151,33 +151,42 @@ if (mysqli_connect_errno()) {
                 </a>
             </div>
             <?php
+            $i=0;
             if ($result = mysqli_query($link, $query)) {
+
                 while ($row = mysqli_fetch_assoc($result)) {
+if($i<3)
+{
+    $i++;
+    $arr = array(
+        'id' => $row['id'],
+        'name' => $row['name'],
+        'price' => $row['price'],
+        'price_vip' => $row['price_vip'],
+        'pic' => $row['pic'],
+        'description_ar' => $row['description_ar'],
+        'description_en' => $row['description_en'],
+        'sub_id' => $row['subcategory_id'],
+        'sub_name_ar' => $row['sub_name_ar'],
+        'sub_name_en' => $row['sub_name_en'],
+        'sub_status' => $row['sub_status'],
+        'cat_id' => $row['category_id'],
+        'cat_name_ar' => $row['cat_name_ar'],
+        'cat_name_en' => $row['cat_name_en'],
+        'cat_status' => $row['cat_status'],
+        'quantity' => $row['quantity'],
+        'date' => $row['date'],
+        'status' => $row['status'],
+    );
 
-                    $arr = array(
-                        'id' => $row['id'],
-                        'name' => $row['name'],
-                        'price' => $row['price'],
-                        'price_vip' => $row['price_vip'],
-                        'pic' => $row['pic'],
-                        'description_ar' => $row['description_ar'],
-                        'description_en' => $row['description_en'],
-                        'sub_id' => $row['subcategory_id'],
-                        'sub_name_ar' => $row['sub_name_ar'],
-                        'sub_name_en' => $row['sub_name_en'],
-                        'sub_status' => $row['sub_status'],
-                        'cat_id' => $row['category_id'],
-                        'cat_name_ar' => $row['cat_name_ar'],
-                        'cat_name_en' => $row['cat_name_en'],
-                        'cat_status' => $row['cat_status'],
-                        'quantity' => $row['quantity'],
-                        'date' => $row['date'],
-                        'status' => $row['status'],
-                    );
+    template('cards/product-card-home.php', $arr);
+}
+else
+    break;
 
-                    template('cards/product-card-home.php', $arr);
-                }
-            } else {
+}
+            }
+            else {
 
                 $_SESSION['error_msg'] = $lang['general_error'];
                 redirect('home');
@@ -185,6 +194,7 @@ if (mysqli_connect_errno()) {
                 exit();
 
             }
+
             //
             //
             //                    ?>

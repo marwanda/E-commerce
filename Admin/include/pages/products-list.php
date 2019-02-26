@@ -135,32 +135,13 @@ if (mysqli_connect_errno()) {
 
             if ($result = mysqli_query($link, $query)) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $arr = array(
-                        'id' => $row['id'],
-                        'name' => $row['name'],
-                        'price' => $row['price'],
-                        'price_vip' => $row['price_vip'],
-                        'pic' => $row['pic'],
-                        'description_ar' => $row['description_ar'],
-                        'description_en' => $row['description_en'],
-                        'sub_id' => $row['subcategory_id'],
-                        'sub_name_ar' => $row['sub_name_ar'],
-                        'sub_name_en' => $row['sub_name_en'],
-                        'sub_status' => $row['sub_status'],
-                        'cat_id' => $row['category_id'],
-                        'cat_name_ar' => $row['cat_name_ar'],
-                        'cat_name_en' => $row['cat_name_en'],
-                        'cat_status' => $row['cat_status'],
-                        'quantity' => $row['quantity'],
-                        'date' => $row['date'],
-                        'status' => $row['status'],
-                    );
+
                     ?>
                     <tr class="product-row" id="product-<?php echo $row['id']; ?>">
                         <td class=""><?php echo $row['id']; ?></td>
                         <td class=""><?php echo $row['name']; ?></td>
                         <td class=""><img class="thumb"
-                                          src="<?php echo $FILES_ROOT . 'images/products/thumb/' . $row['pic']; ?>"
+                                          src="<?php echo $FILES_ROOT . 'images/products/large/' . $row['pic']; ?>"
                                           alt=""></td>
                         <td class=""><?php echo $row['price']; ?></td>
                         <td class=""><?php echo $row['price_vip']; ?></td>

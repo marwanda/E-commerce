@@ -110,7 +110,7 @@ else
                     if (isset($arr2)) {
                        foreach ($arr2 as $pic)
                        {
-                            echo '<li><a class="product-gallery-thumbs" data-target="#pic-'.$i.'" data-toggle="tab"><img src="' . $FILES_ROOT . 'images/products/thumb/' . $pic. '" /></a></li>';
+                            echo '<li><a class="product-gallery-thumbs" data-target="#pic-'.$i.'" data-toggle="tab"><img src="' . $FILES_ROOT . 'images/products/large/' . $pic. '" /></a></li>';
                             $i++;
                             }
 
