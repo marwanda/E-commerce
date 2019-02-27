@@ -48,7 +48,8 @@ if ($result = mysqli_query($link, $query)) {
         }
         if($_SESSION['role']==2 || $_SESSION['role']==3)
         {
-            $query2 = "select o.id from itsource.order o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and o.status=1 or o.status=2";
+            $query2 = "select o.id from itsource.order o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and (o.status=1 or o.status=2)";
+//           var_dump($query2);exit;
             $date = date('Y-m-d', time());
             $query3 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
 

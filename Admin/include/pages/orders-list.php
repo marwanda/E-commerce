@@ -1,57 +1,52 @@
+<?php
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
 
-<div id="products-modal" class="modal fade" role="dialog">
+    echo '<script language="javascript">';
+    echo "alert('" . $_SESSION['error_msg'] . "')";
+    echo '</script>';
+    $_SESSION['error_msg'] = '';
+}
+
+$link = mysqli_connect("localhost", "root", "", "itsource");
+mysqli_set_charset($link, "utf8");
+$sq = "'";
+$path = '../';
+$query = "select o.id, o.user_id, u.name, u.phone, o.status, o.date, o.total, o.note from itsource.order o inner join user u on o.user_id = u.id where o.status = 2 ";
+
+
+if (mysqli_connect_errno()) {
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    echo '<script language="javascript">';
+    echo 'alert("' . $_SESSION['error_msg'] . '")';
+    echo '</script>';
+    $_SESSION['error_msg'] = '';
+}
+?>
+<div id="cart-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div align="center" class="modal-content" style="margin-top: 100px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Products</h4>
+                <h4 class="modal-title">Cart</h4>
             </div>
             <div class="modal-body">
                 <table class="table table-hover mt-5">
-                    <thead>
+                    <thead >
                     <tr class="bg-info text-white">
-                        <th class="text-left"style="width: 5%">#</th>
+                        <th class="text-left" style="width: 5%">#</th>
                         <th class="table-width-4">Product Name</th>
-                        <th class="table-width-4">Count</th>
-                        <th class="table-width-4">Status</th>
-
+                        <th class="table-width-4">quantity</th>
+                        <th class="table-width-4">Sub-total</th>
                     </tr>
+
                     </thead>
-                    <tbody>
-                    <tr class="table-primary">
-                        <td class="text-left">136</td>
-                        <td class="table-width-3"><a class="primary-color" target="_blank" href="">D-link</a></td>
-                        <td class="table-width-3">4</td>
-                        <td class="table-width-3">Available</td>
-
-                    </tr>
-                    <tr class="table-primary">
-                        <td class="text-left">136</td>
-                        <td class="table-width-3"><a class="primary-color" target="_blank" href="">D-link</a></td>
-                        <td class="table-width-3">4</td>
-                        <td class="table-width-3">Available</td>
-
-                    </tr>
-                    <tr class="table-primary">
-                        <td class="text-left">136</td>
-                        <td class="table-width-3"><a class="primary-color" target="_blank" href="">D-link</a></td>
-                        <td class="table-width-3">4</td>
-                        <td class="table-width-3">Available</td>
-
-                    </tr>
-                    <tr class="table-primary">
-                        <td class="text-left">136</td>
-                        <td class="table-width-3"><a class="primary-color" target="_blank" href="">D-link</a></td>
-                        <td class="table-width-3">4</td>
-                        <td class="table-width-3">Available</td>
-
-                    </tr>
-
+                    <tbody id="cart-table">
 
                     </tbody>
                 </table>
+                <strong id="cart-total" class="text-center "></strong>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info btn" data-dismiss="modal">Close</button>
@@ -60,30 +55,26 @@
 
     </div>
 </div>
-<div id="confirm-modal" class="modal fade" role="dialog">
+<div id="note-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div align="center" class="modal-content" style="margin-top: 100px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Are You Sure?</h4>
+                <h4 class="modal-title">User Notes</h4>
             </div>
             <div class="modal-body">
-              <textarea id="confirm-text" class="form-control"></textarea>
+                <textarea class="form-control" id="note-text"></textarea>
             </div>
             <div class="modal-footer">
-                <div class="row">
-                    <div class="col"><button id="yes" type="button" class="btn btn-info btn" data-dismiss="modal">Yes</button></div>
-                    <div class="col"><button id="no" type="button" class="btn btn-info btn" data-dismiss="modal">No</button></div>
-                </div>
-
+                <button type="button" class="btn btn-info btn" data-dismiss="modal">Close</button>
             </div>
         </div>
 
     </div>
 </div>
-<div id="confirm-modal-resolve" class="modal fade" role="dialog">
+<div id="confirm-modal-reject-order" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -93,12 +84,18 @@
                 <h4 class="modal-title">Are you sure?</h4>
             </div>
             <div class="modal-body">
-                <textarea id="confirm-text-resolve" class="form-control"></textarea>
+                <textarea id="reject-text" class="form-control"></textarea>
             </div>
             <div class="modal-footer">
-                <div class="row">
-                    <div class="col"><button id="yes-resolve" type="button" class="btn btn-info btn" data-dismiss="modal">Yes</button></div>
-                    <div class="col"><button id="no-resolve" type="button" class="btn btn-info btn" data-dismiss="modal">No</button></div>
+                <div class="row" style="margin: auto;">
+                    <div class="col">
+                        <button id="" type="button" class="btn btn-info btn yes-status-order" data-dismiss="modal">Yes
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="" type="button" class="btn btn-info btn no-status-order" data-dismiss="modal">No
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -106,6 +103,32 @@
 
     </div>
 </div>
+<div id="confirm-modal-status-order" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div align="center" class="modal-content" style="margin-top: 100px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Are you sure?</h4>
+            </div>
+            <div class="modal-footer">
+                <div class="row" style="margin: auto;">
+                    <div class="col">
+                        <button type="button" class="btn btn-info btn yes-status-order" data-dismiss="modal">Yes
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-info btn no-status-order" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="content-inner chart-cont">
 
     <div class="row ">
@@ -113,44 +136,65 @@
         <table style="width: 100% " id="datatable" class="table table-hover mt-5 table-striped">
             <thead>
             <tr class="bg-info text-white">
-                <th class="text-left"style="width: 5%">#</th>
-                <th class="table-width-3">From</th>
+                <th class="text-left" style="width: 5%">#</th>
+                <th class="table-width-3">User Name</th>
                 <th class="table-width-3">Mobile</th>
                 <th class="table-width-3">Date</th>
-                <th class="table-width-3">Items</th>
-                <th class="table-width-3" >Cost</th>
-                <th class="" style="width: 20%">User Notes</th>
+                <th class="table-width-3">Cart</th>
+                <th class="table-width-3">Total Cost</th>
+                <th class="" style="width: 20%">User Note</th>
                 <th class="" style="">Status</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="table-primary">
-                <td class="text-left">136</td>
-                <td class="table-width-3">Mhd Khaled</td>
-                <td class="table-width-3">0966598565</td>
-                <td class="table-width-3">12/8/2019 2:07 PM</td>
-                <td class="table-width-3">
-                    <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#products-modal">Check</button>
-                </td>
-                <td class="table-width-3" >450000</td>
-                <td class=""><textarea  disabled class="form-control">wlekjdlwekjdlwkejdlkwejdlkwjeldjwelkdjwelkjdlkwejdlkwejdlkwejldkjwelkdjwelkdjlwkejdlkwejdlkwjedkjwed</textarea></td>
-                <td class="table-width-3">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-info  ">
-                            <input  type="radio" name="options" class="reject" autocomplete="off" > Reject
-                        </label>
-                        <label class="btn btn-info btn active">
-                            <input type="radio"  name="options" class="pending"  autocomplete="off" > Pending
-                        </label>
-                        <label class="btn btn-info btn">
-                            <input type="radio" name="options" class="resolve" autocomplete="off"> Resolve
-                        </label>
-                        <label class="btn btn-info btn">
-                            <input type="radio" name="options" class="fail" autocomplete="off"> Fail
-                        </label>
-                    </div>
-                </td>
-            </tr>
+
+            <?php
+
+            if ($result = mysqli_query($link, $query)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    ?>
+                    <tr class="order-row" id="order-<?php echo $row['id']; ?>">
+                        <td class=""><?php echo $row['id']; ?></td>
+                        <td class=""><?php echo $row['name']; ?></td>
+                        <td class=""><?php echo $row['phone']; ?></td>
+                        <td class=""><?php echo $row['date']; ?></td>
+                        <td class="">
+                            <input type="button" name="options" data-id="<?php echo $row['id']; ?>"
+                                   class="btn btn-primary check-cart" autocomplete="off" value="Cart">
+                        </td>
+                        <td class=""><?php echo $row['total']; ?></td>
+                        <td class="">
+                            <input data-note="<?php echo $row['note']; ?>" type="button" name="options"
+                                   data-id="<?php echo $row['id']; ?>"
+                                   class="btn btn-primary check-note" autocomplete="off" value="Note"></td>
+                        <td class="table-width-3">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-info  ">
+                                    <input data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                           class="reject" autocomplete="off"> Reject
+                                </label>
+                                <label class="btn btn-info btn">
+                                    <input data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                           class="resolve" autocomplete="off"> Resolve
+                                </label>
+                                <label class="btn btn-info btn">
+                                    <input data-id="<?php echo $row['id']; ?>" type="radio" name="options" class="fail"
+                                           autocomplete="off"> Fail
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo '<script language="javascript">';
+                echo "alert('" . $lang['general_error'] . "')";
+                echo '</script>';
+                mysqli_close($link);
+
+            }
+            ?>
 
             </tbody>
         </table>
