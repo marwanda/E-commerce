@@ -17,9 +17,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['pro
 
     }
 
+    $query = "delete from cart where product_id = {$product_id}";
+    if (mysqli_query($link, $query) === TRUE) {
+
+    } else {
+
+        echo -1;
+        exit;
+
+    }
+
 
     $query = "delete from product where id = {$product_id}";
     if (mysqli_query($link, $query) === TRUE) {
+
         echo 1;
         exit;
 

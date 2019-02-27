@@ -729,6 +729,7 @@ nav.navbar a {
 
 nav.navbar .container-fluid {
     width: 100%;
+    height: 56px;
 }
 
 nav.navbar .menu-btn.active {
