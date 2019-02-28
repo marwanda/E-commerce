@@ -121,7 +121,7 @@ if (mysqli_connect_errno()) {
                 <th class="">Category</th>
                 <th class="">Subcategory</th>
                 <th class="" style="">Status</th>
-                <th class="" style="">Actions</th>
+                <th class="" style="width: 100px;">Actions</th>
             </tr>
             </thead>
             <tbody class="table-primary">
@@ -160,10 +160,10 @@ if (mysqli_connect_errno()) {
                         </td>
                         <td class="">
 
-                            <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger btn edit-product"><i
+                            <button data-id="<?php echo $row['id']; ?>" class="btn btn-blue btn edit-product"><i
                                         class="fa fa-pencil-square-o  "
                                         aria-hidden="true"></i></button>
-                            <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger btn delete-product"><i
+                            <button data-id="<?php echo $row['id']; ?>" class="btn btn-blue btn delete-product"><i
                                         class="fa fa-trash-o  "
                                         aria-hidden="true"></i></button>
 

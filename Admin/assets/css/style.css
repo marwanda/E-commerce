@@ -450,3 +450,45 @@ License URL: https://creativecommons.org/licenses/by/4.0/
     transform: translate3d(0px, 35px, 0px) !important;
 }
 
+.header-img {
+    margin-top: 10px;
+}
+
+.bg-info {
+    background: linear-gradient(to left, #7b4397, #2196f3) !important;
+}
+
+.nav-pills .nav-link.active, .show>.nav-pills .nav-link {
+    background: #17a2b8 !important;
+}
+
+.page-item.active .page-link {
+    background: #17a2b8 !important;
+    color: #fff;
+}
+
+.nav-pills .nav-link {
+    color: #17a2b8;
+}
+
+.admin-add-btn {
+    float: right;
+}
+
+.delete-product, .delete-company, .delete-member {
+    float: right;
+}
+
+.btn-blue {
+    background: #138496;
+    border: #138496;
+}
+
+.btn-blue:hover {
+    background: #17a2b8;
+    color: #fff;
+}
+
+.badge-blue {
+    background: #138496;
+}

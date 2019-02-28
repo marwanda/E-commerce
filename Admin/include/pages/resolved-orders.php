@@ -161,13 +161,13 @@ if (mysqli_connect_errno()) {
                         <td class=""><?php echo $row['date']; ?></td>
                         <td class="">
                             <input type="button" name="options" data-id="<?php echo $row['id']; ?>"
-                                   class="btn btn-primary check-cart" autocomplete="off" value="Cart">
+                                   class="btn btn-blue check-cart" autocomplete="off" value="Cart">
                         </td>
                         <td class=""><?php echo $row['total']; ?></td>
                         <td class="">
                             <input data-note="<?php echo $row['note']; ?>" type="button" name="options"
                                    data-id="<?php echo $row['id']; ?>"
-                                   class="btn btn-primary check-note" autocomplete="off" value="Note"></td>
+                                   class="btn btn-blue check-note" autocomplete="off" value="Note"></td>
                         <td class="table-width-3">
                             <?php if($row['status']==3) echo 'Resolved'; else if ($row['status']==4) echo 'failed' ?>
                         </td>

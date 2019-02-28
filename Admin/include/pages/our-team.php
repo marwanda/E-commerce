@@ -106,8 +106,8 @@
                     <td class="text-left">966589658</td>
                     <td class="text-left">rami-ac@gmail.com</td>
                     <td class="">
-                        <button class="btn btn-danger btn edit-member"><i class="fa fa-pencil-square-o  " aria-hidden="true"></i></button>
-                        <button class="btn btn-danger btn delete-member">  <i class="fa fa-trash-o  " aria-hidden="true"></i></button>
+                        <button class="btn btn-blue btn edit-member"><i class="fa fa-pencil-square-o  " aria-hidden="true"></i></button>
+                        <button class="btn btn-blue btn delete-member">  <i class="fa fa-trash-o  " aria-hidden="true"></i></button>
                     </td>
 
                 </tr>

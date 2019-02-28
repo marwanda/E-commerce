@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
     echo '<script language="javascript">';
-    echo "swal('" . $_SESSION['error_msg'] . "')";
+    echo "alert('" . $_SESSION['error_msg'] . "')";
     echo '</script>';
     $_SESSION['error_msg'] = '';
 
@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = '';
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 <!--====================================================
                          HOME

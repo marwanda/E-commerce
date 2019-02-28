@@ -102,23 +102,25 @@
                     <td class="text-left">136</td>
                     <td class="text-left">Al bouraq</td>
                     <td class="text-left">Mobile Store</td>
-                    <td class="text-left"><select class="form-control">
-                            <option>Phone: 0112564</option>
-                            <option>Mobile: 094563254</option>
-                        </select></td>
-                    <td class="text-left"><select class="form-control">
-                            <option>Email 1:test@test.com</option>
-                            <option>Email 2:test@test.com</option>
-                        </select></td>
                     <td class="text-left">
-                        <select class="form-control">
-                            <option>Damascus: Shalaan</option>
-                            <option>Damascus: Mazzeh</option>
-                        </select></td>
+                        <h5>
+                            <span class="badge badge-blue">0945634869</span>
+                        </h5>
+                    </td>
+                    <td class="text-left">
+                        <h5>
+                            <span class="badge badge-blue">omar@omar.omar</span>
+                        </h5>
+                    </td>
+                    <td class="text-left">
+                        <h5>
+                            <span class="badge badge-blue">Syria-Damascus</span>
+                        </h5>
+                    </td>
                     </td>
                     <td class="">
-                        <button class="btn btn-danger btn edit-company"><i class="fa fa-pencil-square-o  " aria-hidden="true"></i></button>
-                        <button class="btn btn-danger btn delete-company">  <i class="fa fa-trash-o  " aria-hidden="true"></i></button>
+                        <button class="btn btn-blue btn edit-company"><i class="fa fa-pencil-square-o  " aria-hidden="true"></i></button>
+                        <button class="btn btn-blue btn delete-company">  <i class="fa fa-trash-o  " aria-hidden="true"></i></button>
                     </td>
                 </tr>
 

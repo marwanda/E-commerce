@@ -23,7 +23,7 @@ if ($_POST) {
         'medium'=>$medium_file,
         'large'=>$large_file,
     );
-    var_dump($pics);
+//    var_dump($pics);
 
 
 

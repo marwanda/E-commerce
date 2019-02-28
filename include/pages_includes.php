@@ -38,6 +38,7 @@ $shared_js = array(
     $ASSET_URL . "js/jquery.lwtCountdown-1.0.js",
     $ASSET_URL . "js/range-slider.js",
     $ASSET_URL . "js/custom.js",
+    $ASSET_URL . "js/bootstrap-notify.js",
     $rtl_js,
 //    $rtl_js1
 );
