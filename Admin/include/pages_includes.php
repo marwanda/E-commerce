@@ -19,6 +19,7 @@ $shared_css = array(
     $ASSET_URL."css/pages/login.css",
     $ASSET_URL."css/pages/404.css",
     $ASSET_URL."css/style.css",
+    $ASSET_URL."css/bootstrap-select.css",
     $rtl
     );
 
@@ -30,6 +31,9 @@ $shared_js = array(
     $ASSET_URL."js/popper/popper.min.js",
     $ASSET_URL."js/tether.min.js",
     $ASSET_URL."js/bootstrap.min.js",
+    $ASSET_URL."js/bootstrap-dropdownhover.min.js",
+    $ASSET_URL."js/bootstrap-select.js",
+    $ASSET_URL."js/jquery.lwtCountdown-1.0.js",
     $ASSET_URL."js/jquery.cookie.js",
     $ASSET_URL."js/jquery.validate.min.js",
     $ASSET_URL."js/chart.min.js",

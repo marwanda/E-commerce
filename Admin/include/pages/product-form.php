@@ -13,7 +13,6 @@ $path = '../';
 $id = isset($_GET['id']) ? make_safe($_GET['id']) : null;
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
-$subcategory_query = "select * from subcategory";
 
 if ($id) {
 
@@ -60,7 +59,7 @@ if (isset($_POST['edit-product'])) {
     $special_price = isset($_POST['special-price']) ? make_safe($_POST['special-price']) : null;
     $descrption_ar = isset($_POST['description-ar']) ? make_safe($_POST['description-ar']) : null;
     $descrption_en = isset($_POST['description-en']) ? make_safe($_POST['description-en']) : null;
-    $subcategory = isset($_POST['subcategory']) ? make_safe($_POST['subcategory']) : null;
+    $subcategory = isset($_POST['subcategory-select']) ? make_safe($_POST['subcategory-select']) : null;
     $picture = isset($_FILES['picture']) ? make_safe($_FILES['picture']) : null;
 
     $picture1 = isset($_FILES['picture1']) ? make_safe($_FILES['picture1']) : null;
@@ -113,7 +112,6 @@ if (isset($_POST['edit-product'])) {
     $date = date('Y-m-d', time());
 
     $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.pic={$sq}{$uploaded_file_name}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
-
 
     if (mysqli_query($link, $query) === TRUE) {
 
@@ -254,48 +252,85 @@ if (isset($_POST['edit-product'])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-8 control-label text-left ">Subcategory:</label>
-                    <div class="col-md-8">
-                        <select id="subcategory-select" required class="form-control " name="subcategory">
-                            <?php
-                            if (!isset($arr)) {
+                    <label class="col-md-8 control-label text-left ">Category:</label>
+                    <div class="col-lg-8">
+                        <select required id="category-select" class="selectpicker" menuPlacement="top">
+                            <?php if (isset($arr['cat_id'])) {
 
-                                echo '<option selected value="-1" >Please choose</option>';
+                                if ($_SESSION['lang'] == 'en')
+                                    $catname = $arr['cat_name_en'];
+                                else $catname = $arr['cat_name_ar'];
 
-
-                            }
-                            if ($result = mysqli_query($link, $subcategory_query)) {
-
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    if ($_SESSION['lang'] == 'ar') {
-                                        if ($row['status'] == 1) {
-                                            if (isset($arr['sub_id']) && $row['id'] == $arr['sub_id']) {
-                                                echo '<option selected value="' . $row['id'] . '" >' . $row['name_ar'] . '</option>';
-                                            } else
-                                                echo '<option value="' . $row['id'] . '" >' . $row['name_ar'] . '</option>';
-                                        }
-
-
-                                    } else {
-
-                                        if ($row['status'] == 1) {
-                                            if (isset($arr['sub_id']) && $row['id'] == $arr['sub_id']) {
-                                                echo '<option selected value="' . $row['id'] . '" >' . $row['name_en'] . '</option>';
-                                            } else
-                                                echo '<option value="' . $row['id'] . '" >' . $row['name_en'] . '</option>';
-                                        }
-                                    }
-
-
-                                }
-                                mysqli_close($link);
-
-                            }
-                            ?>
-
+                                echo '<option value="' . $arr['cat_id'] . '" >' . $catname . '</option>';
+                            } else {
+                                echo '<option value="-1" selected>please choose</option>';
+                            } ?>
                         </select>
                     </div>
                 </div>
+                <input id="cat-id" type="hidden" value="<?php if (isset($arr['cat_id'])) echo $arr['cat_id'] ?>">
+                <div class="form-group">
+                    <label class="col-md-8 control-label text-left ">Subcategory:</label>
+                    <div class="col-lg-8">
+                        <select required name="subcategory-select" disabled id="subcategory-select" class="selectpicker">
+                            <?php if (isset($arr['sub_id'])) {
+                                if ($_SESSION['lang'] == 'en')
+                                    $subname = $arr['sub_name_en'];
+                                else $subname = $arr['sub_name_ar'];
+
+                                echo '<option value="' . $arr['sub_id'] . '" >' . $subname . '</option>';
+                            } else {
+                                echo '<option value="-1" selected>please choose</option>';
+                            } ?>
+                        </select>
+                    </div>
+                </div>
+                <input id="sub-id" type="hidden" value="<?php if (isset($arr['sub_id'])) echo $arr['sub_id'] ?>">
+
+
+                <!--                <div class="form-group">-->
+                <!--                    <label class="col-md-8 control-label text-left ">Subcategory:</label>-->
+                <!--                    <div class="col-md-8">-->
+                <!--                        <select id="subcategory-select" required class="form-control " name="subcategory">-->
+                <!--                            --><?php
+                //                            if (!isset($arr)) {
+                //
+                //                                echo '<option selected value="-1" >Please choose</option>';
+                //
+                //
+                //                            }
+                //                            if ($result = mysqli_query($link, $subcategory_query)) {
+                //
+                //                                while ($row = mysqli_fetch_assoc($result)) {
+                //                                    if ($_SESSION['lang'] == 'ar') {
+                //                                        if ($row['status'] == 1) {
+                //                                            if (isset($arr['sub_id']) && $row['id'] == $arr['sub_id']) {
+                //                                                echo '<option selected value="' . $row['id'] . '" >' . $row['name_ar'] . '</option>';
+                //                                            } else
+                //                                                echo '<option value="' . $row['id'] . '" >' . $row['name_ar'] . '</option>';
+                //                                        }
+                //
+                //
+                //                                    } else {
+                //
+                //                                        if ($row['status'] == 1) {
+                //                                            if (isset($arr['sub_id']) && $row['id'] == $arr['sub_id']) {
+                //                                                echo '<option selected value="' . $row['id'] . '" >' . $row['name_en'] . '</option>';
+                //                                            } else
+                //                                                echo '<option value="' . $row['id'] . '" >' . $row['name_en'] . '</option>';
+                //                                        }
+                //                                    }
+                //
+                //
+                //                                }
+                //                                mysqli_close($link);
+                //
+                //                            }
+                //                            ?>
+                <!---->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">thumbnail:</label>
                     <div class="col-md-8">

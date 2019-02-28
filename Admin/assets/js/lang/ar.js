@@ -15,5 +15,6 @@ var lang = {
     passwordsNotMatched:"كلمة السر غير متطابقة",
     enterMobile:"يجب إدخال رقم الهاتف المحمول",
     all:"الكل",
+    pleaseChoose:"الرجاء الاختيار",
 
 };

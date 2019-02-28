@@ -8,12 +8,6 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
     $_SESSION['error_msg'] = '';
 }
 
-//$phone='';
-//$name='';
-//$email='';
-//$gender='';
-//$birthday='';
-//$address='';
 
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
