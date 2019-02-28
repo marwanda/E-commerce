@@ -60,12 +60,14 @@ $(document).ready(function () {
         $('#confirm-modal-status-order').modal({show: true})
         localStorage.setItem('order_status', '4');
         localStorage.setItem('order_id', $(this).data('id'));
+        localStorage.setItem('user_id_order', $(this).data('userid'));
     })
 
     $('.resolve').change(function () {
         $('#confirm-modal-status-order').modal({show: true})
         localStorage.setItem('order_status', '3');
         localStorage.setItem('order_id', $(this).data('id'));
+        localStorage.setItem('user_id_order', $(this).data('userid'));
     })
 
 
@@ -76,7 +78,7 @@ $(document).ready(function () {
         $status = localStorage.getItem('order_status');
         $selector = '#order-' + $order_id;
         $note = $('#reject-text').val();
-
+        $user_id = localStorage.getItem('user_id_order');
         $.ajax({
             method: "POST",
             url: "requests/orders-management.php",
@@ -85,6 +87,7 @@ $(document).ready(function () {
                 action: 'change-status',
                 status: $status,
                 note: $note,
+                user_id: $user_id,
             }
         }).done(function (msg) {
 
@@ -133,7 +136,7 @@ $(document).ready(function () {
                     $('#cart-table').append('<tr class="table-primary"><td class="text-left">' + item.product_id + '</td><td class="table-width-3">' + item.name + '</td> <td class="table-width-3">' + item.quantity + '</td> <td class="table-width-3">' + item.sub_total + '</td></tr>');
 
                 })
-                $('#cart-total').text('Total: '+$total+' '+lang.sp);
+                $('#cart-total').text('Total: ' + $total + ' ' + lang.sp);
             }
 
 

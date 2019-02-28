@@ -254,7 +254,7 @@ if (isset($_POST['edit-product'])) {
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">Category:</label>
                     <div class="col-lg-8">
-                        <select required id="category-select" class="selectpicker" menuPlacement="top">
+                        <select required name="category-select" id="category-select" class="selectpicker" menuPlacement="top">
                             <?php if (isset($arr['cat_id'])) {
 
                                 if ($_SESSION['lang'] == 'en')

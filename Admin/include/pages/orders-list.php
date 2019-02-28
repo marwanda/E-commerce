@@ -175,11 +175,11 @@ if (mysqli_connect_errno()) {
                                            class="reject" autocomplete="off"> Reject
                                 </label>
                                 <label class="btn btn-info btn">
-                                    <input data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                    <input data-userid="<?php echo $row['user_id'] ?>" data-id="<?php echo $row['id']; ?>" type="radio" name="options"
                                            class="resolve" autocomplete="off"> Resolve
                                 </label>
                                 <label class="btn btn-info btn">
-                                    <input data-id="<?php echo $row['id']; ?>" type="radio" name="options" class="fail"
+                                    <input data-userid="<?php echo $row['user_id'] ?>" data-id="<?php echo $row['id']; ?>" type="radio" name="options" class="fail"
                                            autocomplete="off"> Fail
                                 </label>
                             </div>
