@@ -70,72 +70,80 @@ $disabled = false;
             <tbody>
 
             <?php
-            $query = "select c.id as cart_id, c.product_id, c.sub_total, c.quantity, p.name, p.description_ar, p.description_en, p.pic, o.id as order_id, o.msg, o.status as order_status, o.user_id, p.price, p.price_vip from cart c inner join product p on c.product_id=p.id inner join itsource.order o on c.order_id=o.id where o.user_id={$_SESSION['user_id']} and o.id= {$_SESSION['order_id']}";
+            if(isset($_SESSION['user_id']) && isset($_SESSION['order_id']))
+            {
+                $query = "select c.id as cart_id, c.product_id, c.sub_total, c.quantity, p.name, p.description_ar, p.description_en, p.pic, o.id as order_id, o.msg, o.status as order_status, o.user_id, p.price, p.price_vip from cart c inner join product p on c.product_id=p.id inner join itsource.order o on c.order_id=o.id where o.user_id={$_SESSION['user_id']} and o.id= {$_SESSION['order_id']}";
 
-            if ($result = mysqli_query($link, $query)) {
+                if ($result = mysqli_query($link, $query)) {
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $msg = $row['msg'];
-                    $product_id=$row['product_id'];
-                    $cart_id=$row['cart_id'];
-                    $order_status=$row['order_status'];
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $msg = $row['msg'];
+                        $product_id=$row['product_id'];
+                        $cart_id=$row['cart_id'];
+                        $order_status=$row['order_status'];
 //                    var_dump($row['order_status']);
 //                    exit;
-                    if ($row['order_status'] == 2) {
-                        $disabled = true;
-                        $arr = array(
-                            'cart_id' => $row['cart_id'],
-                            'product_id' => $row['product_id'],
-                            'sub_total' => $row['sub_total'],
-                            'quantity' => $row['quantity'],
-                            'name' => $row['name'],
-                            'pic' => $row['pic'],
-                            'description_en' => $row['description_en'],
-                            'description_ar' => $row['description_ar'],
-                            'order_id' => $row['order_id'],
-                            'price' => $row['price'],
-                            'price_vip' => $row['price_vip'],
-                            'order_status' => $row['order_status'],
+                        if ($row['order_status'] == 2) {
+                            $disabled = true;
+                            $arr = array(
+                                'cart_id' => $row['cart_id'],
+                                'product_id' => $row['product_id'],
+                                'sub_total' => $row['sub_total'],
+                                'quantity' => $row['quantity'],
+                                'name' => $row['name'],
+                                'pic' => $row['pic'],
+                                'description_en' => $row['description_en'],
+                                'description_ar' => $row['description_ar'],
+                                'order_id' => $row['order_id'],
+                                'price' => $row['price'],
+                                'price_vip' => $row['price_vip'],
+                                'order_status' => $row['order_status'],
 
 
-                        );
+                            );
 
-                        template('cards/cart-card.php', $arr);
+                            template('cards/cart-card.php', $arr);
 
-                    } else if ($row['order_status'] == 3 || $row['order_status'] == 4) {
-                        $date = date('Y-m-d', time());
+                        } else if ($row['order_status'] == 3 || $row['order_status'] == 4) {
+                            $date = date('Y-m-d', time());
 
-                        $query1 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
+                            $query1 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
 
-                        if (mysqli_query($link, $query1) === TRUE) {
-                            $last_id = mysqli_insert_id($link);
-                            $_SESSION['order_id'] = $last_id;
+                            if (mysqli_query($link, $query1) === TRUE) {
+                                $last_id = mysqli_insert_id($link);
+                                $_SESSION['order_id'] = $last_id;
+                            }
+                            break;
+
+                        } else {
+                            $arr = array(
+                                'cart_id' => $row['cart_id'],
+                                'product_id' => $row['product_id'],
+                                'sub_total' => $row['sub_total'],
+                                'quantity' => $row['quantity'],
+                                'name' => $row['name'],
+                                'pic' => $row['pic'],
+                                'description_en' => $row['description_en'],
+                                'description_ar' => $row['description_ar'],
+                                'order_id' => $row['order_id'],
+                                'price' => $row['price'],
+                                'price_vip' => $row['price_vip'],
+                                'order_status' => $row['order_status'],
+
+                            );
+
+                            template('cards/cart-card.php', $arr);
                         }
-                        break;
 
-                    } else {
-                        $arr = array(
-                            'cart_id' => $row['cart_id'],
-                            'product_id' => $row['product_id'],
-                            'sub_total' => $row['sub_total'],
-                            'quantity' => $row['quantity'],
-                            'name' => $row['name'],
-                            'pic' => $row['pic'],
-                            'description_en' => $row['description_en'],
-                            'description_ar' => $row['description_ar'],
-                            'order_id' => $row['order_id'],
-                            'price' => $row['price'],
-                            'price_vip' => $row['price_vip'],
-                            'order_status' => $row['order_status'],
-
-                        );
-
-                        template('cards/cart-card.php', $arr);
                     }
 
                 }
-
             }
+            else
+            {
+                echo 'general error'; ;
+            }
+
             ?>
             </tbody>
             <tfoot>

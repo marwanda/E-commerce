@@ -1,5 +1,7 @@
 <?php
 include "../include/config.php";
+require('../include/hundle-ajax.php');
+
 if ($_POST) {
     $cat_id = $_POST['cat_id'];
     $sub_id = $_POST['sub_id'];

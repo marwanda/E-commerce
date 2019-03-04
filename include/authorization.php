@@ -3,6 +3,7 @@
 $standalone_pages = array(
     $pages['404'],
     $pages['index'],
+    $pages['reset-password'],
 
 );
 
@@ -65,6 +66,12 @@ else
 //$page_name=basename($_SERVER['PHP_SELF']);
 //$page = isset($page_name) ? $page_name : null;
 
-$page = isset($_GET['page']) ? $_GET['page'] : null;
-$page = empty($page) ? 'home' : $page;
-$page = in_array($page, $current_role_pages) ? $page : $pages['404'];
+
+    $page = isset($_GET['page']) ? $_GET['page'] : null;
+    $page = empty($page) ? 'home' : $page;
+    $page = in_array($page, $current_role_pages) ? $page : $pages['404'];
+
+
+
+
+

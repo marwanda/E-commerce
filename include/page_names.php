@@ -16,6 +16,7 @@ $pages = array (
     "products-list"=>"products-list",
     "project-form"=>"project-form",
     "verification"=>"verification",
+    "reset-password"=>"reset-password",
     "register"=>"register",
     "cart"=>"cart",
 );

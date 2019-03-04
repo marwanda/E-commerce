@@ -27,11 +27,12 @@ if ($msg != '') {
 } else {
 
     $link = mysqli_connect("localhost", "root", "", "itsource");
+    mysqli_set_charset($link, "utf8");
+
     $sq = "'";
     $path = '../';
     $date = date('Y-m-d', time());
     $query = "INSERT INTO projects ( name, phone, file, type, date) VALUES ({$sq}{$full_name}{$sq}, {$sq}{$mobile}{$sq}, {$sq}{$result}{$sq},0,{$sq}{$date}{$sq})";
-
 
     if (mysqli_connect_errno()) {
         $_SESSION['error_msg'] = mysqli_connect_error();
@@ -39,7 +40,6 @@ if ($msg != '') {
         redirect('project-form', $path);
         exit;
     }
-
 
     if (mysqli_query($link, $query) === TRUE) {
         mysqli_close($link);

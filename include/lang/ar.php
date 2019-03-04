@@ -14,6 +14,9 @@ $lang= array(
     'admin_msg' => 'رسالة من المسؤول:',
     'yes' => 'نعم',
     'no' => 'لا',
+    'blocked-user' => 'عذراً, لقد تم حظرك من قبل المسؤول',
+    'must_send_verification_code' => 'يجب الضغط على إرسال, لإرسال كود التفعيل(التحقق) أولاً!',
+
 
 
     //Verification
@@ -54,6 +57,10 @@ $lang= array(
   'edit_profile'=>'تعديل الملف الشخصي',
     'personal_info'=>'المعلومات الشخصية',
     'Can_nor_edit'=>'عذراً لا يمكنك التعديل حالياً',
+    'current_password'=>'كلمة السر الحالية',
+    'new_password'=>'كلمة السر الجديدة',
+    "passwords_not_matched"=>"كلمة السر الحالية غير صحيحة",
+
 
 
     //Pages

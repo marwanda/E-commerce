@@ -1,5 +1,6 @@
 <?php
 include "../include/config.php";
+include "../include/hundle-ajax.php";
 if (isset($_POST['cat_id'])) {
 $cat_id=make_safe($_POST['cat_id']);
     $link = mysqli_connect("localhost", "root", "", "itsource");

@@ -14,6 +14,8 @@ $lang= array(
     'admin_msg' => 'رسالة من المسؤول:',
     'yes' => 'نعم',
     'no' => 'لا',
+    "passwords_not_matched"=>"كلمة السر غير متطابقة",
+
 
 
     //Verification
@@ -128,6 +130,8 @@ $lang= array(
 
     'only_image' => 'لا يمكنك رفع ملفات من نوع غير الصور',
     'pics_did_not_upload' => 'صورة او اكثر لم يتم رفعها',
+    "passwords_not_matched"=>"كلمة السر الحالية غير صحيحة",
+
 
 
 

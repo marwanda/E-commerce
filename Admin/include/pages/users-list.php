@@ -1,14 +1,35 @@
+<?php
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+
+    echo '<script language="javascript">';
+    echo "alert('" . $_SESSION['error_msg'] . "')";
+    echo '</script>';
+    $_SESSION['error_msg'] = '';
+}
+
+$link = mysqli_connect("localhost", "root", "", "itsource");
+mysqli_set_charset($link, "utf8");
+$sq = "'";
+$path = '../';
+$query = "select * from user where role = 2 || role= 3 || role=4";
+
+
+if (mysqli_connect_errno()) {
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    echo '<script language="javascript">';
+    echo 'alert("' . $_SESSION['error_msg'] . '")';
+    echo '</script>';
+    $_SESSION['error_msg'] = '';
+}
+?>
+
 <div id="confirm-modal-user-status" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div align="center" class="modal-content" style="margin-top: 100px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Are You Sure?</h4>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control"></textarea>
             </div>
             <div class="modal-footer">
                 <div class="row">
@@ -35,41 +56,59 @@
                 <th class="text-left">Mobile</th>
                 <th class="text-left">Email</th>
                 <th class="text-left">Gender</th>
-                <th class="text-left">Age</th>
+                <th class="text-left">Birthday</th>
                 <th class="text-left" >Address</th>
-                <th class="text-left" >Total Orders</th>
-                <th class="text-left" >Fails</th>
+                <th class="text-left" >Resolved</th>
+                <th class="text-left" >Failed</th>
                 <th class="text-left" style="">Status</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="table-primary">
-                <td class="text-left">136</td>
-                <td class="text-left">Marwan Agha</td>
-                <td class="text-left">0366985698</td>
-                <td class="text-left">marwan@gmail.com</td>
-                <td class="text-left">male</td>
-                <td class="text-left">23</td>
-                <td class="text-left">Damascus, Hamra</td>
-                <td class="text-left">350000</td>
-                <td class="text-left">2</td>
-                <td class="text-left">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-info active ">
-                            <input checked  type="radio" name="options" class="active-user" autocomplete="off" > Active
-                        </label>
-                        <label class="btn btn-info btn">
-                            <input type="radio" name="options" class="inactive-user" autocomplete="off"> Inactive
-                        </label>
-                        <label class="btn btn-info btn">
-                            <input type="radio" name="options" class="vip-user" autocomplete="off"> VIP
-                        </label>
-                        <label class="btn btn-info btn">
-                            <input type="radio" name="options" class="inactive-user" autocomplete="off"> Blocked
-                        </label>
-                    </div>
-                </td>
-            </tr>
+            <?php
+
+            if ($result = mysqli_query($link, $query)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    ?>
+                    <tr class="order-row" id="order-<?php echo $row['id']; ?>">
+                        <td class=""><?php echo $row['id']; ?></td>
+                        <td class=""><?php echo $row['name']; ?></td>
+                        <td class=""><?php echo $row['phone']; ?></td>
+                        <td class=""><?php echo $row['email']; ?></td>
+                        <td class=""><?php echo $row['gender']; ?></td>
+                        <td class=""><?php echo $row['birthdate']; ?></td>
+                        <td class=""><?php echo $row['address']; ?></td>
+                        <td class=""><?php echo $row['resolved_orders']; ?></td>
+                        <td class=""><?php echo $row['failed_orders']; ?></td>
+
+                        <td class="table-width-3">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-info <?php echo isset($row['role'])&& $row['role']==2? 'active':'' ?>  ">
+                                    <input <?php echo isset($row['role'])&& $row['role']==2? 'checked':'' ?> data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                           class="active-user" autocomplete="off"> Active
+                                </label>
+                                <label class="btn btn-info btn <?php echo isset($row['role'])&& $row['role']==3? 'active':'' ?> ">
+                                    <input <?php echo isset($row['role'])&& $row['role']==3? 'checked':'' ?>   data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                           class="vip-user" autocomplete="off"> VIP
+                                </label>
+                                <label class="btn btn-info btn <?php echo isset($row['role'])&& $row['role']==4? 'active':'' ?> ">
+                                    <input <?php echo isset($row['role'])&& $row['role']==4? 'checked':'' ?>   data-id="<?php echo $row['id']; ?>" type="radio" name="options" class="block-user"
+                                           autocomplete="off"> Blocked
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo '<script language="javascript">';
+                echo "alert('" . $lang['general_error'] . "')";
+                echo '</script>';
+                mysqli_close($link);
+
+            }
+            ?>
+
 
             </tbody>
         </table>

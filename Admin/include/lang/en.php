@@ -149,6 +149,8 @@ $lang = array(
 
     'only_image' => 'You can not upload files that are not images',
     'pics_did_not_upload' => 'one or more pictures did not upload',
+    "passwords_not_matched"=>"Current password is not correct",
+
 
 
 );

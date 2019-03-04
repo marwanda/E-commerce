@@ -196,7 +196,7 @@
                                    placeholder="<?php echo $lang['enter_password']?>"
                                    required>
                             <div class="checkbox">
-                                <a href="<?php  echo $APP_ROOT . $pages['verification'] ?>"><?php echo $lang['forgot_password']?></a>
+                                <a href="<?php  echo $APP_ROOT . $pages['reset-password'] ?>"><?php echo $lang['forgot_password']?></a>
                             </div>
                         </div>
                         <div class="modal-footer text-center">

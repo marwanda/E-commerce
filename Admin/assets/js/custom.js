@@ -205,7 +205,7 @@ $(document).ready(function () {
                 })
                 alert(lang.successfully_done)
             } else {
-                alert(msg)
+                alert(lang.general_error)
             }
 
         })
@@ -216,7 +216,6 @@ $(document).ready(function () {
 
         // $('#confirm-modal-product-status').hide();
         //remove tr
-
 
     })
 
@@ -233,6 +232,8 @@ $(document).ready(function () {
 
             if (msg == 1)
                 alert(lang.successfully_done)
+            else
+                alert(lang.general_error)
 
 
         })
@@ -260,45 +261,66 @@ $(document).ready(function () {
         $('#confirm-modal-delete').modal({show: true})
     })
 
+    /** admins**/
+
+    $('.active-admin').change(function () {
+        $('#confirm-modal-user-status').modal({show: true})
+        localStorage.setItem('user_status', '5');
+        localStorage.setItem('user_id', $(this).data('id'));
+    })
+    $('.block-admin').change(function () {
+        $('#confirm-modal-user-status').modal({show: true})
+        localStorage.setItem('user_status', '7');
+        localStorage.setItem('user_id', $(this).data('id'));
+    })
+
 
     /** users**/
 
+
     $('.active-user').change(function () {
         $('#confirm-modal-user-status').modal({show: true})
-
-    })
-
-    $('.inactive-user').change(function () {
-        $('#confirm-modal-user-status').modal({show: true})
+        localStorage.setItem('user_status', '2');
+        localStorage.setItem('user_id', $(this).data('id'));
     })
 
     $('.block-user').change(function () {
         $('#confirm-modal-user-status').modal({show: true})
+        localStorage.setItem('user_status', '4');
+        localStorage.setItem('user_id', $(this).data('id'));
     })
     $('.vip-user').change(function () {
         $('#confirm-modal-user-status').modal({show: true})
+        localStorage.setItem('user_status', '3');
+        localStorage.setItem('user_id', $(this).data('id'));
     })
 
     $('#yes-status-user').click(function () {
+
+        $.ajax({
+            method: "POST",
+            url: "requests/users-management.php",
+            data: {
+                user_id: localStorage.getItem('user_id'),
+                action: 'change-status',
+                user_status: localStorage.getItem('user_status'),
+            }
+        }).done(function (msg) {
+// alert(msg)
+            if (msg == 1)
+
+                alert(lang.successfully_done)
+
+            else
+                alert(lang.general_error);
+
+        })
+
     })
     $('#no-status-user').click(function () {
+
         //let the previous status come back
-    })
 
-
-    /** admins**/
-
-
-    $('.active-admin').change(function () {
-        $('#confirm-modal-admin-status').modal({show: true})
-    })
-    $('.block-admin').change(function () {
-        $('#confirm-modal-admin-status').modal({show: true})
-    })
-    $('#yes-status-admin').click(function () {
-    })
-    $('#no-status-admin').click(function () {
-        //let the previous status come back
     })
 
 
@@ -337,6 +359,8 @@ $(document).ready(function () {
 
             if (msg == 1)
                 alert(lang.successfully_done)
+            else
+                alert(lang.general_error)
 
 
         })
@@ -379,7 +403,7 @@ $(document).ready(function () {
                 })
                 alert(lang.successfully_done)
             } else {
-                alert(msg)
+                alert(lang.general_error)
             }
 
         })
@@ -430,6 +454,8 @@ $(document).ready(function () {
 
             if (msg == 1)
                 alert(lang.successfully_done)
+            else
+                alert(lang.general_error)
 
 
         })
@@ -468,7 +494,7 @@ $(document).ready(function () {
                 })
                 alert(lang.successfully_done)
             } else {
-                alert(msg)
+                alert(lang.general_error)
             }
 
         })
@@ -624,14 +650,18 @@ $(document).ready(function () {
                 url: $path + "requests/categories.php",
                 data: {}
             }).done(function (msg) {
+                if (msg == -1)
+                    alert(lang.general_error)
+                else{
 
+                    jQuery(JSON.parse(msg)).each(function (i, item) {
 
-                jQuery(JSON.parse(msg)).each(function (i, item) {
+                        $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>');
+                        $('#category-select').selectpicker('refresh');
 
-                    $('#category-select').append('<option value="' + item.id + '">' + item.name + '</option>');
-                    $('#category-select').selectpicker('refresh');
+                    });
+                }
 
-                });
             });
 
             select_clicked_cat = true;
@@ -654,7 +684,6 @@ $(document).ready(function () {
         $('#subcategory-select').append('<option  value="-1">' + lang.pleaseChoose + '</option>');
         $('#subcategory-select').selectpicker('refresh');
 
-        console.log($(this).val())
     })
 
 
@@ -681,16 +710,72 @@ $(document).ready(function () {
                 url: $path + "requests/subcategories.php",
                 data: {cat_id: $('#category-select').val()}
             }).done(function (msg) {
-                jQuery(JSON.parse(msg)).each(function (i, item) {
-                    $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>');
-                    $('#subcategory-select').selectpicker('refresh');
 
-                });
+                if(msg==-1)
+                {
+                    alert(lang.general_error)
+                }
+                else
+                {
+                    jQuery(JSON.parse(msg)).each(function (i, item) {
+                        $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>');
+                        $('#subcategory-select').selectpicker('refresh');
+
+                    });
+                }
+
 
             })
             select_clicked_sub = true;
         }
     })
+
+
+
+    //register for admin
+
+    var $submit_admin = false;
+
+    $(document).on('submit', '#submit-admin', function (e) {
+
+        if (!$submit_admin) {
+            {
+                if ($('#password').val() !== $('#re-password').val()) {
+                    alert(lang.passwordsNotMatched);
+                } else {
+                    $submit_admin = true;
+                    $('#submit-admin').submit();
+                }
+            }
+            e.preventDefault()
+        }
+        // else
+        //     $('#register-form-user').submit();
+
+
+    });
+
+
+    var $submit_change_password = false;
+
+    $(document).on('submit', '#change-password-form', function (e) {
+
+        if (!$submit_change_password) {
+            {
+                if ($('#new-password').val() !== $('#re-password').val()) {
+                    alert(lang.passwordsNotMatched);
+                } else {
+                    $submit_change_password = true;
+                    $('#change-password-form').submit();
+                }
+            }
+            e.preventDefault()
+        }
+        // else
+        //     $('#register-form-user').submit();
+
+
+    });
 
 
 })

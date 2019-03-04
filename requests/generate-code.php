@@ -6,48 +6,49 @@ $mobile = isset($_POST['mobile']) ? make_safe($_POST['mobile']) : null;
 
 $code = generatePIN(4);
 $link = mysqli_connect("localhost", "root", "", "itsource");
+mysqli_set_charset($link, "utf8");
+
 $sq = "'";
-$path='../';
+$path = '../';
 
 
-if(!isset($_SESSION['user_id']))
-{
-
-    $query2="select id from user where phone= {$sq}{$mobile}{$sq}";
-    if ($result = mysqli_query($link, $query2)) {
-
+$query2 = "select id from user where phone= {$sq}{$mobile}{$sq}";
+if ($result = mysqli_query($link, $query2)) {
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $_SESSION['user_id']=$row['id'];
-            echo $lang['successfully_done'];
-            exit;
+            $_SESSION['user_id_verification'] = $row['id'];
+            $_SESSION['phone'] = $mobile;
         }
+//
+//            $_SESSION['role']=1;
+//            $_SESSION['phone']=$mobile;
+//            echo $lang['successfully_done'];
+//            exit;
+    } else {
         echo $lang['wrong_mobile'];
         exit;
     }
-    else
-    {
-        echo $lang['general_error'];
-        exit;
-    }
-
+} else {
+    echo $lang['general_error'];
+    exit;
 }
 
 
-else
-{
-
-    $query = "update user set code = {$code} where id = {$_SESSION['user_id']}";
-    if (mysqli_connect_errno()) {
-        $_SESSION['msg'] = mysqli_connect_error();
+$query = "update user set code = {$code} where id = {$_SESSION['user_id_verification']}";
+if (mysqli_connect_errno()) {
+    $_SESSION['msg'] = mysqli_connect_error();
 //    redirect('verification');
-        echo  mysqli_connect_error();
-        exit();
-    }
-    if (mysqli_query($link, $query) === TRUE) {
-        /** todo send sms **/
-//    $_SESSION['msg'] = $lang['successfully_done'];
-        echo $lang['successfully_done'];
-        exit();
-    }
-    mysqli_close($link);
+    echo mysqli_connect_error();
+    exit();
 }
+
+if (mysqli_query($link, $query) === TRUE) {
+    /** todo send sms **/
+//    $_SESSION['msg'] = $lang['successfully_done'];
+    echo $lang['successfully_done'];
+    mysqli_close($link);
+    exit();
+}
+
+//}

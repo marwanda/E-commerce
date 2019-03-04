@@ -1,7 +1,10 @@
 <?php
 var_dump($_SESSION);
-if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role'] == 2)
+//var_dump($_POST);exit;
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role']!=1)
     redirect('home');
+
 
 if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
 
@@ -13,11 +16,13 @@ if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
 
 //var_dump($_SESSION);
 if ($_POST) {
+
     $code = isset($_POST['verification-code']) ? make_safe($_POST['verification-code']) : null;
     $link = mysqli_connect("localhost", "root", "", "itsource");
     $sq = "'";
     $query = "select * from user where id = {$_SESSION['user_id']} and code = {$code}";
     $query2 = "update user set role = 2 where id = {$_SESSION['user_id']}";
+//    var_dump($query);exit;
 
 
     if (mysqli_connect_errno()) {
@@ -33,7 +38,7 @@ if ($_POST) {
 
     }
     if ($result = mysqli_query($link, $query)) {
-
+//        var_dump($_POST);exit;
         while ($row = mysqli_fetch_assoc($result)) {
 
 
@@ -70,6 +75,9 @@ if ($_POST) {
 
     }
 
+
+
+
 }
 //
 ?>
@@ -79,7 +87,7 @@ if ($_POST) {
 
             <div class="row text-center">
                 <h5 style="margin: auto" class="mt-5 mb-5"><?php echo $lang['verification_info1'] ?>
-                    <input id="mobile_number_verification" style="width: 50%; margin: auto;"
+                    <input required id="mobile_number_verification" style="width: 50%; margin: auto;"
                            class="form-control mt-3 mb-1" value="<?php if(isset($_SESSION['phone'])) echo $_SESSION['phone'];?>" placeholder="<?php if(!isset($_SESSION['phone'])) echo $lang['enter_mobile']; ?>" </input>
                     <div class=" mt-3 ">
                         <a href="" id="send-verification-code"><?php echo $lang['send'] ?></a>
@@ -88,11 +96,11 @@ if ($_POST) {
 
                     <br>
 
-                    <?php echo $lang['verification_info2'] ?>
+<!--                    --><?php //echo $lang['verification_info2'] ?>
                 </h5>
             </div>
 
-            <form method="post" class="form-horizontal col-8 ">
+            <form id="verification-form"  method="post" class="form-horizontal col-8 hidden ">
                 <div class="form-group ">
                     <label class="col-lg-8 control-label text-left ">Verification code</label>
                     <div class="col-lg-8">
@@ -109,13 +117,13 @@ if ($_POST) {
                     </div>
                 </div>
             </form>
-            <div class="row  ">
-                <div class="col-8 alert alert-info alert-dismissable bg-danger border-danger  "
-                     style=" color: #FFFFFF;margin: auto; opacity: 0.7">
-                    <a class="panel-close close" data-dismiss="alert">×</a>
-                    <strong><?php echo $lang['wrong_code'] ?></strong>
-                </div>
-            </div>
+<!--            <div class="row  ">-->
+<!--                <div class="col-8 alert alert-info alert-dismissable bg-danger border-danger  "-->
+<!--                     style=" color: #FFFFFF;margin: auto; opacity: 0.7">-->
+<!--                    <a class="panel-close close" data-dismiss="alert">×</a>-->
+<!--                    <strong>--><?php //echo $lang['wrong_code'] ?><!--</strong>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
 

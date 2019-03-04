@@ -1,5 +1,6 @@
 <?php
 include '../include/config.php';
+require('../include/hundle-ajax.php');
 
 
 $link = mysqli_connect("localhost", "root", "", "itsource");

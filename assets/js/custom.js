@@ -336,6 +336,29 @@ $('#customers-testimonials').owlCarousel({
 $(document).on('click', '#vip-read-more', function (e) {
     e.preventDefault();
 })
+/** change password**/
+
+var $submit_change_password = false;
+
+$(document).on('submit', '#change-password-form', function (e) {
+
+    if (!$submit_change_password) {
+        {
+            if ($('#new-password').val() !== $('#re-password').val()) {
+                alert(lang.passwordsNotMatched);
+            } else {
+                $submit_change_password = true;
+                $('#change-password-form').submit();
+            }
+        }
+        e.preventDefault()
+    }
+    // else
+    //     $('#register-form-user').submit();
+
+
+});
+
 
 /** verification**/
 
@@ -360,6 +383,18 @@ $(document).on('submit', '#register-form-user', function (e) {
 
 });
 
+$(document).on('click', '#submit-verification-code', function (e) {
+    if ($('#mobile_number_verification').val() == '') {
+        e.preventDefault()
+        alert(lang.enterMobile)
+
+    }
+
+})
+
+if($('#mobile_number_verification').val()!='')
+    $('#verification-form').removeClass('hidden')
+
 $(document).on('click', '#send-verification-code', function (e) {
     e.preventDefault();
 
@@ -374,6 +409,10 @@ $(document).on('click', '#send-verification-code', function (e) {
             data: $data
         }).done(function (msg) {
             alert(msg)
+            if(msg=='Successfully done')
+
+                $('#verification-form').removeClass('hidden')
+
         });
     }
 })
@@ -411,8 +450,8 @@ $(document).on('click', '.add-to-cart', function (e) {
         } else if (msg == -1) {
             alert(lang.general_error)
         } else
-            alert(msg)
-
+            // alert(msg)
+            alert(lang.general_error)
     });
 
 })
@@ -627,16 +666,13 @@ $(document).on('click', '.delete-cart', function () {
         }
     }).done(function (msg) {
 
-        if(msg==1)
-        {
+        if (msg == 1) {
             $elem.fadeOut(500, function () {
 
                 $(this).remove();
 
             })
-        }
-        else
-        {
+        } else {
             alert(lang.general_error)
         }
 
@@ -656,9 +692,8 @@ $(document).on('click', '.submit-cart', function (e) {
 })
 
 
-
 $(document).on('click', '#submit-cart', function (e) {
-    var $new_array=[];
+    var $new_array = [];
     e.preventDefault();
 
 
@@ -669,8 +704,8 @@ $(document).on('click', '#submit-cart', function (e) {
 
     for ($i = 0; $i < $quantity_products_arr.length; $i++) {
 
-        $array={
-            pid :$quantity_products_arr.eq($i).data('pid'),
+        $array = {
+            pid: $quantity_products_arr.eq($i).data('pid'),
             q: $quantity_products_arr.eq($i).val()
         };
 
@@ -693,14 +728,14 @@ $(document).on('click', '#submit-cart', function (e) {
 
 
         $('#cart-note').val('');
-         if(msg==-1)
+        if (msg == -1)
             alert(lang.general_error)
         else
             console.log(msg)
 
-        window.location.href=siteURL+'cart';
+        window.location.href = siteURL + 'cart';
 
-        })
+    })
 
 })
 

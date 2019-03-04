@@ -12,11 +12,11 @@ $pages = array(
     "admins-list"=>"admins-list",
     "categories"=>"categories",
     "change-password-admin"=>"change-password-admin",
-    "leading-companies"=>"leading-companies",
+//    "leading-companies"=>"leading-companies",
     "news-form"=>"news-form",
     "news-list"=>"news-list",
     "orders-list"=>"orders-list",
-    "our-team"=>"our-team",
+//    "our-team"=>"our-team",
     "product-form"=>"product-form",
     "products-list"=>"products-list",
     "projects-list"=>"projects-list",
@@ -24,5 +24,6 @@ $pages = array(
     "resolved-orders"=>"resolved-orders",
     "users-list"=>"users-list",
     "offers-list"=>"offers-list",
+    "subcategories"=>"subcategories",
 
     );

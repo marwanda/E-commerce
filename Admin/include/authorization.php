@@ -26,13 +26,14 @@ $Super_Admin_pages = array_merge(
         $pages['admin-form'],
         $pages['admins-list'],
         $pages['categories'],
-        $pages['leading-companies'],
+        $pages['subcategories'],
+//        $pages['leading-companies'],
         $pages['projects-list'],
         $pages['register'],
         $pages['users-list'],
         $pages['offers-list'],
         $pages['change-password-admin'],
-        $pages['our-team'],
+//        $pages['our-team'],
     )
 
 );
@@ -43,9 +44,11 @@ if (isset($_SESSION['ad_role']) && $_SESSION['ad_role'] == 5) {
 elseif (isset($_SESSION['ad_role']) && $_SESSION['ad_role'] == 6) {
     $current_role_pages = $Super_Admin_pages;
 }
+
 if(!isset($_SESSION['ad_role']) && empty($_SESSION['ad_role']))
 {
     $page='login';
+
 }
 else
 {

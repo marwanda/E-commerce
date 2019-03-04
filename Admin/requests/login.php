@@ -4,7 +4,10 @@ include '../include/config.php';
 
 $name = isset($_POST['username']) ? make_safe($_POST['username']) : null;
 $password = isset($_POST['password']) ? make_safe($_POST['password']) : null;
+
 $link = mysqli_connect("localhost", "root", "", "itsource");
+mysqli_set_charset($link, "utf8");
+
 $sq = "'";
 $path = '../';
 
@@ -26,19 +29,21 @@ if ($result = mysqli_query($link, $query)) {
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            $_SESSION['admin_name'] = $row['name'];
-            $_SESSION['admin_id'] = $row['id'];
+
 
 
 
             if ($row['role'] == 5) {
-
+                $_SESSION['admin_name'] = $row['name'];
+                $_SESSION['admin_id'] = $row['id'];
                 $_SESSION['ad_role'] = 5;
                 mysqli_close($link);
                 redirect('orders-list',$path);
                 exit;
 
             } else if ($row['role'] == 6) {
+                $_SESSION['admin_name'] = $row['name'];
+                $_SESSION['admin_id'] = $row['id'];
                 $_SESSION['ad_role'] = 6;
                 mysqli_close($link);
                 redirect('orders-list',$path);

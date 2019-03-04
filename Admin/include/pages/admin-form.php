@@ -1,4 +1,3 @@
-
 <div class="content-inner chart-cont">
     <div class="col personal-info " align="center">
         <!--                <div class="alert alert-info alert-dismissable">-->
@@ -11,7 +10,7 @@
                 <h3><i class="fa fa-user-circle"></i> Admin Info</h3>
             </div>
             <br>
-            <form action="requests/register.php"  method="post" class="form-horizontal  col-8 " >
+            <form id="submit-admin" action="requests/submit-admin.php"  method="post" class="form-horizontal  col-8 " >
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Full name:</label>
                     <div class="col-lg-8">
@@ -51,21 +50,27 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-8 control-label text-left ">Job:</label>
+                    <div class="col-lg-8">
+                        <input required class="form-control" name="job" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-8 control-label text-left ">Password:</label>
                     <div class="col-md-8">
-                        <input required class="form-control" name="password" type="password" value="">
+                        <input required class="form-control" id="password" name="password" type="password" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">Confirm password:</label>
                     <div class="col-md-8">
-                        <input required class="form-control" name="re-password" type="password" value="">
+                        <input required class="form-control" id="re-password" name="re-password" type="password" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left "></label>
                     <div class="col-md-8">
-                        <button type="submit" class="btn btn-general btn-blue mr-2">Submit</button>
+                        <button type="submit" id="submit-admin" class="btn btn-general btn-blue mr-2">Submit</button>
                         <span></span>
                     </div>
                 </div>

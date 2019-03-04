@@ -18,6 +18,9 @@ $lang = array(
     'admin_msg' => 'Admin message:',
     'yes' => 'Yes',
     'no' => 'No',
+    'blocked-user' => 'Sorry, you have been blocked by the admin',
+    'must_send_verification_code' => 'You have to click on send, to send verification code sms',
+
 
 
 
@@ -62,6 +65,11 @@ $lang = array(
     'edit_profile'=>'Edit Profile',
     'personal_info'=>'Personal Information',
     'Can_nor_edit'=>'can not edit',
+    'current_password'=>'Current Password',
+    'new_password'=>'New Password',
+    "passwords_not_matched"=>"Current password is not correct",
+
+
 
 
     //Pages

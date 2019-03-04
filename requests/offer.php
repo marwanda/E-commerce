@@ -28,6 +28,8 @@ if ($msg != '') {
 } else {
 
     $link = mysqli_connect("localhost", "root", "", "itsource");
+    mysqli_set_charset($link, "utf8");
+
     $sq = "'";
     $path = '../';
     $date = date('Y-m-d', time());

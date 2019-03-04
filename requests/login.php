@@ -4,6 +4,8 @@ include '../include/config.php';
 $mobile = isset($_POST['phone']) ? make_safe($_POST['phone']) : null;
 $password = isset($_POST['password']) ? make_safe($_POST['password']) : null;
 $link = mysqli_connect("localhost", "root", "", "itsource");
+mysqli_set_charset($link, "utf8");
+
 $sq = "'";
 $path = '../';
 $query = "select * from user where phone = {$sq}{$mobile}{$sq} and password = {$sq}{$password}{$sq}";
@@ -32,7 +34,7 @@ if ($result = mysqli_query($link, $query)) {
             if ($row['role'] == 1) {
 
                 $_SESSION['role'] = 1;
-                redirect('verification',$path);
+                redirect('verification', $path);
                 exit;
 //            mysqli_close($link);
 
@@ -44,10 +46,19 @@ if ($result = mysqli_query($link, $query)) {
                 $_SESSION['role'] = 3;
 //            mysqli_close($link);
 
+            } else if ($row['role'] == 4) {
+
+                $_SESSION['error_msg'] = $lang['blocked-user'];
+                unset($_SESSION['phone']);
+                unset($_SESSION['user_id']);
+                mysqli_close($link);
+                redirect('home', $path);
+                exit;
+
             }
         }
-        if($_SESSION['role']==2 || $_SESSION['role']==3)
-        {
+        //find or create order
+        if ($_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
             $query2 = "select o.id from itsource.order o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and (o.status=1 or o.status=2)";
 //           var_dump($query2);exit;
             $date = date('Y-m-d', time());
@@ -69,9 +80,7 @@ if ($result = mysqli_query($link, $query)) {
 
                     }
 
-                }
-                else
-                {
+                } else {
                     if (mysqli_query($link, $query3) === TRUE) {
                         $last_id = mysqli_insert_id($link);
                         $_SESSION['order_id'] = $last_id;
@@ -84,9 +93,7 @@ if ($result = mysqli_query($link, $query)) {
                 }
 
 
-
-            }
-            else{
+            } else {
 
                 $_SESSION['error_msg'] = $lang['general_error'];
                 mysqli_close($link);
@@ -96,19 +103,14 @@ if ($result = mysqli_query($link, $query)) {
         }
 
 
-
-    }
-    else {
+    } else {
         $_SESSION['error_msg'] = $lang['wrong_login_info'];
         mysqli_close($link);
         redirect('home', $path);
         exit();
     }
 
-}
-
-
-else{
+} else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
     mysqli_close($link);

@@ -57,7 +57,7 @@ function GetRestURL($Function, $Service, $Params)
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl,CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+    curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, str_replace($escapees, $replacements, json_encode($Params, true)));
     $curl_response = curl_exec($curl);
@@ -118,6 +118,7 @@ function make_safe($data)
     return $data;
 
 }
+
 function make_safe_array($data, $except = array())
 {
     $new_array = array();
@@ -131,10 +132,10 @@ function make_safe_array($data, $except = array())
     return $new_array;
 }
 
-function redirect($pageName,$path='')
+function redirect($pageName, $path = '')
 {
 
-    @header("Location: " .$path.$pageName . "");
+    @header("Location: " . $path . $pageName . "");
 //    echo "<script language='JavaScript' type='text/JavaScript'>" .
 //        "window.location='" . $pageName . "'</script>";
 
@@ -208,20 +209,22 @@ function limit_string($str)
 {
     return strlen($str) > 50 ? substr($str, 0, 50) . "..." : $str;
 }
-function normalize_files( &$files )
-{
-    $_files       = [ ];
-    $_files_count = count( $files[ 'name' ] );
-    $_files_keys  = array_keys( $files );
 
-    for ( $i = 0; $i < $_files_count; $i++ )
-        foreach ( $_files_keys as $key )
-            $_files[ $i ][ $key ] = $files[ $key ][ $i ];
+function normalize_files(&$files)
+{
+    $_files = [];
+    $_files_count = count($files['name']);
+    $_files_keys = array_keys($files);
+
+    for ($i = 0; $i < $_files_count; $i++)
+        foreach ($_files_keys as $key)
+            $_files[$i][$key] = $files[$key][$i];
 
     return $_files;
 }
 
-function upload_image($pic, $path, $size){
+function upload_image($pic, $path, $size)
+{
 
     require_once 'libs/upload/upload.php';
     global $error_code;
@@ -234,7 +237,7 @@ function upload_image($pic, $path, $size){
 //        mkdir($FILES_ROOT . "images/$path/", 0777, true);
 //    }
 
-    while (file_exists( $FILES_ROOT."images/".$path."/" . $file_name . ".png")) {
+    while (file_exists($FILES_ROOT . "images/" . $path . "/" . $file_name . ".png")) {
 
         $file_name = guid();
     }
@@ -253,7 +256,7 @@ function upload_image($pic, $path, $size){
             $handle->image_ratio_fill = true;
             $handle->image_x = $size['thumb']['image_x'];
             $handle->image_y = $size['thumb']['image_y'];
-            $handle->process('files'."/images/".$path . '/thumb');
+            $handle->process('files' . "/images/" . $path . '/thumb');
             $handle->image_ratio = true;
 
             $handle->file_new_name_body = $file_name;
@@ -266,7 +269,7 @@ function upload_image($pic, $path, $size){
 
             $handle->image_x = $size['medium']['image_x'];
             $handle->image_y = $size['medium']['image_y'];
-            $handle->process('files'."/images/".$path . '/medium');
+            $handle->process('files' . "/images/" . $path . '/medium');
 
             $handle->file_new_name_body = $file_name;
             $handle->mime_check = true;
@@ -279,7 +282,7 @@ function upload_image($pic, $path, $size){
 
             $handle->image_x = $size['large']['image_x'];
             $handle->image_y = $size['large']['image_y'];
-            $handle->process('files'."/images/".$path . '/large');
+            $handle->process('files' . "/images/" . $path . '/large');
             if ($handle->processed) {
 
                 $data['file_name'] = $file_name . ".png";
@@ -377,8 +380,9 @@ function check_required_fields($fields)
 }
 
 
-function arrayToTable($rows, $idName = 'data', $settings = array('keyNameAsHeadingTitle'=>true, 'trClassClass'=>'', 'cellClasses'=>'', 'sumTr'=>false)) {
-    $content ='';
+function arrayToTable($rows, $idName = 'data', $settings = array('keyNameAsHeadingTitle' => true, 'trClassClass' => '', 'cellClasses' => '', 'sumTr' => false))
+{
+    $content = '';
     if (is_array($rows) && count($rows)) {
         $maxCellCounter = 0;
         foreach ($rows as $row) {
@@ -479,21 +483,25 @@ function arrayToTable($rows, $idName = 'data', $settings = array('keyNameAsHeadi
         return $content;
     }
 }
+
 function getFullHost()
 {
-    $protocole = $_SERVER['REQUEST_SCHEME'].'://';
+    $protocole = $_SERVER['REQUEST_SCHEME'] . '://';
     $host = $_SERVER['HTTP_HOST'] . '/';
     $project = explode('/', $_SERVER['REQUEST_URI'])[1];
     return $protocole . $host . $project;
 }
-function getBaseDirectoryName(){
+
+function getBaseDirectoryName()
+{
     return explode('/', $_SERVER['REQUEST_URI'])[1];
 }
 
-function generatePIN($digits = 5){
+function generatePIN($digits = 5)
+{
     $i = 0; //counter
     $pin = ""; //our default pin is blank.
-    while($i < $digits){
+    while ($i < $digits) {
         //generate a random number between 0 and 9.
         $pin .= mt_rand(0, 9);
         $i++;
@@ -501,24 +509,23 @@ function generatePIN($digits = 5){
     return $pin;
 }
 
-function upload_file($file,$path,$allowed_files,&$msg)
+function upload_file($file, $path, $allowed_files, &$msg)
 {
+
     global $lang;
     global $FILES_ROOT;
 
-$fileSize = $file["size"] / 1024;
+    $fileSize = $file["size"] / 1024;
 //var_dump($file);
 //exit;
-if($file['type']=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    {
-        $fileExt=array(1=>'xlsx');
+    if ($file['type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        $fileExt = array(1 => 'xlsx');
 
-    }
-else
-$fileExt = explode('/', $file["type"]);
+    } else
+        $fileExt = explode('/', $file["type"]);
 
-$fileType = $file["type"];
-$fileTmpName = $file["tmp_name"];
+    $fileType = $file["type"];
+    $fileTmpName = $file["tmp_name"];
 
 
 //$allowed_files = array(
@@ -531,39 +538,30 @@ $fileTmpName = $file["tmp_name"];
 //    "application/xlsx",
 //);
 
-$newFileName = guid();
-$newFileName = $newFileName . '.' . $fileExt[1];
+    $newFileName = guid();
+    $newFileName = $newFileName . '.' . $fileExt[1];
 
-if (in_array($fileType, $allowed_files)) {
-    if ($fileSize <= 2000) {
+    if (in_array($fileType, $allowed_files)) {
+        if ($fileSize <= 2000) {
 
-        //File upload path
-        $uploadPath = $FILES_ROOT . $path.$newFileName;
+            //File upload path
+            $uploadPath =   $path . $newFileName;
 
-        //function for upload file
-        if(move_uploaded_file($fileTmpName, '../'.$uploadPath))
-        {
-            return $uploadPath;
+            //function for upload file
+            if (move_uploaded_file($fileTmpName, '../files/'.$uploadPath)) {
+
+                return $newFileName;
+            }
+
+        } else {
+            $msg = $lang['maximum_size'];
         }
 
     } else {
-        $msg=$lang['maximum_size'];
+        $msg = $lang['file_type'];
+
     }
 
-} else {
-    $msg=$lang['file_type'];
 
 }
 
-
-}
-
-
-
-
-
-
-
-
-
-?>
