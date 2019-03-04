@@ -49,7 +49,7 @@ if($_POST)
 ?>
 <div data-id="<?php echo $id?>" class="col-lg-4 col-md-6 mb-4 product-card">
     <div class="card ">
-        <a href="<?php echo $APP_ROOT . 'product-details/'.$id ?>"><img class="card-img-top" src="<?php echo $FILES_ROOT."images/products/large/". $pic; ?>" alt=""></a>
+        <a class="card-img-shadow card-link" href="<?php echo $APP_ROOT . 'product-details/'.$id ?>"><img class="card-img-top" src="<?php echo $FILES_ROOT."images/products/large/". $pic; ?>" alt=""></a>
         <div class="card-body text-center">
             <div class="card-title">
                 <a href="<?php echo $APP_ROOT . 'product-details?ID='.$id ?>"><h4 class="card-title-custom"><?php echo $name ?></h4></a>

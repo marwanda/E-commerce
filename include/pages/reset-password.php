@@ -1,12 +1,9 @@
 <?php
 
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] = '';
 
-if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
-
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['msg'] . '")';
-    echo '</script>';
-    $_SESSION['msg'] = '';
 }
 
 //var_dump($_SESSION);

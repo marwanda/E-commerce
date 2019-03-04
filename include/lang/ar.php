@@ -16,6 +16,8 @@ $lang= array(
     'no' => 'لا',
     'blocked-user' => 'عذراً, لقد تم حظرك من قبل المسؤول',
     'must_send_verification_code' => 'يجب الضغط على إرسال, لإرسال كود التفعيل(التحقق) أولاً!',
+    'there_is_no_internet_connection' => 'لا يوجد إتصال بالانترنت',
+
 
 
 

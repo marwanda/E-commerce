@@ -622,6 +622,12 @@ $(document).ready(function () {
 
     $('#total-price').text(lang.total + ' ' + $total + " " + lang.sp);
     $('#total-price-hidden').val($total);
+
+    // alert(2);
+
+
+
+
 })
 
 
@@ -744,6 +750,16 @@ $(document).on('click', '#cancel-cart', function (e) {
     e.preventDefault();
     $('#confirmation-modal').modal('hide');
 
+})
+
+$(document).ready(function () {
+    // alert(2)
+    if($('#error-msg').val()!=='')
+    {
+        $.notify($('#error-msg').val(), { position:"left bottom" });
+
+
+    }
 })
 
 

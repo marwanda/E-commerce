@@ -1,11 +1,25 @@
 <?php
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<script language="javascript">';
-    echo "alert('" . $_SESSION['error_msg'] . "')";
-    echo '</script>';
+    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
 
 }
+function is_connected()
+{
+    $connected = @fsockopen("www.google.com", 80);
+    //website, port  (try 80 or 443)
+    if ($connected) {
+        $is_conn = true; //action when connected
+        fclose($connected);
+    } else {
+        $is_conn = false; //action in connection failure
+    }
+    return $is_conn;
+}
+
+if (is_connected()) {
+    $xml = simplexml_load_file('https://www.zamanalwsl.net/news/rss/94/');
+} else $xml = null;
 
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
@@ -151,42 +165,39 @@ var_dump($_SESSION);
                 </a>
             </div>
             <?php
-            $i=0;
+            $i = 0;
             if ($result = mysqli_query($link, $query)) {
 
                 while ($row = mysqli_fetch_assoc($result)) {
-if($i<3)
-{
-    $i++;
-    $arr = array(
-        'id' => $row['id'],
-        'name' => $row['name'],
-        'price' => $row['price'],
-        'price_vip' => $row['price_vip'],
-        'pic' => $row['pic'],
-        'description_ar' => $row['description_ar'],
-        'description_en' => $row['description_en'],
-        'sub_id' => $row['subcategory_id'],
-        'sub_name_ar' => $row['sub_name_ar'],
-        'sub_name_en' => $row['sub_name_en'],
-        'sub_status' => $row['sub_status'],
-        'cat_id' => $row['category_id'],
-        'cat_name_ar' => $row['cat_name_ar'],
-        'cat_name_en' => $row['cat_name_en'],
-        'cat_status' => $row['cat_status'],
-        'quantity' => $row['quantity'],
-        'date' => $row['date'],
-        'status' => $row['status'],
-    );
+                    if ($i < 3) {
+                        $i++;
+                        $arr = array(
+                            'id' => $row['id'],
+                            'name' => $row['name'],
+                            'price' => $row['price'],
+                            'price_vip' => $row['price_vip'],
+                            'pic' => $row['pic'],
+                            'description_ar' => $row['description_ar'],
+                            'description_en' => $row['description_en'],
+                            'sub_id' => $row['subcategory_id'],
+                            'sub_name_ar' => $row['sub_name_ar'],
+                            'sub_name_en' => $row['sub_name_en'],
+                            'sub_status' => $row['sub_status'],
+                            'cat_id' => $row['category_id'],
+                            'cat_name_ar' => $row['cat_name_ar'],
+                            'cat_name_en' => $row['cat_name_en'],
+                            'cat_status' => $row['cat_status'],
+                            'quantity' => $row['quantity'],
+                            'date' => $row['date'],
+                            'status' => $row['status'],
+                        );
 
-    template('cards/product-card-home.php', $arr);
-}
-else
-    break;
+                        template('cards/product-card-home.php', $arr);
+                    } else
+                        break;
 
-}
-            }
-            else {
+                }
+            } else {
 
                 $_SESSION['error_msg'] = $lang['general_error'];
                 redirect('home');
@@ -214,11 +225,43 @@ else
                     <button class="btn btn-general btn-green" role="button"><?php echo $lang['watch_more'] ?></button>
                 </a>
             </div>
+            <?php
+            if ($xml != null) {
+                $i = 0;
 
+                foreach ($xml->channel->item as $itm) {
+                    if ($i < 3) {
+                        $i++; ?>
+                        <div data-id="<?php ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp news-card"
+                             data-wow-delay="0.6s">
+                            <div class="desc-comp-offer-cont custom-height" style="">
+                                <div class="thumbnail-blogs" >
+                                    <img src="<?php echo $itm->enclosure['url'] ?>" class="news-card-img" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <a href="<?php echo $itm->link; ?>"><h3
+                                                class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3>
+                                    </a>
+                                    <div dir="auto" class="desc news-card-text"><?php echo $itm->description ?></div>
+                                    <div class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else break; ?>
+
+
+                <?php }
+            } else {
+                ?>
+                <div><?php echo $lang['there_is_no_internet_connection'] ?></div>
+            <?php }
+            ?>
         </div>
     </div>
 </section>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
 
 
 <!--====================================================

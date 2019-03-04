@@ -1,10 +1,7 @@
 <?php
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<script language="javascript">';
-    echo "alert('".$_SESSION['error_msg']."')";
-    echo '</script>';
-    $_SESSION['error_msg']='';
-
+    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] = '';
 }
 ?>
 <div  class="container-fluid bg-light-gray">

@@ -1,7 +1,7 @@
 <?php
 function is_connected()
 {
-    $connected = @fsockopen("www.example.com", 80);
+    $connected = @fsockopen("www.google.com", 80);
     //website, port  (try 80 or 443)
     if ($connected){
         $is_conn = true; //action when connected
@@ -48,12 +48,12 @@ else
                 <div data-id="<?php ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp news-card"
                      data-wow-delay="0.6s">
                     <div class="desc-comp-offer-cont custom-height" style="">
-                        <div class="thumbnail-blogs" style="height:145px;">
-                            <img src="<?php echo $APP_ROOT . 'assets/img/news-image.jpg' ?>" class="news-card-img" alt="...">
+                        <div class="thumbnail-blogs" >
+                            <img src="<?php echo $itm->enclosure['url']?>" class="news-card-img" alt="...">
                         </div>
                         <div class="card-body">
                             <a href="<?php echo $itm->link; ?>"><h3 class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3></a>
-                            <p class="desc news-card-text"><?php echo $itm->description ?></p>
+                            <div dir="auto"  class="desc news-card-text"><?php echo $itm->description ?></div>
                             <div class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </div>

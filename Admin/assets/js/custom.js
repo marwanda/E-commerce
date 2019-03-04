@@ -779,3 +779,13 @@ $(document).ready(function () {
 
 
 })
+
+$(document).ready(function () {
+    // alert(2)
+    if($('#error-msg').val()!=='')
+    {
+        $.notify($('#error-msg').val(), { position:"left bottom" });
+
+
+    }
+})

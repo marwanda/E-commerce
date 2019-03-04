@@ -1,11 +1,9 @@
 <?php
 
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-
-    echo '<script language="javascript">';
-    echo "alert('" . $_SESSION['error_msg'] . "')";
-    echo '</script>';
+    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+
 }
 
 $link = mysqli_connect("localhost", "root", "", "itsource");
@@ -225,7 +223,7 @@ if (mysqli_connect_errno()) {
 <div class="row">
     <div class="col-7"><h2 class="mb-5">Subcategories Listing</h2></div>
     <div class="col-5">
-        <button id="add-subcategory" class="btn btn-info btn  ">Add</button>
+        <button id="add-subcategory" class="btn btn-info admin-add-btn">Add</button>
     </div>
 </div>
 <table style="width: 100% " id="datatable2" class="table table-hover mt-5 table-striped">
@@ -273,7 +271,7 @@ if (mysqli_connect_errno()) {
                 </td>
                 <td class="d-flex justify-content-center">
                     <button data-id="<?php echo $row['id']; ?>"
-                            class="btn btn-danger btn delete-subcategory"><i
+                            class="btn btn-blue btn delete-subcategory"><i
                             class="fa fa-trash-o  "
                             aria-hidden="true"></i></button>
                 </td>

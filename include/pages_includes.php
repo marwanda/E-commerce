@@ -26,6 +26,7 @@ $shared_css = array(
     $rtl
 );
 $shared_js = array(
+
     $ASSET_URL . "js/jquery/jquery.min.js",
     $ASSET_URL . "js/popper/popper.min.js",
     $ASSET_URL . "js/bootstrap/bootstrap.min.js",
@@ -38,7 +39,7 @@ $shared_js = array(
     $ASSET_URL . "js/jquery.lwtCountdown-1.0.js",
     $ASSET_URL . "js/range-slider.js",
     $ASSET_URL . "js/custom.js",
-    $ASSET_URL . "js/bootstrap-notify.js",
+    $ASSET_URL . "js/notify.min.js",
     $rtl_js,
 //    $rtl_js1
 );

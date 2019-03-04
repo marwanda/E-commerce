@@ -1,6 +1,6 @@
 <div data-id="<?php echo $id ?>" class="col-lg-4 col-md-6 mb-4 product-card">
     <div class="card ">
-        <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>" class="card-link"><img class="card-img-top product-card-img"
+        <a href="<?php echo $APP_ROOT . 'product-details/' . $id ?>" class="card-img-shadow card-link"><img class="card-img-top product-card-img"
                                                                           src="<?php echo $FILES_ROOT . "images/products/large/" . $pic; ?>"
                                                                           alt=""></a>
         <div class="card-body text-center">

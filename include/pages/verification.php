@@ -1,17 +1,14 @@
 <?php
-var_dump($_SESSION);
 //var_dump($_POST);exit;
 
 if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role']!=1)
     redirect('home');
 
 
-if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
+    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] = '';
 
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['msg'] . '")';
-    echo '</script>';
-    $_SESSION['msg'] = '';
 }
 
 //var_dump($_SESSION);
