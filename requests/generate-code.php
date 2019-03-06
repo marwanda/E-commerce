@@ -26,28 +26,28 @@ if ($result = mysqli_query($link, $query2)) {
 //            echo $lang['successfully_done'];
 //            exit;
     } else {
-        echo $lang['wrong_mobile'];
+        echo -2;
         exit;
     }
 } else {
-    echo $lang['general_error'];
+    echo -1;
     exit;
 }
 
 
 $query = "update user set code = {$code} where id = {$_SESSION['user_id_verification']}";
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
+    $_SESSION['error_msg'] = $lang['sql_problem'];
     $_SESSION['msg_type'] = -1;
 //    redirect('verification');
-    echo mysqli_connect_error();
+    echo -1;
     exit();
 }
 
 if (mysqli_query($link, $query) === TRUE) {
     /** todo send sms **/
 //    $_SESSION['msg'] = $lang['successfully_done'];
-    echo $lang['successfully_done'];
+    echo 1;
     mysqli_close($link);
     exit();
 }

@@ -1,4 +1,3 @@
-
 var siteURL = '/E-commerce-new/';
 var siteFilesURL = siteURL + 'files/'
 
@@ -370,7 +369,7 @@ $(document).on('submit', '#register-form-user', function (e) {
     if (!$submit_registration) {
         {
             if ($('#register-password-user').val() !== $('#register-re-password-user').val()) {
-                alert(lang.passwordsNotMatched);
+                $.notify(lang.passwordsNotMatched, {position: "left bottom", className: "warn"});
             } else {
                 $submit_registration = true;
                 $('#register-form-user').submit();
@@ -385,12 +384,12 @@ $(document).on('submit', '#register-form-user', function (e) {
 });
 
 $(document).on('click', '#submit-verification-code', function (e) {
+
     if ($('#mobile_number_verification').val() == '') {
         e.preventDefault()
-        alert(lang.enterMobile)
+        $.notify(lang.enterMobile, {position: "left bottom", className: "error"});
 
     }
-
 })
 
 if ($('#mobile_number_verification').val() != '')
@@ -401,7 +400,7 @@ $(document).on('click', '#send-verification-code', function (e) {
 
     if ($('#mobile_number_verification').val() == '') {
 
-        alert(lang.enterMobile)
+        $.notify(lang.enterMobile, {position: "left bottom", className: "error"});
     } else {
         $data = {mobile: $('#mobile_number_verification').val()};
         $.ajax({
@@ -409,10 +408,14 @@ $(document).on('click', '#send-verification-code', function (e) {
             url: "requests/generate-code.php",
             data: $data
         }).done(function (msg) {
-            alert(msg)
-            if (msg == 'Successfully done')
-
+            if (msg == 1) {
                 $('#verification-form').removeClass('hidden')
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+            } else if (msg == -2) {
+                $.notify(lang.wrongMobile, {position: "left bottom", className: "error"});
+            } else if (msg == -1) {
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
+            }
 
         });
     }

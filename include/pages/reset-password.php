@@ -150,7 +150,7 @@ if ($_POST) {
 
         <form id="verification-form" method="post" class="form-horizontal col-8 hidden ">
             <div class="form-group ">
-                <label class="col-lg-8 control-label text-left ">Verification code</label>
+                <label class="col-lg-8 control-label text- "><?php echo $lang['verification_code'] ?></label>
                 <div class="col-lg-8">
                     <input placeholder="<?php echo $lang['verification_code'] ?>" required class="form-control"
                            name="verification-code" type="number" value="">

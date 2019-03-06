@@ -15,6 +15,7 @@ var lang = {
     passwordsNotMatched:"Passwords are not matched",
     enterMobile:"Mobile number must be inserted",
     all:"All",
+    wrongMobile:'Wrong mobile number',
 
 
 

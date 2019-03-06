@@ -18,4 +18,5 @@ var lang = {
     pleaseChoose:"الرجاء الاختيار",
     canNotDeleteProduct:"لا يمكنك حذف هذا المنتج, يجب معالجة الطلب رقم: ",
 
+
 };
