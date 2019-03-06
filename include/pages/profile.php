@@ -1,7 +1,13 @@
 <?php
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
 
@@ -20,12 +26,11 @@ $path = '../';
 $query = "select * from user where id = {$_SESSION['user_id']}";
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
 }
+
 
 if ($result = mysqli_query($link, $query)) {
 
@@ -56,6 +61,7 @@ if ($result = mysqli_query($link, $query)) {
 else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     redirect('home');
     mysqli_close($link);
     exit();

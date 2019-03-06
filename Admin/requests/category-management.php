@@ -25,6 +25,8 @@ if (isset($_POST['submit-category'])) {
     if (mysqli_query($link, $query) === TRUE) {
 
         $_SESSION['error_msg'] = $lang['successfully_done'];
+        $_SESSION['msg_type'] = 1;
+
         mysqli_close($link);
         redirect('categories', $path);
         exit;
@@ -32,6 +34,8 @@ if (isset($_POST['submit-category'])) {
 
     } else {
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
+
         mysqli_close($link);
         redirect('categories', $path);
         exit();
@@ -63,6 +67,8 @@ if (isset($_POST['submit-category'])) {
     }
 } else {
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
+
     mysqli_close($link);
     redirect('categories', $path);
     exit();

@@ -18,8 +18,9 @@ if(is_connected())
 }
 else
 {
-    $_SESSION['error_msg']=$lang['general_error'];
-    redirect('home');
+    $_SESSION['error_msg']=$lang['there_is_no_internet_connection'];
+    $_SESSION['msg_type']=-1;
+        redirect('home');
 }
 
 

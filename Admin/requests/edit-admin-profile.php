@@ -13,7 +13,7 @@ mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
 
-$query = "update user set  name= {$sq}{$full_name}{$sq}, phone= {$sq}{$mobile}{$sq}, email = {$sq}{$email}{$sq}, gender = {$gender} , birthdate= {$sq}{$birthday}{$sq}, address= {$sq}{$address}{$sq}, role= 5 where id= {$_SESSION['admin_id']}";
+$query = "update user set  name= {$sq}{$full_name}{$sq}, phone= {$sq}{$mobile}{$sq}, email = {$sq}{$email}{$sq}, gender = {$gender} , birthdate= {$sq}{$birthday}{$sq}, address= {$sq}{$address}{$sq}, role= {$_SESSION['ad_role']} where id= {$_SESSION['admin_id']}";
 
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = mysqli_connect_error();
@@ -25,11 +25,15 @@ if (mysqli_connect_errno()) {
 if (mysqli_query($link, $query) === TRUE) {
     mysqli_close($link);
     $_SESSION['error_msg'] =$lang['successfully_done'];
+    $_SESSION['msg_type'] = 1;
+
     redirect('admin-profile', $path);
     exit;
 } else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
+
     mysqli_close($link);
     redirect('orders-list', $path);
     exit();

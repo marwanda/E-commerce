@@ -23,17 +23,20 @@ if ($current_password != null) {
             if (mysqli_query($link, $query) === TRUE) {
                 unset($_SESSION['change_password']);
                 $_SESSION['error_msg']=$lang['successfully_done'];
+                $_SESSION['msg_type'] = 1;
                 mysqli_close($link);
                 redirect('home',$path);
                 exit;
             } else {
                 $_SESSION['error_msg']=$lang['general_error'];
+                $_SESSION['msg_type'] = -1;
                 mysqli_close($link);
                 redirect('profile',$path);
                 exit;
             }
         } else {
             $_SESSION['error_msg']=$lang['passwords_not_matched'];
+            $_SESSION['msg_type'] = -1;
             mysqli_close($link);
             redirect('profile',$path);
             exit;
@@ -41,7 +44,8 @@ if ($current_password != null) {
         }
     }
     else {
-        $_SESSION['error_msg']=$lang['general_error'];
+        $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('profile',$path);
         exit;
@@ -53,11 +57,13 @@ else
     if (mysqli_query($link, $query) === TRUE) {
         unset($_SESSION['change_password']);
         $_SESSION['error_msg']=$lang['successfully_done'];
+        $_SESSION['msg_type'] = 1;
         mysqli_close($link);
         redirect('home',$path);
         exit;
     } else {
-        $_SESSION['error_msg']=$lang['general_error'];
+        $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('profile',$path);
         exit;

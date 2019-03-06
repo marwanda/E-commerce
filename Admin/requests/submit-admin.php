@@ -28,13 +28,15 @@ if (mysqli_query($link, $query) === TRUE) {
     $last_id = mysqli_insert_id($link);
     mysqli_close($link);
     $_SESSION['error_msg'] =$lang['successfully_done'];
-    redirect('orders-list',$path);
+    $_SESSION['msg_type'] = 1;
+    redirect('admins-list',$path);
     exit;
 }
 
 else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('orders-list',$path);
     exit();

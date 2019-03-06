@@ -1,3 +1,4 @@
+
 var siteURL = '/E-commerce-new/';
 var siteFilesURL = siteURL + 'files/'
 
@@ -345,7 +346,7 @@ $(document).on('submit', '#change-password-form', function (e) {
     if (!$submit_change_password) {
         {
             if ($('#new-password').val() !== $('#re-password').val()) {
-                alert(lang.passwordsNotMatched);
+                $.notify(lang.passwordsNotMatched, {position: "left bottom", className: "warn"});
             } else {
                 $submit_change_password = true;
                 $('#change-password-form').submit();
@@ -392,7 +393,7 @@ $(document).on('click', '#submit-verification-code', function (e) {
 
 })
 
-if($('#mobile_number_verification').val()!='')
+if ($('#mobile_number_verification').val() != '')
     $('#verification-form').removeClass('hidden')
 
 $(document).on('click', '#send-verification-code', function (e) {
@@ -409,7 +410,7 @@ $(document).on('click', '#send-verification-code', function (e) {
             data: $data
         }).done(function (msg) {
             alert(msg)
-            if(msg=='Successfully done')
+            if (msg == 'Successfully done')
 
                 $('#verification-form').removeClass('hidden')
 
@@ -442,16 +443,16 @@ $(document).on('click', '.add-to-cart', function (e) {
     }).done(function (msg) {
 
         if (msg == 1) {
-            alert(lang.successfully_done)
+            $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
         } else if (msg == 2) {
-            alert(lang.already_added)
+            $.notify(lang.already_added, {position: "left bottom", className: "warn"});
         } else if (msg == 3) {
-            alert(lang.pending_order)
+            $.notify(lang.pending_order, {position: "left bottom", className: "warn"});
         } else if (msg == -1) {
-            alert(lang.general_error)
+            $.notify(lang.general_error, {position: "left bottom", className: "error"});
         } else
-            // alert(msg)
-            alert(lang.general_error)
+        // alert(msg)
+            $.notify(lang.general_error, {position: "left bottom", className: "error"});
     });
 
 })
@@ -599,11 +600,12 @@ $(document).on('click', '.refresh-cart', function () {
     }).done(function (msg) {
         $new_price = $price * $quantity;
         if (msg == 1) {
-            alert(lang.successfully_done)
+            $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
         } else if (msg == -1)
-            alert(lang.general_error)
+            $.notify(lang.general_error, {position: "left bottom", className: "error"});
         else
-            alert(msg)
+            $.notify(lang.general_error, {position: "left bottom", className: "error"});
+
     })
 
 
@@ -624,8 +626,6 @@ $(document).ready(function () {
     $('#total-price-hidden').val($total);
 
     // alert(2);
-
-
 
 
 })
@@ -679,7 +679,8 @@ $(document).on('click', '.delete-cart', function () {
 
             })
         } else {
-            alert(lang.general_error)
+
+            $.notify(lang.general_error, {position: "left bottom", className: "error"});
         }
 
 
@@ -732,12 +733,11 @@ $(document).on('click', '#submit-cart', function (e) {
         }
     }).done(function (msg) {
 
-
         $('#cart-note').val('');
-        if (msg == -1)
-            alert(lang.general_error)
-        else
-            console.log(msg)
+        // if (msg == 1)
+        //     $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+        // else
+        //     $.notify(lang.general_error, {position: "left bottom", className: "error"});
 
         window.location.href = siteURL + 'cart';
 
@@ -753,10 +753,9 @@ $(document).on('click', '#cancel-cart', function (e) {
 })
 
 $(document).ready(function () {
-    // alert(2)
-    if($('#error-msg').val()!=='')
-    {
-        $.notify($('#error-msg').val(), { position:"left bottom" });
+
+    if ($('#error-msg').val() !== '') {
+        $.notify($('#error-msg').val(), {position: "left bottom", className: $('#error-msg').data('type')});
 
 
     }

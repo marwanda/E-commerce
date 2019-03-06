@@ -21,6 +21,9 @@ $lang = array(
     'blocked-user' => 'Sorry, you have been blocked by the admin',
     'must_send_verification_code' => 'You have to click on send, to send verification code sms',
     'there_is_no_internet_connection' => 'There is no Internet connection',
+    'no_content' => 'There is no content currently',
+    'sql_problem' => 'Sorry, there is a connection problem',
+
 
 
 

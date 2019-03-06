@@ -13,6 +13,7 @@ unset($_SESSION['admin_id']);
 unset($_SESSION['ad_role']);
 unset($_SESSION['admin_name']);
 unset($_SESSION['error_msg']);
+unset($_SESSION['change_password_admin']);
 
 //var_dump($_SESSION);
     redirect('login',$path);

@@ -5,11 +5,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role']
     redirect('home');
 
 
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 //var_dump($_SESSION);
 if ($_POST) {
@@ -21,19 +28,12 @@ if ($_POST) {
     $query2 = "update user set role = 2 where id = {$_SESSION['user_id']}";
 //    var_dump($query);exit;
 
-
     if (mysqli_connect_errno()) {
-
-        $_SESSION['msg'] = mysqli_connect_error();
-        mysqli_close($link);
-        echo '<script language="javascript">';
-        echo 'alert("' . $_SESSION['msg'] . '")';
-        echo '</script>';
-        $_SESSION['msg'] = '';
-        redirect('verification');
-        exit;
-
+        $_SESSION['error_msg'] = $lang['sql_problem'];
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+        $_SESSION['error_msg'] ='';
     }
+
     if ($result = mysqli_query($link, $query)) {
 //        var_dump($_POST);exit;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -56,17 +56,16 @@ if ($_POST) {
 
         }
 
-        $_SESSION['msg'] = $lang['wrong_code'];
-        echo '<script language="javascript">';
-        echo 'alert("' . $_SESSION['msg'] . '")';
-        echo '</script>';
-        $_SESSION['msg'] = '';
+        $_SESSION['error_msg'] = $lang['wrong_code'];
+        $_SESSION['msg_type'] = -1;
+        redirect('verification');
         mysqli_close($link);
-
+        exit;
 
     } else {
 
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('home');
 

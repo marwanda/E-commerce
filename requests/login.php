@@ -12,7 +12,8 @@ $query = "select * from user where phone = {$sq}{$mobile}{$sq} and password = {$
 
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('home', $path);
     exit();
@@ -96,6 +97,7 @@ if ($result = mysqli_query($link, $query)) {
             } else {
 
                 $_SESSION['error_msg'] = $lang['general_error'];
+                $_SESSION['msg_type'] = -1;
                 mysqli_close($link);
                 redirect('home', $path);
                 exit();
@@ -105,6 +107,7 @@ if ($result = mysqli_query($link, $query)) {
 
     } else {
         $_SESSION['error_msg'] = $lang['wrong_login_info'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('home', $path);
         exit();
@@ -113,6 +116,7 @@ if ($result = mysqli_query($link, $query)) {
 } else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('home', $path);
     exit();

@@ -97,9 +97,10 @@ $(document).ready(function () {
                     $(this).remove();
 
                 })
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             } else {
-                alert(msg)
+                // alert(msg)
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
             }
 
         })
@@ -127,7 +128,7 @@ $(document).ready(function () {
             }
         }).done(function (msg) {
             if (msg == -1) {
-                alert(lang.general_error);
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
             } else {
                 $('#cart-table').empty();
                 $total = 0;
@@ -203,10 +204,11 @@ $(document).ready(function () {
                     $(this).remove();
 
                 })
-                alert(lang.successfully_done)
-            } else {
-                alert(lang.general_error)
-            }
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+            } else if(msg==-1) {
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
+            }else
+                $.notify(lang.canNotDeleteProduct+' '+msg, {position: "left bottom", className: "error"});
 
         })
 
@@ -231,9 +233,9 @@ $(document).ready(function () {
         }).done(function (msg) {
 
             if (msg == 1)
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             else
-                alert(lang.general_error)
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
 
 
         })
@@ -309,11 +311,9 @@ $(document).ready(function () {
 // alert(msg)
             if (msg == 1)
 
-                alert(lang.successfully_done)
-
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             else
-                alert(lang.general_error);
-
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
         })
 
     })
@@ -358,9 +358,9 @@ $(document).ready(function () {
         }).done(function (msg) {
 
             if (msg == 1)
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             else
-                alert(lang.general_error)
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
 
 
         })
@@ -401,9 +401,9 @@ $(document).ready(function () {
                     $(this).remove();
 
                 })
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             } else {
-                alert(lang.general_error)
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
             }
 
         })
@@ -453,10 +453,9 @@ $(document).ready(function () {
         }).done(function (msg) {
 
             if (msg == 1)
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             else
-                alert(lang.general_error)
-
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
 
         })
     })
@@ -492,9 +491,10 @@ $(document).ready(function () {
                     $(this).remove();
 
                 })
-                alert(lang.successfully_done)
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+
             } else {
-                alert(lang.general_error)
+                $.notify(lang.general_error, {position: "left bottom", className: "error"});
             }
 
         })
@@ -651,8 +651,8 @@ $(document).ready(function () {
                 data: {}
             }).done(function (msg) {
                 if (msg == -1)
-                    alert(lang.general_error)
-                else{
+                    $.notify(lang.general_error, {position: "left bottom", className: "error"});
+                else {
 
                     jQuery(JSON.parse(msg)).each(function (i, item) {
 
@@ -711,12 +711,10 @@ $(document).ready(function () {
                 data: {cat_id: $('#category-select').val()}
             }).done(function (msg) {
 
-                if(msg==-1)
-                {
-                    alert(lang.general_error)
-                }
-                else
-                {
+                if (msg == -1) {
+                    $.notify(lang.general_error, {position: "left bottom", className: "error"});
+
+                } else {
                     jQuery(JSON.parse(msg)).each(function (i, item) {
                         $('#subcategory-select').append('<option value="' + item.id + '">' + item.name + '</option>');
                         $('#subcategory-select').selectpicker('refresh');
@@ -731,7 +729,6 @@ $(document).ready(function () {
     })
 
 
-
     //register for admin
 
     var $submit_admin = false;
@@ -741,7 +738,7 @@ $(document).ready(function () {
         if (!$submit_admin) {
             {
                 if ($('#password').val() !== $('#re-password').val()) {
-                    alert(lang.passwordsNotMatched);
+                    $.notify(lang.passwordsNotMatched, {position: "left bottom", className: "warn"});
                 } else {
                     $submit_admin = true;
                     $('#submit-admin').submit();
@@ -781,10 +778,9 @@ $(document).ready(function () {
 })
 
 $(document).ready(function () {
-    // alert(2)
-    if($('#error-msg').val()!=='')
-    {
-        $.notify($('#error-msg').val(), { position:"left bottom" });
+
+    if ($('#error-msg').val() !== '') {
+        $.notify($('#error-msg').val(), {position: "left bottom", className: $('#error-msg').data('type')});
 
 
     }

@@ -38,8 +38,9 @@ $shared_js = array(
     $ASSET_URL . "js/scrolling-nav.js",
     $ASSET_URL . "js/jquery.lwtCountdown-1.0.js",
     $ASSET_URL . "js/range-slider.js",
-    $ASSET_URL . "js/custom.js",
     $ASSET_URL . "js/notify.min.js",
+    $ASSET_URL . "js/custom.js",
+
     $rtl_js,
 //    $rtl_js1
 );

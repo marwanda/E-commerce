@@ -37,7 +37,8 @@ if ($result = mysqli_query($link, $query2)) {
 
 $query = "update user set code = {$code} where id = {$_SESSION['user_id_verification']}";
 if (mysqli_connect_errno()) {
-    $_SESSION['msg'] = mysqli_connect_error();
+    $_SESSION['error_msg'] = mysqli_connect_error();
+    $_SESSION['msg_type'] = -1;
 //    redirect('verification');
     echo mysqli_connect_error();
     exit();

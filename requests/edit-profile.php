@@ -22,7 +22,8 @@ else
 $query = "update user set  name= {$sq}{$full_name}{$sq}, phone= {$sq}{$mobile}{$sq}, email = {$sq}{$email}{$sq}, gender = {$gender} , birthdate= {$sq}{$birthday}{$sq}, address= {$sq}{$address}{$sq}, role= {$role} where id= {$_SESSION['user_id']}";
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('profile', $path);
     exit;
@@ -38,6 +39,7 @@ if (mysqli_query($link, $query) === TRUE) {
 } else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('home', $path);
     exit();

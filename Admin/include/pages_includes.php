@@ -38,6 +38,7 @@ $shared_js = array(
     $ASSET_URL."js/jquery.validate.min.js",
     $ASSET_URL."js/chart.min.js",
     $ASSET_URL."js/front.js",
+    $ASSET_URL . "js/notify.min.js",
     $ASSET_URL."js/custom.js",
     $rtl_js,
 //    $rtl_js1

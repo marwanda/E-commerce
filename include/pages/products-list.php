@@ -1,10 +1,17 @@
 <?php
 
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 //$phone='';
 //$name='';
@@ -21,12 +28,11 @@ $path = '../';
 $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where s.status=1 and c.status=1 order by date desc";
 //
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
 }
+
 
 //
 //
@@ -127,34 +133,44 @@ if (mysqli_connect_errno()) {
                 <div id="products_container" class="row">
                     <?php
                     if ($result = mysqli_query($link, $query)) {
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        $count = mysqli_num_rows($result);
+                        if($count>0)
+                        {
+                            while ($row = mysqli_fetch_assoc($result)) {
 
-                            $arr = array(
-                                'id' => $row['id'],
-                                'name' => $row['name'],
-                                'price' => $row['price'],
-                                'price_vip' => $row['price_vip'],
-                                'pic' => $row['pic'],
-                                'description_ar' => $row['description_ar'],
-                                'description_en' => $row['description_en'],
-                                'sub_id' => $row['subcategory_id'],
-                                'sub_name_ar' => $row['sub_name_ar'],
-                                'sub_name_en' => $row['sub_name_en'],
-                                'sub_status' => $row['sub_status'],
-                                'cat_id' => $row['category_id'],
-                                'cat_name_ar' => $row['cat_name_ar'],
-                                'cat_name_en' => $row['cat_name_en'],
-                                'cat_status' => $row['cat_status'],
-                                'quantity' => $row['quantity'],
-                                'date' => $row['date'],
-                                'status' => $row['status'],
-                            );
+                                $arr = array(
+                                    'id' => $row['id'],
+                                    'name' => $row['name'],
+                                    'price' => $row['price'],
+                                    'price_vip' => $row['price_vip'],
+                                    'pic' => $row['pic'],
+                                    'description_ar' => $row['description_ar'],
+                                    'description_en' => $row['description_en'],
+                                    'sub_id' => $row['subcategory_id'],
+                                    'sub_name_ar' => $row['sub_name_ar'],
+                                    'sub_name_en' => $row['sub_name_en'],
+                                    'sub_status' => $row['sub_status'],
+                                    'cat_id' => $row['category_id'],
+                                    'cat_name_ar' => $row['cat_name_ar'],
+                                    'cat_name_en' => $row['cat_name_en'],
+                                    'cat_status' => $row['cat_status'],
+                                    'quantity' => $row['quantity'],
+                                    'date' => $row['date'],
+                                    'status' => $row['status'],
+                                );
 
-                            template('cards/product-card.php', $arr);
+                                template('cards/product-card.php', $arr);
+                            }
                         }
+                        else
+                        {
+                            echo '<div>'.$lang['no_content'].'</div>';
+                        }
+
                     } else {
 
                         $_SESSION['error_msg'] = $lang['general_error'];
+                        $_SESSION['msg_type'] = -1;
                         redirect('home');
                         mysqli_close($link);
                         exit();

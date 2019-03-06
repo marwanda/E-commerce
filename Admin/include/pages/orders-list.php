@@ -1,9 +1,16 @@
 <?php
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
@@ -13,11 +20,9 @@ $query = "select o.id, o.user_id, u.name, u.phone, o.status, o.date, o.total, o.
 
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
 }
 ?>
 <div id="cart-modal" class="modal fade" role="dialog">
@@ -63,7 +68,7 @@ if (mysqli_connect_errno()) {
                 <h4 class="modal-title">User Notes</h4>
             </div>
             <div class="modal-body">
-                <textarea class="form-control" id="note-text"></textarea>
+                <textarea disabled class="form-control" id="note-text"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info btn" data-dismiss="modal">Close</button>
@@ -186,10 +191,11 @@ if (mysqli_connect_errno()) {
                     <?php
                 }
             } else {
-                echo '<script language="javascript">';
-                echo "alert('" . $lang['general_error'] . "')";
-                echo '</script>';
+                $_SESSION['error_msg']=$lang['sql_problem'];
+                $_SESSION['msg_type']=-1;
+                redirect('orders-list');
                 mysqli_close($link);
+                exit();
 
             }
             ?>

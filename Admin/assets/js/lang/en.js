@@ -16,6 +16,8 @@ var lang = {
     enterMobile:"Mobile number must be inserted",
     all:"All",
     pleaseChoose:"Please choose",
+    canNotDeleteProduct:"You can not delete this product, you have to process order: ",
+
 
 
 

@@ -1,10 +1,17 @@
 <?php
 
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 $sq = "'";
 $path = '../';
@@ -12,6 +19,11 @@ $id = isset($_GET['id']) ? make_safe($_GET['id']) : null;
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
 
+if (mysqli_connect_errno()) {
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
+}
 if ($id) {
 
     $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where p.id= {$id} order by date desc";
@@ -74,30 +86,35 @@ if (isset($_POST['edit-product'])) {
 
     if ($picture['error'] != 4 && in_array($picture['type'], $allowed_files) == false) {
         $_SESSION['error_msg'] = $lang['only_image'];
+        $_SESSION['msg_type'] = -1;
         redirect('products-list', $path);
         exit;
     }
     if ($picture1['error'] != 4 && in_array($picture1['type'], $allowed_files) == false) {
 
         $_SESSION['error_msg'] = $lang['only_image'];
+        $_SESSION['msg_type'] = -1;
         redirect('products-list', $path);
         exit;
     }
     if ($picture2['error'] != 4 && in_array($picture2['type'], $allowed_files) == false) {
 
         $_SESSION['error_msg'] = $lang['only_image'];
+        $_SESSION['msg_type'] = -1;
         redirect('products-list', $path);
         exit;
     }
     if ($picture3['error'] != 4 && in_array($picture3['type'], $allowed_files) == false) {
 
         $_SESSION['error_msg'] = $lang['only_image'];
+        $_SESSION['msg_type'] = -1;
         redirect('products-list', $path);
         exit;
     }
     if ($picture4['error'] != 4 && in_array($picture4['type'], $allowed_files) == false) {
 
         $_SESSION['error_msg'] = $lang['only_image'];
+        $_SESSION['msg_type'] = -1;
         redirect('products-list', $path);
         exit;
     }
@@ -123,11 +140,13 @@ if (isset($_POST['edit-product'])) {
 
                 if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                     $_SESSION['error_msg'] = $lang['successfully_done'];
+                    $_SESSION['msg_type'] = 1;
                 }
 
             } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
+                $_SESSION['msg_type'] = -1;
             }
         }
         if ($picture2['error'] != 4) {
@@ -140,11 +159,13 @@ if (isset($_POST['edit-product'])) {
 
                 if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                     $_SESSION['error_msg'] = $lang['successfully_done'];
+                    $_SESSION['msg_type'] = 1;
                 }
 
             } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
+                $_SESSION['msg_type'] = -1;
             }
         }
 
@@ -158,11 +179,13 @@ if (isset($_POST['edit-product'])) {
 
                 if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                     $_SESSION['error_msg'] = $lang['successfully_done'];
+                    $_SESSION['msg_type'] = 1;
                 }
 
             } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
+                $_SESSION['msg_type'] = -1;
             }
         }
 
@@ -176,11 +199,13 @@ if (isset($_POST['edit-product'])) {
 
                 if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                     $_SESSION['error_msg'] = $lang['successfully_done'];
+                    $_SESSION['msg_type'] = 1;
                 }
 
             } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
+                $_SESSION['msg_type'] = -1;
             }
         }
 
@@ -191,6 +216,7 @@ if (isset($_POST['edit-product'])) {
 
     } else {
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('product-form', $path);
         exit();

@@ -2,11 +2,18 @@
 
 
 
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
@@ -16,11 +23,9 @@ $query = "select * from user where role = 5 || role=7";
 
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
 }
 ?>
 
@@ -68,8 +73,9 @@ if (mysqli_connect_errno()) {
             <?php
 
             if ($result = mysqli_query($link, $query)) {
-                while ($row = mysqli_fetch_assoc($result)) {
 
+
+                while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr class="order-row" id="order-<?php echo $row['id']; ?>">
                         <td class=""><?php echo $row['id']; ?></td>
@@ -77,19 +83,22 @@ if (mysqli_connect_errno()) {
                         <td class=""><?php echo $row['job']; ?></td>
                         <td class=""><?php echo $row['phone']; ?></td>
                         <td class=""><?php echo $row['email']; ?></td>
-                        <td class=""><?php if ($row['gender']==0) echo 'Male'; else echo 'Female'; ?></td>
+                        <td class=""><?php if ($row['gender'] == 0) echo 'Male'; else echo 'Female'; ?></td>
                         <td class=""><?php echo $row['birthdate']; ?></td>
                         <td class=""><?php echo $row['address']; ?></td>
 
                         <td class="table-width-3">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-info <?php echo isset($row['role'])&& $row['role']==5? 'active':'' ?>  ">
-                                    <input <?php echo isset($row['role'])&& $row['role']==5 ? 'checked':'' ?> data-id="<?php echo $row['id']; ?>" type="radio" name="options"
-                                                                                                             class="active-admin" autocomplete="off"> Active
+                                <label class="btn btn-info <?php echo isset($row['role']) && $row['role'] == 5 ? 'active' : '' ?>  ">
+                                    <input <?php echo isset($row['role']) && $row['role'] == 5 ? 'checked' : '' ?>
+                                            data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                            class="active-admin" autocomplete="off"> Active
                                 </label>
-                                <label class="btn btn-info btn <?php echo isset($row['role'])&& $row['role']==7? 'active':'' ?> ">
-                                    <input <?php echo isset($row['role'])&& $row['role']==7? 'checked':'' ?>   data-id="<?php echo $row['id']; ?>" type="radio" name="options" class="block-admin"
-                                                                                                               autocomplete="off"> Blocked
+                                <label class="btn btn-info btn <?php echo isset($row['role']) && $row['role'] == 7 ? 'active' : '' ?> ">
+                                    <input <?php echo isset($row['role']) && $row['role'] == 7 ? 'checked' : '' ?>
+                                            data-id="<?php echo $row['id']; ?>" type="radio" name="options"
+                                            class="block-admin"
+                                            autocomplete="off"> Blocked
                                 </label>
                             </div>
                         </td>
@@ -98,10 +107,11 @@ if (mysqli_connect_errno()) {
                 }
 
             } else {
-                echo '<script language="javascript">';
-                echo "alert('" . $lang['general_error'] . "')";
-                echo '</script>';
+                $_SESSION['error_msg']=$lang['sql_problem'];
+                $_SESSION['msg_type']=-1;
+                redirect('orders-list');
                 mysqli_close($link);
+                exit();
 
             }
             ?>

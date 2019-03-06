@@ -11,7 +11,8 @@ if (isset($_POST)) {
     $query = "select * from category";
 
     if (mysqli_connect_errno()) {
-        $_SESSION['error_msg'] = mysqli_connect_error();
+        $_SESSION['error_msg'] = $lang['sql_problem'];
+        $_SESSION['msg_type'] = -1;
 
     }
 
@@ -50,6 +51,7 @@ if (isset($_POST)) {
     else {
 
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         redirect('home');
         mysqli_close($link);
         exit();

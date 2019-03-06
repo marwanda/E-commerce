@@ -1,9 +1,16 @@
 <?php
-if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg'])) {
-    echo '<input id="error-msg" type="hidden" value="'.$_SESSION['error_msg'].'">';
+if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
+    if($_SESSION['msg_type']==1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else if($_SESSION['msg_type']==-1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    else
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
     $_SESSION['error_msg'] = '';
+    $_SESSION['msg_type'] = '';
 
 }
+
 
 
 //$phone='';
@@ -18,13 +25,10 @@ mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
 $query = "select * from user where id = {$_SESSION['admin_id']}";
-
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    $_SESSION['error_msg'] ='';
 }
 
 if ($result = mysqli_query($link, $query)) {
@@ -55,11 +59,12 @@ if ($result = mysqli_query($link, $query)) {
 
 else {
 
-    $_SESSION['error_msg'] = $lang['general_error'];
-    redirect('home');
+
+    $_SESSION['error_msg']=$lang['sql_problem'];
+    $_SESSION['msg_type']=-1;
+    redirect('orders-list');
     mysqli_close($link);
     exit();
-
 }
 
 
@@ -126,17 +131,17 @@ else {
 
             <div class="service-h-tab">
                 <nav class="nav nav-tabs" id="myTab" role="tablist">
-                    <a class="nav-item nav-link btn btn-general btn-blue mr-2 <?php if (!isset($_SESSION['change_password'])) { ?>
+                    <a class="nav-item nav-link btn btn-general btn-blue mr-2 <?php if (!isset($_SESSION['change_password_admin'])) { ?>
                         active
                         <?php } ?> " id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                        role="tab" aria-controls="nav-profile">Profile</a>
-                    <a class="nav-item nav-link btn btn-general btn-blue mr-2 <?php if (isset($_SESSION['change_password']) && $_SESSION['change_password'] == 1) { ?>
+                    <a class="nav-item nav-link btn btn-general btn-blue mr-2 <?php if (isset($_SESSION['change_password_admin']) && $_SESSION['change_password_admin'] == 1) { ?>
                         active
                         <?php } ?>  " id="nav-password-tab" data-toggle="tab" href="#nav-password"
                        role="tab" aria-controls="nav-password">Change Password</a>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade <?php if (!isset($_SESSION['change_password'])) { ?>
+                    <div class="tab-pane fade <?php if (!isset($_SESSION['change_password_admin'])) { ?>
                     show active  <?php } ?>" id="nav-profile" role="tabpanel"
                          aria-labelledby="nav-profile-tab">
                         <form id="" action="requests/edit-admin-profile.php" method="post"
@@ -210,7 +215,7 @@ else {
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade <?php if (isset($_SESSION['change_password']) && $_SESSION['change_password'] == 1) { ?>
+                    <div class="tab-pane fade <?php if (isset($_SESSION['change_password_admin']) && $_SESSION['change_password_admin'] == 1) { ?>
                         show active
                         <?php } ?> " id="nav-password" role="tabpanel"
                          aria-labelledby="nav-password-tab">

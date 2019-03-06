@@ -10,7 +10,8 @@ $cat_id=make_safe($_POST['cat_id']);
     $query = "select * from subcategory where category_id = {$cat_id}";
 
     if (mysqli_connect_errno()) {
-        $_SESSION['error_msg'] = mysqli_connect_error();
+        $_SESSION['error_msg'] = $lang['sql_problem'];
+        $_SESSION['msg_type'] = -1;
 
     }
 
@@ -55,6 +56,7 @@ $cat_id=make_safe($_POST['cat_id']);
 
     else {
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         redirect('home');
         mysqli_close($link);
         exit();

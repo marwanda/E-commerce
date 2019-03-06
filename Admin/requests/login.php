@@ -60,6 +60,8 @@ if ($result = mysqli_query($link, $query)) {
     }
     else {
         $_SESSION['error_msg'] = $lang['wrong_login_info'];
+        $_SESSION['msg_type'] = -1;
+
         mysqli_close($link);
         redirect('login', $path);
         exit();
@@ -71,6 +73,7 @@ if ($result = mysqli_query($link, $query)) {
 else{
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('login', $path);
     exit();

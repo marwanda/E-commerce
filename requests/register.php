@@ -18,7 +18,8 @@ $path = '../';
 $query = "INSERT INTO user ( name, password, email, phone, address, gender, birthdate, role, failed_orders, resolved_orders) VALUES ( {$sq}{$full_name}{$sq}, {$sq}{$password}{$sq}, {$sq}{$email}{$sq}, {$sq}{$mobile}{$sq}, {$sq}{$address}{$sq}, {$sq}{$gender}{$sq}, {$sq}{$birthday}{$sq}, 1,0,0)";
 
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('register',$path);
     exit;
@@ -36,6 +37,7 @@ if (mysqli_query($link, $query) === TRUE) {
 else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
     redirect('home',$path);
     exit();

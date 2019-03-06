@@ -50,7 +50,8 @@ if (isset($_POST)) {
     else {
 
         $_SESSION['error_msg'] = $lang['general_error'];
-        redirect('home');
+        $_SESSION['msg_type'] = -1;
+        redirect('orders-list');
         mysqli_close($link);
         exit();
 

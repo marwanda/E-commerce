@@ -71,6 +71,8 @@ if ($_POST) {
 
     } else {
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
+
         redirect('home', $path);
         mysqli_close($link);
         exit();

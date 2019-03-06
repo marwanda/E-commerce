@@ -34,7 +34,7 @@ if ($_POST) {
 
 
 <form action="" method="post" enctype="multipart/form-data">
-    <label>Pic:</label><input type="file" name="picture" accept="image/*">
+    <label>Pic:</label><input type="file" name="picture" accept="a">
     <input type="submit" name="file" value="ok">
 </form>
 

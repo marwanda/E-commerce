@@ -292,7 +292,7 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST
     }
     //store total
     $date = date('Y-m-d', time());
-    if (isset($_POST['note']) && !empty($_POST['note'])) {
+    if (isset($_POST['note'])) {
         $note = make_safe($_POST['note']);
         $query = "update itsource.order set note = {$sq}{$note}{$sq}, total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
 
@@ -300,13 +300,18 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST
         $query = "update itsource.order set total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
     if (mysqli_query($link, $query) === TRUE) {
       $_SESSION['error_msg']=$lang['successfully_done'];
+      $_SESSION['msg_type']=1;
+      echo 1;
       exit;
     } else {
+        $_SESSION['error_msg']=$lang['general_error'];
+        $_SESSION['msg_type']=-1;
         echo -1;
         exit;
     }
 } else {
-
+    $_SESSION['error_msg']=$lang['general_error'];
+    $_SESSION['msg_type']=-1;
     echo -1;
     exit();
 }

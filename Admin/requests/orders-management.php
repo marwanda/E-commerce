@@ -55,7 +55,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'change-status' && isset($_PO
     }
 
 
+    }else{
+        echo -1;
+        exit;
     }
+
 
 
 } else if (isset($_POST['action']) && $_POST['action'] == 'get-cart' && isset($_POST['order_id'])) {

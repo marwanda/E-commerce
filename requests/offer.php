@@ -10,12 +10,14 @@ $allowed_files = array(
     "application/pdf",
     "application/doc",
     "application/docx",
+    "application/octet-stream",
     "application/txt",
     "application/msword",
     "application/xlsx",
     "image/png",
     "image/jpeg",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 );
 //var_dump($file);
 //exit;
@@ -24,6 +26,7 @@ $result = upload_file($file, 'documents/offers/', $allowed_files, $msg);
 
 if ($msg != '') {
     $_SESSION['error_msg'] = $msg;
+    $_SESSION['msg_type'] = 2;
     redirect('offer-form', $path);
 } else {
 
@@ -37,7 +40,8 @@ if ($msg != '') {
 
 
     if (mysqli_connect_errno()) {
-        $_SESSION['error_msg'] = mysqli_connect_error();
+        $_SESSION['error_msg'] = $lang['sql_problem'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('offer-form', $path);
         exit;
@@ -46,11 +50,13 @@ if ($msg != '') {
     if (mysqli_query($link, $query) === TRUE) {
         mysqli_close($link);
         $_SESSION['error_msg']=$lang['successfully_done'];
+        $_SESSION['msg_type'] = 1;
         redirect('home', $path);
         exit;
     } else {
 
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
         redirect('home', $path);
         exit();

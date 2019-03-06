@@ -9,11 +9,10 @@ $query2 = "SELECT * FROM itsource.gallary where product_id= {$id}";
 $arr2=array();
 //
 if (mysqli_connect_errno()) {
-    $_SESSION['error_msg'] = mysqli_connect_error();
-    echo '<script language="javascript">';
-    echo 'alert("' . $_SESSION['error_msg'] . '")';
-    echo '</script>';
-    $_SESSION['error_msg'] = '';
+    $_SESSION['error_msg'] = $lang['sql_problem'];
+    $_SESSION['msg_type'] = -1;
+    redirect('home',$path);
+
 }
 
 else
@@ -53,6 +52,7 @@ else
     else {
 
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         redirect('home');
         mysqli_close($link);
         exit();

@@ -521,7 +521,17 @@ function upload_file($file, $path, $allowed_files, &$msg)
     if ($file['type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         $fileExt = array(1 => 'xlsx');
 
-    } else
+    }
+    if ($file['type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        $fileExt = array(1 => 'docx');
+
+    }
+    if ($file['type'] == 'application/msword') {
+        $fileExt = array(1 => 'rtf');
+
+    }
+
+    else
         $fileExt = explode('/', $file["type"]);
 
     $fileType = $file["type"];

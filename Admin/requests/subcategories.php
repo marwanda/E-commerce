@@ -56,8 +56,9 @@ $cat_id=make_safe($_POST['cat_id']);
 
     else {
         $_SESSION['error_msg'] = $lang['general_error'];
-        redirect('home');
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
+        redirect('orders-list');
         exit();
 
     }

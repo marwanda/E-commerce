@@ -26,15 +26,17 @@ if (isset($_POST['submit-subcategory'])){
     if (mysqli_query($link, $query) === TRUE) {
 
         $_SESSION['error_msg'] = $lang['successfully_done'];
+        $_SESSION['msg_type'] = 1;
         mysqli_close($link);
-        redirect('categories', $path);
+        redirect('subcategories', $path);
         exit;
 
 
     } else {
         $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
         mysqli_close($link);
-        redirect('categories', $path);
+        redirect('subcategories', $path);
         exit();
     }
 } else if (isset($_POST['action']) && $_POST['action'] == 'delete' && $_POST['sub_id']) {
@@ -65,10 +67,10 @@ if (isset($_POST['submit-subcategory'])){
 } else {
     echo -1;
     exit;
-    $_SESSION['error_msg'] = $lang['general_error'];
-    mysqli_close($link);
-    redirect('categories', $path);
-    exit();
+//    $_SESSION['error_msg'] = $lang['general_error'];
+//    mysqli_close($link);
+//    redirect('categories', $path);
+//    exit();
 }
 
 

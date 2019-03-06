@@ -25,13 +25,17 @@ $path = '../';
             $query = "update user set password={$sq}{$new_password}{$sq} where id= {$_SESSION['admin_id']}";
 
             if (mysqli_query($link, $query) === TRUE) {
-                unset($_SESSION['change_password']);
+                unset($_SESSION['change_password_admin']);
                 $_SESSION['error_msg']=$lang['successfully_done'];
+                $_SESSION['msg_type'] = 1;
+
                 mysqli_close($link);
                 redirect('logout.php');
                 exit;
             } else {
                 $_SESSION['error_msg']=$lang['general_error'];
+                $_SESSION['msg_type'] = -1;
+
                 mysqli_close($link);
                 redirect('orders-list',$path);
                 exit;
@@ -39,17 +43,19 @@ $path = '../';
         } else {
 
             $_SESSION['error_msg']=$lang['passwords_not_matched'];
+            $_SESSION['msg_type'] = -1;
             mysqli_close($link);
-            $_SESSION['change_password']=1;
+//            $_SESSION['change_password_admin']=1;
             redirect('admin-profile',$path);
             exit;
         }
     }
     else {
-        $_SESSION['error_msg']=$lang['general_error'];
+        $_SESSION['error_msg'] = $lang['general_error'];
+        $_SESSION['msg_type'] = -1;
+        redirect('orders-list');
         mysqli_close($link);
-        redirect('orders-list',$path);
-        exit;
+        exit();
     }
 
 

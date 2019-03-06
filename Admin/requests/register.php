@@ -28,15 +28,16 @@ if (mysqli_query($link, $query) === TRUE) {
     $_SESSION['role']=1;
     $_SESSION['user_id']=$last_id;
     mysqli_close($link);
-    redirect('verification',$path);
+    redirect('admin-form',$path);
     exit;
 }
 
 else {
 
     $_SESSION['error_msg'] = $lang['general_error'];
+    $_SESSION['msg_type'] = -1;
     mysqli_close($link);
-    redirect('home',$path);
+    redirect('orders-list',$path);
     exit();
 }
 
