@@ -39,7 +39,7 @@ if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] ='';
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 <!--====================================================
                          HOME
@@ -140,7 +140,7 @@ var_dump($_SESSION);
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item right-bord">
                     <a href="offers-form">
-                        <div class="service-item-icon"><i class="fa fa-share-square-o fa-3x"></i>
+                        <div class="service-item-icon"><i class="fa fa-file-o fa-3x"></i>
                         </div>
                     </a>
                     <div class="service-item-title">

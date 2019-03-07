@@ -264,15 +264,15 @@ if (isset($_POST['edit-product'])) {
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Description (Arabic):</label>
                     <div class="col-lg-8">
-                        <input class="form-control" name="description-ar" type="text"
-                               value="<?php echo isset($arr['description_ar']) ? $arr['description_ar'] : null ?>">
+                        <textarea class="form-control" name="description-ar" type="text"
+                                  ><?php echo isset($arr['description_ar']) ? $arr['description_ar'] : null ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Description (English):</label>
                     <div class="col-lg-8">
-                        <input class="form-control" name="description-en" type="text"
-                               value="<?php echo isset($arr['description_en']) ? $arr['description_en'] : null ?>">
+                        <textarea class="form-control" name="description-en" type="text"
+                                  ><?php echo isset($arr['description_en']) ? $arr['description_en'] : null ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">

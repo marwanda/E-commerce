@@ -1,0 +1,101 @@
+<?php
+require_once('functions/functions.php');
+if (isset($_POST['age'])) {
+    $answer = getAnswer($_POST);
+}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heart Disease</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <?php if (isset($answer)) { ?>
+            <div class="col-md-12" style="margin-top: 2%">
+                <div class="alert alert-<?= $answer == 'Negative' ? 'success' : 'danger' ?>" role="alert">
+                    <?= $answer ?>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="col-md-12" style="margin-top: 2%">
+            <h1 class="center">
+                Heart Disease
+            </h1>
+        </div>
+        <div class="col-md-12">
+            <form action="index.php" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Age</label>
+                    <input name="age" type="number" class="form-control" id="exampleInputPassword1" placeholder="Age"
+                           value="45">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Chest Pain Type</label>
+                    <select name="chest_pain_type" class="form-control" id="exampleFormControlSelect1">
+                        <option value="asympt">asympt</option>
+                        <option value="atyp_angina">atyp angina</option>
+                        <option value="typ_angina">typ angina</option>
+                        <option value="non_anginal">non anginal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Rest Blood Pressure</label>
+                    <input name="rest_blood_pressure" type="number" value="140" class="form-control"
+                           id="exampleInputPassword1"
+                           placeholder="Rest Blood Pressure">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Blood Sugar</label>
+                    <select name="blood_sugar" class="form-control" id="exampleFormControlSelect1">
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Rest Electrocardiographic Result</label>
+                    <select name="rest_electro" class="form-control" id="exampleFormControlSelect1">
+                        <option value="normal">normal</option>
+                        <option value="left_vent_hyper">left vent hyper</option>
+                        <option value="st_t_wave_abnormality">st t wave abnormality</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Max Heart Rate</label>
+                    <input name="max_heart_rate" type="number" value="92" class="form-control" id="exampleInputEmail1"
+                           placeholder="Max Heart Rate">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Exercise Angina</label>
+                    <select name="exercice_angina" class="form-control" id="exampleFormControlSelect1">
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

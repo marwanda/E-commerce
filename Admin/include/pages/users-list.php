@@ -78,7 +78,7 @@ if (mysqli_connect_errno()) {
                         <td class=""><?php echo $row['name']; ?></td>
                         <td class=""><?php echo $row['phone']; ?></td>
                         <td class=""><?php echo $row['email']; ?></td>
-                        <td class=""><?php echo $row['gender']; ?></td>
+                        <td class=""><?php if ($row['gender'] == 0) echo 'Male'; else echo 'Female'; ?></td>
                         <td class=""><?php echo $row['birthdate']; ?></td>
                         <td class=""><?php echo $row['address']; ?></td>
                         <td class=""><?php echo $row['resolved_orders']; ?></td>

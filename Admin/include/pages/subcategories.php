@@ -18,7 +18,7 @@ mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
 $query = "select * from category";
-$query2 = "select * from subcategory";
+$query2 = "select s.id, s.name_ar,s.name_en, s.status, c.id, c.name_ar as cat_name_ar , c.name_en as cat_name_en  from subcategory s  inner join category c on s.category_id = c.id";
 
 
 if (mysqli_connect_errno()) {
@@ -235,9 +235,10 @@ if (mysqli_connect_errno()) {
     <thead>
     <tr class="bg-info text-white">
         <th class="text-left">#</th>
-        <th class="text-left">#</th>
-        <th class="text-left">Arabic Name</th>
-        <th class="text-left">English Name</th>
+        <th class="text-left">Category Ar</th>
+        <th class="text-left">Category En</th>
+        <th class="text-left">Subcategory Ar</th>
+        <th class="text-left">Subcategory En</th>
         <th class="text-left" style="">Status</th>
         <th class="text-left" style="">Actions</th>
 
@@ -252,7 +253,8 @@ if (mysqli_connect_errno()) {
             ?>
             <tr class="subcategory-row" id="subcategory-<?php echo $row['id']; ?>">
                 <td class=""><?php echo $row['id']; ?></td>
-                <td class=""><?php echo $row['category_id']; ?></td>
+                <td class=""><?php echo $row['cat_name_ar']; ?></td>
+                <td class=""><?php echo $row['cat_name_en']; ?></td>
                 <td class=""><?php echo $row['name_ar']; ?></td>
                 <td class=""><?php echo $row['name_en']; ?></td>
                 <td class="">

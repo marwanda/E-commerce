@@ -10,7 +10,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
     $_SESSION['msg_type'] = '';
 
 }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 $link = mysqli_connect("localhost", "root", "", "itsource");
 mysqli_set_charset($link, "utf8");
 $sq = "'";

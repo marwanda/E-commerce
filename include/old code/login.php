@@ -18,7 +18,7 @@ if (isset($_POST['login_username']) && isset($_POST['login_password'])) {
         $_SESSION['msg']='';
         header('location: http://localhost/ConsultingSystem/index.php');
 
-        var_dump($_SESSION);
+//        var_dump($_SESSION);
 
     } else {
 
