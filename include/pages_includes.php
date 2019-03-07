@@ -8,7 +8,6 @@ $rtl_js = isset($_SESSION['lang']) && $_SESSION['lang'] == 'ar' ? $ASSET_URL.'js
 $page_title = $lang['site_name'];
 
 $shared_css = array(
-    "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i",
     $ASSET_URL . "font-awesome-4.7.0/css/font-awesome.min.css",
     $ASSET_URL . "css/bootstrap/bootstrap.min.css",
     $ASSET_URL . "css/animate/animate.min.css",

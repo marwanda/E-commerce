@@ -51,6 +51,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
 .preview-thumbnail.nav-tabs li img {
     max-width: 100%;
     display: block;
+    height: 75px;
 }
 
 .preview-thumbnail.nav-tabs li a {

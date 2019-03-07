@@ -20,8 +20,47 @@ License URL: https://creativecommons.org/licenses/by/4.0/
 
 ======================================================*/
 
-@import url('https://fonts.googleapis.com/css?family=Hind:400,600');
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/Cairo-Light.ttf');
+}
 
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Cairo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Cairo-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/Hind-regular.woff2');
+}
+
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Hind-regular.woff2');
+}
+
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Hind-semiBold.woff2');
+}
 /* General CSS */
 
 html,
@@ -30,7 +69,7 @@ body {
 }
 
 body {
-    font-family: 'Hind';
+    font-family: 'Hind', 'Cairo';
 }  
 
 h1, h2, h3, h4, h5 {
@@ -2192,9 +2231,9 @@ footer .divider {
     text-decoration: none;
  }
 
-.dropdown > .dropdown-menu.show {
-    transform: translate3d(0px, 35px, 0px) !important;
-}
+/*.dropdown > .dropdown-menu.show {*/
+    /*transform: translate3d(0px, 35px, 0px) !important;*/
+/*}*/
 
 @media (max-width: 768px) {
     .left_sec > img {
@@ -2217,7 +2256,6 @@ footer .divider {
     height: 5px;
 }
 
-.card-img-shadow
-{
+.card-img-shadow {
    box-shadow:  1px 1px 4px 0px rgba(0,0,0,0.1)
 }

@@ -73,10 +73,13 @@ else {
 
 
 ?>
+<div id="home-p" class="home-p pages-head1 text-center">
+    <div class="container">
+        <h1 class="wow fadeInUp" data-wow-delay="0.1s"
+            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['edit_profile']?></h1>
+    </div><!--/end container-->
+</div>
 <div class="container-fluid bg-light-gray">
-    <div class=" row ">
-        <div class="col"><h1 class="mt-5 ml-5"><?php echo $lang['edit_profile'] ?></h1></div>
-    </div>
     <div class="container">
         <hr>
         <div class="row">

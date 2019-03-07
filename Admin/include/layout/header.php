@@ -10,7 +10,7 @@
 
 
     <title><?php echo $page_title; ?></title>
-    <link rel="shortcut icon" href="<?php echo $ASSET_URL ?>img/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $ASSET_URL ?>img/logo3.png">
     <link rel="stylesheet" href="<?php echo $ASSET_URL ?>css/pages/404.css">
     <!--    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">-->
     <!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">-->
@@ -42,9 +42,7 @@
                         <div class="brand-text brand-big hidden-lg-down"><img
                                     src="<?php echo $ASSET_URL ?>img/logo3.png" class="header-img" alt="Logo"
                                     class="img-fluid"></div>
-                        <div class="brand-text brand-small"><img src="<?php echo $ASSET_URL ?>img/logo-icon.png"
-                                                                 alt="Logo"
-                                                                 class="img-fluid"></div>
+                        <div class="brand-text brand-small admin-header-small-img"><img src="<?php echo $ASSET_URL ?>img/logo3.png" alt="Logo" style="max-width: 70%;margin-left: -32px;"></div>
                     </a>
                     <a id="toggle-btn" href="#" class="menu-btn active">
                         <span></span>
@@ -61,9 +59,9 @@
                     </li>
                 <?php } ?>
 
-                <li class="nav-item d-flex align-items-center full_scr_exp"><a
-                            href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') echo '?lang=ar'; else echo '?lang=en'; ?>"><?php if ($_SESSION['lang'] == 'ar') echo 'English'; else echo $lang['arabic'] ?></a>
-                </li>
+<!--                <li class="nav-item d-flex align-items-center full_scr_exp"><a-->
+<!--                            href="--><?php //if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') echo '?lang=ar'; else echo '?lang=en'; ?><!--">--><?php //if ($_SESSION['lang'] == 'ar') echo 'English'; else echo $lang['arabic'] ?><!--</a>-->
+<!--                </li>-->
             </ul>
         </div>
     </nav>

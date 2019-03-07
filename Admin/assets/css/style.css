@@ -475,6 +475,11 @@ License URL: https://creativecommons.org/licenses/by/4.0/
     float: right;
 }
 
+.admin-header-small-img {
+    display: block;
+    margin-right: -70px;
+}
+
 .delete-product, .delete-company, .delete-member {
     float: right;
 }

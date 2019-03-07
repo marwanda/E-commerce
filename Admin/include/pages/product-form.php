@@ -244,34 +244,34 @@ if (isset($_POST['edit-product'])) {
                     <label class="col-lg-8 control-label text-left ">Product name:</label>
                     <div class="col-lg-8">
                         <input value="<?php echo isset($arr['name']) ? $arr['name'] : null ?>" required
-                               class="form-control" name="name" type="text">
+                               class="form-control" placeholder="Product" name="name" type="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Price:</label>
                     <div class="col-lg-8">
-                        <input required class="form-control" name="price" type="number"
+                        <input required class="form-control" name="price" placeholder="Price" type="number"
                                value="<?php echo isset($arr['price']) ? $arr['price'] : null ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Special Price:</label>
                     <div class="col-lg-8">
-                        <input required class="form-control" name="special-price" type="number"
+                        <input required class="form-control" name="special-price" placeholder="Special Price" type="number"
                                value="<?php echo isset($arr['price_vip']) ? $arr['price_vip'] : null ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Description (Arabic):</label>
                     <div class="col-lg-8">
-                        <textarea class="form-control" name="description-ar" type="text"
+                        <textarea class="form-control" name="description-ar" placeholder="Description" type="text"
                                   ><?php echo isset($arr['description_ar']) ? $arr['description_ar'] : null ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Description (English):</label>
                     <div class="col-lg-8">
-                        <textarea class="form-control" name="description-en" type="text"
+                        <textarea class="form-control" name="description-en" type="text" placeholder="Description"
                                   ><?php echo isset($arr['description_en']) ? $arr['description_en'] : null ?></textarea>
                     </div>
                 </div>

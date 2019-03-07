@@ -154,6 +154,9 @@ $lang = array(
     'send_note' => 'Send your notes to the admin:',
     'send_note_ex' => 'For example: the color you want..',
     'are_you_sure' => 'Are You Sure!?',
+    'create_new_project' => 'Suggest your new project !',
+    'create_new_offer' => 'Create new offer !',
+
 
 
 );
