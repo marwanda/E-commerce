@@ -156,6 +156,7 @@ $lang = array(
     'are_you_sure' => 'Are You Sure!?',
     'create_new_project' => 'Suggest your new project !',
     'create_new_offer' => 'Create new offer !',
+    'change_password' => 'Change Password'
 
 
 

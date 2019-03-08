@@ -81,7 +81,6 @@ else {
 </div>
 <div class="container-fluid bg-light-gray">
     <div class="container">
-        <hr>
         <div class="row">
             <!-- left column -->
             <!-- edit form column -->
@@ -113,11 +112,11 @@ else {
                         <a class="nav-item nav-link <?php if(!isset($_SESSION['change_password']) ){?>
                         active
     <?php } ?> " id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                           role="tab" aria-controls="nav-profile">Profile</a>
+                           role="tab" aria-controls="nav-profile"><?php echo $lang['profile']?></a>
                         <a class="nav-item nav-link <?php if(isset($_SESSION['change_password']) && $_SESSION['change_password']==1){?>
                         active
     <?php } ?>  " id="nav-password-tab" data-toggle="tab" href="#nav-password"
-                           role="tab" aria-controls="nav-password">Change Password</a>
+                           role="tab" aria-controls="nav-password"><?php echo $lang['change_password']?></a>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade <?php if(!isset($_SESSION['change_password']) ){?>
@@ -283,7 +282,6 @@ else {
             <!--            </div>-->
             <!--        </div>-->
         </div>
-        <hr>
     </div>
 
 

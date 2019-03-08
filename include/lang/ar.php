@@ -145,6 +145,7 @@ $lang= array(
     'are_you_sure' => 'هل أنت متأكد من تثبيت الطلب؟!',
     'create_new_project' => 'اقترح مشروعك الجديد!',
     'create_new_offer' => 'اقترح عرضا جديد !',
+    'change_password' => 'تغيير كلمة المرور'
 
 
 

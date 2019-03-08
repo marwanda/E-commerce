@@ -10,7 +10,7 @@ $page_title = $lang['site_name'];
 $shared_css = array(
     "https://fonts.googleapis.com/css?family=Roboto+Condensed",
     $ASSET_URL."css/bootstrap.min.css",
-    "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css",
+    $ASSET_URL."css/datatable.css",
     $ASSET_URL."font-awesome-4.7.0/css/font-awesome.min.css",
     $ASSET_URL."css/font-icon-style.css",
     $ASSET_URL."css/style.default.css",
@@ -26,8 +26,8 @@ $shared_css = array(
 
 $shared_js = array(
     $ASSET_URL."js/jquery.min.js",
-    "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js",
-    "https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js",
+    $ASSET_URL."js/datatable-jquery.js",
+    $ASSET_URL."js/datatable-bootstrap.js",
     $ASSET_URL."js/popper/popper.min.js",
     $ASSET_URL."js/tether.min.js",
     $ASSET_URL."js/bootstrap.min.js",
