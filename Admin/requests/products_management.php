@@ -1,7 +1,6 @@
 <?php
 require('../include/config.php');
 require('../include/hundle-ajax.php');
-
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
@@ -16,23 +15,37 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['pro
         if ($count > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo $row['order_id'];
-                exit;
+                break;
+
             }
+            exit;
         }
 
     }
 
 
+    $query = "select * from gallary where product_id = {$product_id}";
+    if ($result = mysqli_query($link, $query)) {
 
-    $query = "delete from gallary where product_id = {$product_id}";
-    if (mysqli_query($link, $query) === TRUE) {
+        $count = mysqli_num_rows($result);
+        if ($count > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $query = "delete from gallary where name = {$sq}{$row['name']}{$sq}";
 
-    } else {
+                if (mysqli_query($link, $query) === TRUE) {
 
-        echo -1;
-        exit;
+                    unlink( '../../files/images/products/large/' . $row['name']);
+                } else {
 
+                    echo -1;
+                    exit;
+
+                }
+
+            }
+        }
     }
+
 
     $query = "delete from cart where product_id = {$product_id}";
     if (mysqli_query($link, $query) === TRUE) {
@@ -76,6 +89,3 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['pro
     }
 
 }
-
-
-?>

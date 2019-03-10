@@ -6,8 +6,9 @@
 
 <body>
 <?php
+
 //
-//include "include/config.php";
+include "include/config.php";
 //
 //if ($_POST) {
 ////var_dump($_FILES);
@@ -29,8 +30,8 @@
 //
 //}
 //
-//unlink();
-//?>
+unlink('files/images/products/large/test.txt');
+?>
 <!---->
 <!---->
 <form action="" method="post" enctype="multipart/form-data">

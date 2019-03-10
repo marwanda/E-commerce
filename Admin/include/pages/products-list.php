@@ -1,5 +1,5 @@
 <?php
-var_dump($_SESSION);
+
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
     if($_SESSION['msg_type']==1)
         echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
