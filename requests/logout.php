@@ -15,6 +15,7 @@ unset($_SESSION['phone']);
 unset($_SESSION['error_msg']);
 unset($_SESSION['order_id']);
 unset($_SESSION['change_password']);
+unset($_SESSION['msg_type']);
 
 //var_dump($_SESSION);
 redirect('home',$path);

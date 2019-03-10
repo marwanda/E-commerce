@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-10 prod-desc">
                 <h6 class="nomargin"><?php echo $name ?></h6>
-                <p><?php if ($_SESSION['lang'] = 'en') echo $description_en; else echo $description_ar; ?></p>
+                <p><?php if ($_SESSION['lang'] == 'en') echo $description_en; else echo $description_ar; ?></p>
             </div>
         </div>
     </td>

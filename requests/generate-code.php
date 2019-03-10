@@ -5,7 +5,7 @@ include "../include/config.php";
 $mobile = isset($_POST['mobile']) ? make_safe($_POST['mobile']) : null;
 
 $code = generatePIN(4);
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 
 $sq = "'";

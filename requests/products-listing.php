@@ -21,7 +21,7 @@ if ($_POST) {
     $sr_max = $_POST['sr_max'];
     $sr_max=str_replace(",","",$sr_max);
 
-    $link = mysqli_connect("localhost", "root", "", "itsource");
+    $link = connectDb_mysqli();
     mysqli_set_charset($link, "utf8");
 
     $sq = "'";

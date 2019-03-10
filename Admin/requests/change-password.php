@@ -8,7 +8,7 @@ $new_password = isset($_POST['new-password']) ? make_safe($_POST['new-password']
 
 
 
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';

@@ -26,7 +26,12 @@
 // return $server_output;
 //
 // }
-
+function connectDb_mysqli()
+{
+    $link= mysqli_connect('localhost', 'root', '', 'itsource');
+//    $link= mysqli_connect('localhost', 'id8912752_itsource', '@123#', 'id8912752_itsourcedb');
+    return $link;
+}
 function GetRestURL($Function, $Service, $Params)
 {
     $escapees = array('\r\n', '\u2019', '\u00bb', '\u00ab', '\u201d', '\u201c', '\u00d7');

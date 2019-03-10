@@ -20,7 +20,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
 //$birthday='';
 //$address='';
 
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';

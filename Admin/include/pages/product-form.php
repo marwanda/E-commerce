@@ -16,7 +16,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
 $sq = "'";
 $path = '../';
 $id = isset($_GET['id']) ? make_safe($_GET['id']) : null;
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 
 if (mysqli_connect_errno()) {
@@ -119,14 +119,22 @@ if (isset($_POST['edit-product'])) {
         exit;
     }
 
-    $uploadPath = 'products';
-    $upload_result = @upload_image($picture, $uploadPath, $image_sizes['services'], '../');
-    $uploaded_file_name = $upload_result['data']['file_name'];
+
 
 
     $date = date('Y-m-d', time());
 
+if($picture['error'] != 4)
+{
+    $uploadPath = 'products';
+    $upload_result = @upload_image($picture, $uploadPath, $image_sizes['services'], '../');
+    $uploaded_file_name = $upload_result['data']['file_name'];
     $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.pic={$sq}{$uploaded_file_name}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
+
+}
+else
+    $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
+
 
     if (mysqli_query($link, $query) === TRUE) {
 
@@ -137,13 +145,27 @@ if (isset($_POST['edit-product'])) {
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=1";
 
             if (mysqli_query($link, $query) === TRUE) {
+                $affected_rows= mysqli_affected_rows($link);
+                if($affected_rows>0)
+                {
+                    if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+                }
+                else
+                {
+                    $query = "insert into gallary  (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},1,{$id})";
 
-                if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
-                    $_SESSION['error_msg'] = $lang['successfully_done'];
-                    $_SESSION['msg_type'] = 1;
+                    if (mysqli_query($link, $query) === TRUE) {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+
                 }
 
-            } else {
+
+            }  else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -156,11 +178,25 @@ if (isset($_POST['edit-product'])) {
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=2";
 
             if (mysqli_query($link, $query) === TRUE) {
+               $affected_rows= mysqli_affected_rows($link);
+               if($affected_rows>0)
+               {
+                   if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
+                       $_SESSION['error_msg'] = $lang['successfully_done'];
+                       $_SESSION['msg_type'] = 1;
+                   }
+               }
+               else
+               {
+                   $query = "insert into gallary (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},2,{$id})";
 
-                if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
-                    $_SESSION['error_msg'] = $lang['successfully_done'];
-                    $_SESSION['msg_type'] = 1;
-                }
+                   if (mysqli_query($link, $query) === TRUE) {
+                       $_SESSION['error_msg'] = $lang['successfully_done'];
+                       $_SESSION['msg_type'] = 1;
+                   }
+
+               }
+
 
             } else {
 
@@ -176,13 +212,29 @@ if (isset($_POST['edit-product'])) {
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=3";
 
             if (mysqli_query($link, $query) === TRUE) {
+                $affected_rows= mysqli_affected_rows($link);
+                if($affected_rows>0)
+                {
 
-                if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
-                    $_SESSION['error_msg'] = $lang['successfully_done'];
-                    $_SESSION['msg_type'] = 1;
+                    if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+                }
+                else
+                {
+                    $query = "insert into gallary (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},3,{$id})";
+
+                    if (mysqli_query($link, $query) === TRUE) {
+
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+
                 }
 
-            } else {
+
+            }  else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -196,13 +248,27 @@ if (isset($_POST['edit-product'])) {
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=4";
 
             if (mysqli_query($link, $query) === TRUE) {
+                $affected_rows= mysqli_affected_rows($link);
+                if($affected_rows>0)
+                {
+                    if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+                }
+                else
+                {
+                    $query = "insert into gallary  (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},4,{$id})";
 
-                if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
-                    $_SESSION['error_msg'] = $lang['successfully_done'];
-                    $_SESSION['msg_type'] = 1;
+                    if (mysqli_query($link, $query) === TRUE) {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+
                 }
 
-            } else {
+
+            }  else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -358,7 +424,7 @@ if (isset($_POST['edit-product'])) {
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">thumbnail:</label>
                     <div class="col-md-8">
-                        <input required type="file" class="form-control" name="picture" accept="image/*">
+                        <input <?php if($id!=null) echo 'required';?> type="file" class="form-control" name="picture" accept="image/*">
                     </div>
                 </div>
                 <div class="form-group">

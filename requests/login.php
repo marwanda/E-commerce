@@ -3,7 +3,7 @@
 include '../include/config.php';
 $mobile = isset($_POST['phone']) ? make_safe($_POST['phone']) : null;
 $password = isset($_POST['password']) ? make_safe($_POST['password']) : null;
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 
 $sq = "'";

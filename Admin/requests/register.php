@@ -10,7 +10,7 @@ $address = isset($_POST['address']) ? make_safe($_POST['address']) : null;
 
 $_SESSION['phone']=$mobile;
 
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';

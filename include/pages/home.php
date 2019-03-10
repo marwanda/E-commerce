@@ -10,6 +10,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
     $_SESSION['msg_type'] = '';
 
 }
+
 function is_connected()
 {
     $connected = @fsockopen("www.google.com", 80);
@@ -27,7 +28,7 @@ if (is_connected()) {
     $xml = simplexml_load_file('https://www.zamanalwsl.net/news/rss/94/');
 } else $xml = null;
 
-$link = mysqli_connect("localhost", "root", "", "itsource");
+$link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';

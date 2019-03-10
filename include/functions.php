@@ -492,6 +492,13 @@ function getFullHost()
     return $protocole . $host . $project;
 }
 
+function connectDb_mysqli()
+{
+    $link= mysqli_connect('localhost', 'root', '', 'itsource');
+//    $link= mysqli_connect('localhost', 'id8912752_itsource', '@123#', 'id8912752_itsourcedb');
+    return $link;
+}
+
 function getBaseDirectoryName()
 {
     return explode('/', $_SERVER['REQUEST_URI'])[1];

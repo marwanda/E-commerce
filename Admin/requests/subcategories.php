@@ -4,7 +4,7 @@ require('../include/hundle-ajax.php');
 
 if (isset($_POST['cat_id'])) {
 $cat_id=make_safe($_POST['cat_id']);
-    $link = mysqli_connect("localhost", "root", "", "itsource");
+    $link = connectDb_mysqli();
     mysqli_set_charset($link, "utf8");
     $sq = "'";
     $path = '../';

@@ -17,7 +17,7 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
 if ($_POST) {
 
     $code = isset($_POST['verification-code']) ? make_safe($_POST['verification-code']) : null;
-    $link = mysqli_connect("localhost", "root", "", "itsource");
+    $link = connectDb_mysqli();
     $sq = "'";
     $query = "select * from user where id = {$_SESSION['user_id_verification']} and code = {$code}";
     $query2 = "update user set role = 2 where id = {$_SESSION['user_id_verification']}";
