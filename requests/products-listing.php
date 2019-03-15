@@ -11,26 +11,55 @@ if ($_POST) {
         $sub_query = " s.category_id= {$cat_id} and p.subcategory_id= {$sub_id} and ";
     }
 
+    $sr_min = $_POST['sr_min'];
+    $sr_min = str_replace(",", "", $sr_min);
+    $sr_max = $_POST['sr_max'];
+    $sr_max = str_replace(",", "", $sr_max);
+
     if ($sort == 1) {
         $sort = 'desc';
-    } else
-        $sort = 'asc';
+        if ($_SESSION['role'] == 3)
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price_vip BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
 
-    $sr_min = $_POST['sr_min'];
-    $sr_min=str_replace(",","",$sr_min);
-    $sr_max = $_POST['sr_max'];
-    $sr_max=str_replace(",","",$sr_max);
+        else
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
+
+
+    } else if ($sort == 2) {
+
+        $sort = 'asc';
+        if ($_SESSION['role'] == 3)
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price_vip BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
+
+        else
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
+
+
+    } else if ($sort == 3) {
+        $sort = 'asc';
+        if ($_SESSION['role'] == 3) //less expensive
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price_vip BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by p.price_vip {$sort}";
+
+        else
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by  p.price {$sort}";
+
+    } else {
+        //more expensive
+        $sort = 'desc';
+        if ($_SESSION['role'] == 3)
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price_vip BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by p.price_vip {$sort}";
+
+        else
+            $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by p.price {$sort}";
+
+    }
+
 
     $link = connectDb_mysqli();
     mysqli_set_charset($link, "utf8");
 
     $sq = "'";
     $path = '../';
-    if ($_SESSION['role'] == 3)
-        $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price_vip BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
-
-    else
-        $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where {$sub_query} p.price BETWEEN {$sr_min} AND  {$sr_max} and s.status=1 and c.status=1  order by date {$sort}";
 
     if (mysqli_connect_errno()) {
         $_SESSION['error_msg'] = $lang['sql_problem'];

@@ -12,15 +12,20 @@ function is_connected()
     return $is_conn;
 }
 
-if(is_connected())
-{
-    $xml = simplexml_load_file('https://www.zamanalwsl.net/news/rss/94/');
+if (is_connected() && $_SESSION['lang']=='ar') {
+    $xml = simplexml_load_file('https://zamanalwsl.net/news/rss/94/');
 }
+else if(is_connected() && $_SESSION['lang']=='en')
+{
+
+    $xml = simplexml_load_file('https://en.zamanalwsl.net/news/rss/52/');
+}
+
 else
 {
     $_SESSION['error_msg']=$lang['there_is_no_internet_connection'];
     $_SESSION['msg_type']=-1;
-        redirect('home');
+    redirect('home');
 }
 
 

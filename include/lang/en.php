@@ -24,6 +24,8 @@ $lang = array(
     'no_content' => 'There is no content currently',
     'sql_problem' => 'Sorry, there is a connection problem',
 
+    'less_expensive_first' => 'Less expensive first',
+    'more_expensive_first' => 'More expensive first',
 
 
 

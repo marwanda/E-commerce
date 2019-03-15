@@ -24,9 +24,14 @@ function is_connected()
     return $is_conn;
 }
 
-if (is_connected()) {
+if (is_connected() && $_SESSION['lang']=='ar') {
     $xml = simplexml_load_file('https://www.zamanalwsl.net/news/rss/94/');
-} else $xml = null;
+}
+else if(is_connected() && $_SESSION['lang']=='en')
+{
+    $xml = simplexml_load_file('https://en.zamanalwsl.net/news/rss/52/');
+}
+    else $xml = null;
 
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");

@@ -11,7 +11,6 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
 
 }
 
-
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
@@ -36,14 +35,13 @@ if (mysqli_connect_errno()) {
             </div>
             <div class="modal-body">
                 <table class="table table-hover mt-5">
-                    <thead >
+                    <thead>
                     <tr class="bg-info text-white">
                         <th class="text-left" style="width: 5%">#</th>
                         <th class="table-width-4">Product Name</th>
                         <th class="table-width-4">quantity</th>
                         <th class="table-width-4">Sub-total</th>
                     </tr>
-
                     </thead>
                     <tbody id="cart-table">
 

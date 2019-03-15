@@ -1,12 +1,12 @@
 <?php
 
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
-    if($_SESSION['msg_type']==1)
-        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    else if($_SESSION['msg_type']==-1)
-        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    if ($_SESSION['msg_type'] == 1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    else if ($_SESSION['msg_type'] == -1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     else
-        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     $_SESSION['error_msg'] = '';
     $_SESSION['msg_type'] = '';
 
@@ -21,8 +21,8 @@ mysqli_set_charset($link, "utf8");
 
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];
-    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    $_SESSION['error_msg'] ='';
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    $_SESSION['error_msg'] = '';
 }
 if ($id) {
 
@@ -120,23 +120,37 @@ if (isset($_POST['edit-product'])) {
     }
 
 
-
-
     $date = date('Y-m-d', time());
 
-if($picture['error'] != 4)
-{
-    $uploadPath = 'products';
-    $upload_result = @upload_image($picture, $uploadPath, $image_sizes['services'], '../');
-    $uploaded_file_name = $upload_result['data']['file_name'];
-    $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.pic={$sq}{$uploaded_file_name}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
+    if ($picture['error'] != 4) {
+        $uploadPath = 'products';
+        $upload_result = @upload_image($picture, $uploadPath, $image_sizes['services'], '../');
+        $uploaded_file_name = $upload_result['data']['file_name'];
+        $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.pic={$sq}{$uploaded_file_name}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
 
-}
-else
-    $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
+
+        $query1 = "select pic from product where id = {$id}";
+        if ($result = mysqli_query($link, $query1)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+
+                unlink('../files/images/products/large/' . $row['pic']);
+
+            }
+
+        } else {
+
+            echo -1;
+            exit;
+
+        }
+
+    } else
+        $query = "update product p set  p.name={$sq}{$name}{$sq}, p.price={$price}, p.price_vip={$special_price}, p.description_ar={$sq}{$descrption_ar}{$sq}, p.description_en={$sq}{$descrption_en}{$sq}, p.subcategory_id={$subcategory}, p.date={$sq}{$date}{$sq}, p.status=1 where p.id= {$id}";
 
 
     if (mysqli_query($link, $query) === TRUE) {
+
+
 
         if ($picture1['error'] != 4) {
             $uploadPath = 'products';
@@ -144,17 +158,28 @@ else
             $uploaded_file_name = $upload_result['data']['file_name'];
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=1";
 
+            $query1 = "select name from gallary where product_id = {$id} and number= 1";
+            if ($result = mysqli_query($link, $query1)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    unlink('../files/images/products/large/' . $row['name']);
+                }
+
+            } else {
+
+                echo -1;
+                exit;
+
+            }
+
             if (mysqli_query($link, $query) === TRUE) {
-                $affected_rows= mysqli_affected_rows($link);
-                if($affected_rows>0)
-                {
+                $affected_rows = mysqli_affected_rows($link);
+                if ($affected_rows > 0) {
                     if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                         $_SESSION['error_msg'] = $lang['successfully_done'];
                         $_SESSION['msg_type'] = 1;
                     }
-                }
-                else
-                {
+                } else {
                     $query = "insert into gallary  (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},1,{$id})";
 
                     if (mysqli_query($link, $query) === TRUE) {
@@ -165,7 +190,7 @@ else
                 }
 
 
-            }  else {
+            } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -177,25 +202,36 @@ else
             $uploaded_file_name = $upload_result['data']['file_name'];
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=2";
 
+            $query1 = "select name from gallary where product_id = {$id} and number= 2";
+            if ($result = mysqli_query($link, $query1)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    unlink('../files/images/products/large/' . $row['name']);
+                }
+
+            } else {
+
+                echo -1;
+                exit;
+
+            }
+
             if (mysqli_query($link, $query) === TRUE) {
-               $affected_rows= mysqli_affected_rows($link);
-               if($affected_rows>0)
-               {
-                   if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
-                       $_SESSION['error_msg'] = $lang['successfully_done'];
-                       $_SESSION['msg_type'] = 1;
-                   }
-               }
-               else
-               {
-                   $query = "insert into gallary (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},2,{$id})";
+                $affected_rows = mysqli_affected_rows($link);
+                if ($affected_rows > 0) {
+                    if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
+                } else {
+                    $query = "insert into gallary (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},2,{$id})";
 
-                   if (mysqli_query($link, $query) === TRUE) {
-                       $_SESSION['error_msg'] = $lang['successfully_done'];
-                       $_SESSION['msg_type'] = 1;
-                   }
+                    if (mysqli_query($link, $query) === TRUE) {
+                        $_SESSION['error_msg'] = $lang['successfully_done'];
+                        $_SESSION['msg_type'] = 1;
+                    }
 
-               }
+                }
 
 
             } else {
@@ -211,18 +247,29 @@ else
             $uploaded_file_name = $upload_result['data']['file_name'];
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=3";
 
+            $query1 = "select name from gallary where product_id = {$id} and number= 3";
+            if ($result = mysqli_query($link, $query1)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    unlink('../files/images/products/large/' . $row['name']);
+                }
+
+            } else {
+
+                echo -1;
+                exit;
+
+            }
+
             if (mysqli_query($link, $query) === TRUE) {
-                $affected_rows= mysqli_affected_rows($link);
-                if($affected_rows>0)
-                {
+                $affected_rows = mysqli_affected_rows($link);
+                if ($affected_rows > 0) {
 
                     if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                         $_SESSION['error_msg'] = $lang['successfully_done'];
                         $_SESSION['msg_type'] = 1;
                     }
-                }
-                else
-                {
+                } else {
                     $query = "insert into gallary (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},3,{$id})";
 
                     if (mysqli_query($link, $query) === TRUE) {
@@ -234,7 +281,7 @@ else
                 }
 
 
-            }  else {
+            } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -247,17 +294,28 @@ else
             $uploaded_file_name = $upload_result['data']['file_name'];
             $query = "update gallary set name={$sq}{$uploaded_file_name}{$sq} where product_id = {$id} and number=4";
 
+            $query1 = "select name from gallary where product_id = {$id} and number= 4";
+            if ($result = mysqli_query($link, $query1)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    unlink('../files/images/products/large/' . $row['name']);
+                }
+
+            } else {
+
+                echo -1;
+                exit;
+
+            }
+
             if (mysqli_query($link, $query) === TRUE) {
-                $affected_rows= mysqli_affected_rows($link);
-                if($affected_rows>0)
-                {
+                $affected_rows = mysqli_affected_rows($link);
+                if ($affected_rows > 0) {
                     if (!isset($_SESSION['error_msg']) || $_SESSION['error_msg'] == '') {
                         $_SESSION['error_msg'] = $lang['successfully_done'];
                         $_SESSION['msg_type'] = 1;
                     }
-                }
-                else
-                {
+                } else {
                     $query = "insert into gallary  (name, number,product_id) values ({$sq}{$uploaded_file_name}{$sq},4,{$id})";
 
                     if (mysqli_query($link, $query) === TRUE) {
@@ -268,7 +326,7 @@ else
                 }
 
 
-            }  else {
+            } else {
 
                 $_SESSION['error_msg'] = $lang['pics_did_not_upload'];
                 $_SESSION['msg_type'] = -1;
@@ -323,7 +381,8 @@ else
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Special Price:</label>
                     <div class="col-lg-8">
-                        <input required class="form-control" name="special-price" placeholder="Special Price" type="number"
+                        <input required class="form-control" name="special-price" placeholder="Special Price"
+                               type="number"
                                value="<?php echo isset($arr['price_vip']) ? $arr['price_vip'] : null ?>">
                     </div>
                 </div>
@@ -331,20 +390,21 @@ else
                     <label class="col-lg-8 control-label text-left ">Description (Arabic):</label>
                     <div class="col-lg-8">
                         <textarea class="form-control" name="description-ar" placeholder="Description" type="text"
-                                  ><?php echo isset($arr['description_ar']) ? $arr['description_ar'] : null ?></textarea>
+                        ><?php echo isset($arr['description_ar']) ? $arr['description_ar'] : null ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-8 control-label text-left ">Description (English):</label>
                     <div class="col-lg-8">
                         <textarea class="form-control" name="description-en" type="text" placeholder="Description"
-                                  ><?php echo isset($arr['description_en']) ? $arr['description_en'] : null ?></textarea>
+                        ><?php echo isset($arr['description_en']) ? $arr['description_en'] : null ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">Category:</label>
                     <div class="col-lg-8">
-                        <select required name="category-select" id="category-select" class="selectpicker" menuPlacement="top">
+                        <select required name="category-select" id="category-select" class="selectpicker"
+                                menuPlacement="top">
                             <?php if (isset($arr['cat_id'])) {
 
                                 if ($_SESSION['lang'] == 'en')
@@ -362,7 +422,8 @@ else
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">Subcategory:</label>
                     <div class="col-lg-8">
-                        <select required name="subcategory-select" disabled id="subcategory-select" class="selectpicker">
+                        <select required name="subcategory-select" disabled id="subcategory-select"
+                                class="selectpicker">
                             <?php if (isset($arr['sub_id'])) {
                                 if ($_SESSION['lang'] == 'en')
                                     $subname = $arr['sub_name_en'];
@@ -424,7 +485,8 @@ else
                 <div class="form-group">
                     <label class="col-md-8 control-label text-left ">thumbnail:</label>
                     <div class="col-md-8">
-                        <input <?php if($id!=null) echo 'required';?> type="file" class="form-control" name="picture" accept="image/*">
+                        <input <?php if($id == null) echo 'required'; ?> type="file" class="form-control"
+                                                                          name="picture" accept="image/*">
                     </div>
                 </div>
                 <div class="form-group">

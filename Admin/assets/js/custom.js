@@ -632,6 +632,7 @@ $(document).ready(function () {
     $(document).on('shown.bs.select', '#category-select', function () {
 
 
+
         document.getElementsByClassName("btn dropdown-toggle btn-light")[0].style.borderColor = "";
         $cat_id = $('#cat-id').val();
         $selected = '';

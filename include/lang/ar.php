@@ -20,6 +20,10 @@ $lang= array(
     'no_content' => 'لا يوجد محتوى حالياً',
     'sql_problem' => 'عذراً, يوجد مشكلة في الاتصال!',
 
+    'less_expensive_first' => 'الأقل كلفة أولاً',
+    'more_expensive_first' => 'الأكثر كلفة أولاً',
+
+
 
 
 

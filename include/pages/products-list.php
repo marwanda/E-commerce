@@ -1,12 +1,12 @@
 <?php
 
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
-    if($_SESSION['msg_type']==1)
-        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    else if($_SESSION['msg_type']==-1)
-        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    if ($_SESSION['msg_type'] == 1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    else if ($_SESSION['msg_type'] == -1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     else
-        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     $_SESSION['error_msg'] = '';
     $_SESSION['msg_type'] = '';
 
@@ -29,8 +29,8 @@ $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.descrip
 //
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];
-    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    $_SESSION['error_msg'] ='';
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    $_SESSION['error_msg'] = '';
 }
 
 
@@ -61,7 +61,7 @@ if (mysqli_connect_errno()) {
 <div id="home-p" class="home-p pages-head3 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"
-            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['online_shopping']?></h1>
+            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['online_shopping'] ?></h1>
     </div><!--/end container-->
 </div>
 <!--====================================================
@@ -72,36 +72,38 @@ if (mysqli_connect_errno()) {
         <div class="row">
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3><?php echo $lang['categories']?></h3>
+                    <h3><?php echo $lang['categories'] ?></h3>
                     <div class="heading-border-light"></div>
                 </div>
-                <select id="category-select" class="selectpicker product-select" menuPlacement = "top">
-                    <option value="-1" selected><?php echo $lang['all']?></option>
+                <select id="category-select" class="selectpicker product-select" menuPlacement="top">
+                    <option value="-1" selected><?php echo $lang['all'] ?></option>
                 </select>
             </div>
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3><?php echo $lang['subcategories']?></h3>
+                    <h3><?php echo $lang['subcategories'] ?></h3>
                     <div class="heading-border-light"></div>
                 </div>
                 <select disabled id="subcategory-select" class="selectpicker product-select">
-                    <option value="-1" selected><?php echo $lang['all']?></option>
+                    <option value="-1" selected><?php echo $lang['all'] ?></option>
                 </select>
             </div>
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3><?php echo $lang['sort_as']?></h3>
+                    <h3><?php echo $lang['sort_as'] ?></h3>
                     <div class="heading-border-light"></div>
                 </div>
                 <select id="sort_selecet" class="selectpicker product-select">
-                    <option selected value="1"><?php echo $lang['latest_first']?></option>
-                    <option value="2"><?php echo $lang['oldest_first']?></option>
+                    <option selected value="1"><?php echo $lang['latest_first'] ?></option>
+                    <option value="2"><?php echo $lang['oldest_first'] ?></option>
+                    <option value="3"><?php echo $lang['less_expensive_first'] ?></option>
+                    <option value="4"><?php echo $lang['more_expensive_first'] ?></option>
                 </select>
             </div>
 
             <div class="col-lg-3">
                 <div class="shop-p1-title">
-                    <h3><?php echo $lang['price_range']?></h3>
+                    <h3><?php echo $lang['price_range'] ?></h3>
                     <div class="heading-border-light"></div>
                 </div>
                 <div class="row">
@@ -111,10 +113,12 @@ if (mysqli_connect_errno()) {
                 </div>
                 <div class="slider-labels-slider small-text-slider">
                     <div class="min-slide-side">
-                        <label><?php echo $lang['min_price']?></label> <span id="slider-range-value1"></span><span><?php echo ' ' . $lang['sp']?></span>
+                        <label><?php echo $lang['min_price'] ?></label> <span
+                                id="slider-range-value1"></span><span><?php echo ' ' . $lang['sp'] ?></span>
                     </div>
                     <div class="max-slide-side">
-                        <label><?php echo $lang['max_price']?></label> <span id="slider-range-value2"></span><span><?php echo ' ' . $lang['sp']?></span>
+                        <label><?php echo $lang['max_price'] ?></label> <span
+                                id="slider-range-value2"></span><span><?php echo ' ' . $lang['sp'] ?></span>
                     </div>
                 </div>
                 <div class="row">
@@ -127,15 +131,14 @@ if (mysqli_connect_errno()) {
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="row">
-                    <button id="find" class="btn btn-general btn-green ml-3" role="button">Find</button>
-                </div>
+<!--                <div class="row">-->
+<!--                    <button id="find" class="btn btn-general btn-green ml-3" role="button">Find</button>-->
+<!--                </div>-->
                 <div id="products_container" class="row">
                     <?php
                     if ($result = mysqli_query($link, $query)) {
                         $count = mysqli_num_rows($result);
-                        if($count>0)
-                        {
+                        if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
 
                                 $arr = array(
@@ -161,10 +164,8 @@ if (mysqli_connect_errno()) {
 
                                 template('cards/product-card.php', $arr);
                             }
-                        }
-                        else
-                        {
-                            echo '<div>'.$lang['no_content'].'</div>';
+                        } else {
+                            echo '<div>' . $lang['no_content'] . '</div>';
                         }
 
                     } else {
