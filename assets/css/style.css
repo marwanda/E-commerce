@@ -2265,6 +2265,9 @@ footer .divider {
    box-shadow:  1px 1px 4px 0px rgba(0,0,0,0.1)
 }
 
-.marwan {
-    float: left;
+@media (max-width:1800px) {
+    .padding-large {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
 }

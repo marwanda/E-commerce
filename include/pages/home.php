@@ -164,7 +164,7 @@ if (mysqli_connect_errno()) {
 <!--====================================================
                         Products
 ======================================================-->
-<section id="latest_products ">
+<section class="padding-large" id="latest_products ">
     <div class="container-fluid mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.2s">
@@ -225,7 +225,7 @@ if (mysqli_connect_errno()) {
 <!--====================================================
                         News
 ======================================================-->
-<section id="latest_news">
+<section class="padding-large" id="latest_news">
     <div class="container-fluid mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.2s">
