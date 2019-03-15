@@ -274,9 +274,12 @@ figcaption i {
 }
 
 .cart-table-img {
-    width: 100%;
-    object-fit: cover;
+    width: 100px;
     height: 100px;
+}
+
+#cart .prod-desc {
+    padding-right: 2em;
 }
 
 .nxt-arrow, .prev-arrow {

@@ -120,20 +120,24 @@
                     </li>
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>"><?php echo $lang['news']?></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['about']?></a>
-                        <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['about'] ?>"><?php echo $lang['our_team']?></a>
-                            <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['companies'] ?>"><?php echo $lang['leading_companies']?></a>
-                        </div>
-                    </li>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['about'] ?>"><?php echo $lang['about']?></a>
+<!--                    </li>-->
+<!--                    <li class="nav-item"><a class="nav-link smooth-scroll" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"-->
+<!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--><?php //echo $lang['about']?><!--</a>-->
+<!--                        <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">-->
+<!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['about'] ?><!--">--><?php //echo $lang['our_team']?><!--</a>-->
+<!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
                     <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
                         <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                         </li>
                     <?php } ?>
                     <li class="nav-item lang-nav-item">
-                        <a href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?></a>
+                        <a href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'EN'; else echo $lang['arabic']?></a>
                     </li>
 
                     <li>
