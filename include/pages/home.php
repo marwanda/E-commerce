@@ -108,7 +108,13 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['online_shopping'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+
+
+
+
+
+
+                        <p><?php echo $lang['shopping_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -123,7 +129,7 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['latest_technology_news'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p><?php echo $lang['news_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -138,7 +144,7 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['suggest_a_project'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p><?php echo $lang['projects_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -153,7 +159,7 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['suggest_an_offer'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p> <?php echo $lang['offers_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>

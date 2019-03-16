@@ -121,6 +121,7 @@
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>"><?php echo $lang['news']?></a>
                     </li>
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['about'] ?>"><?php echo $lang['about']?></a>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['companies'] ?>"><?php echo $lang['leading_companies']?></a>
 <!--                    </li>-->
 <!--                    <li class="nav-item"><a class="nav-link smooth-scroll" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
 <!--                    </li>-->

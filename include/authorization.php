@@ -4,6 +4,8 @@ $standalone_pages = array(
     $pages['404'],
     $pages['index'],
     $pages['reset-password'],
+    $pages['site-map'],
+
 
 );
 
@@ -25,6 +27,7 @@ $User_pages = array_merge(
         $pages['product-details'],
         $pages['products-list'],
         $pages['project-form'],
+
     )
 
 );
@@ -43,6 +46,7 @@ $Guest_User_pages = array_merge(
         $pages['product-details'],
         $pages['products-list'],
         $pages['project-form'],
+
     )
 
 );

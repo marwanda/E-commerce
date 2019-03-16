@@ -19,4 +19,5 @@ $pages = array (
     "reset-password"=>"reset-password",
     "register"=>"register",
     "cart"=>"cart",
+    "site-map"=>"site-map",
 );
