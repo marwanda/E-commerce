@@ -110,10 +110,6 @@ if (mysqli_connect_errno()) {
                     <div class="service-item-desc">
 
 
-
-
-
-
                         <p><?php echo $lang['shopping_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
@@ -151,7 +147,7 @@ if (mysqli_connect_errno()) {
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item right-bord">
-                    <a href="offers-form">
+                    <a href="offer-form">
                         <div class="service-item-icon"><i class="fa fa-file-o fa-3x"></i>
                         </div>
                     </a>

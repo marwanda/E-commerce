@@ -892,6 +892,16 @@ $(document).on('click', '.submit-cart', function (e) {
 
 
     e.preventDefault();
+    if($('#total-price-hidden').val()==0)
+    {
+        $('#confirmation-modal').modal('hide');
+        $.notify(lang.mustFillCart, {position: "left bottom", className: "error"});
+    }
+    else
+    {
+        $('#confirmation-modal').modal('show');
+    }
+
 
 
 })

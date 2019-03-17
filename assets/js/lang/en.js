@@ -16,6 +16,7 @@ var lang = {
     enterMobile:"Mobile number must be inserted",
     all:"All",
     wrongMobile:'Wrong mobile number',
+    mustFillCart:'You have to fill your products cart first!',
 
 
 

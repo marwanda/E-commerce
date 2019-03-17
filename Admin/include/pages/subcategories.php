@@ -18,7 +18,7 @@ mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
 $query = "select * from category";
-$query2 = "select s.id, s.name_ar,s.name_en, s.status, c.id, c.name_ar as cat_name_ar , c.name_en as cat_name_en  from subcategory s  inner join category c on s.category_id = c.id";
+$query2 = "select s.id, s.name_ar,s.name_en, s.status, c.id as cat_id, c.name_ar as cat_name_ar , c.name_en as cat_name_en  from subcategory s  inner join category c on s.category_id = c.id";
 
 
 if (mysqli_connect_errno()) {
