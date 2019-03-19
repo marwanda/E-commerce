@@ -2064,7 +2064,7 @@ font-size: large;
 }
 
 .news-card-title {
-    direction: rtl;
+    /*direction: rtl;*/
 }
 
 .min-slide-side, .max-slide-side {

@@ -252,10 +252,10 @@ if (mysqli_connect_errno()) {
                                 </div>
                                 <div class="card-body">
                                     <a href="<?php echo $itm->link; ?>"><h3
-                                                class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3>
+                                                class="card-title-custom news-card-title" dir="auto"><?php echo $itm->title; ?></h3>
                                     </a>
                                     <div dir="auto" class="desc news-card-text"><?php echo $itm->description ?></div>
-                                    <div class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
+                                    <div style="margin-top: 15px" class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </div>
                                 </div>

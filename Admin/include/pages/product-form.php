@@ -139,8 +139,7 @@ if (isset($_POST['edit-product'])) {
 
         } else {
 
-            echo -1;
-            exit;
+            echo -1;exit;
 
         }
 
