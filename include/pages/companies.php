@@ -12,7 +12,7 @@
         <div class="w3-padding w3-white notranslate">
             <h3><?php echo $lang['leading_companies']?></h3>
             <div class="heading-border-light"></div>
-            <table class="table table-striped ">
+            <table class="table table-striped table-responsive">
                 <thead>
                 <tr>
                     <th class="tabel-width"><?php echo $lang['company_name']?></th>

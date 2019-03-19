@@ -42,6 +42,8 @@ License URL: https://creativecommons.org/licenses/by/4.0/
 .preview-thumbnail.nav-tabs {
     border: none;
     margin-top: 15px;
+    direction: ltr;
+    justify-content: flex-end !important;
 }
 
 .preview-thumbnail.nav-tabs li {

@@ -230,10 +230,10 @@ License URL: https://creativecommons.org/licenses/by/4.0/
         min-width: 280px;
     }
 
-    #cart table#cart tbody tr td:first-child {
-        background: #333;
-        color: #fff;
-    }
+    /*#cart table#cart tbody tr td:first-child {*/
+        /*background: #333;*/
+        /*color: #fff;*/
+    /*}*/
 
     #cart table#cart tbody td:before {
         content: attr(data-th);
