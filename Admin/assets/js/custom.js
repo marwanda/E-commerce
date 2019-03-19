@@ -403,7 +403,7 @@ $(document).ready(function () {
                 })
                 $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
             } else {
-                $.notify(lang.general_error, {position: "left bottom", className: "error"});
+                $.notify(lang.canNotDeleteCat, {position: "left bottom", className: "error"});
             }
 
         })
@@ -494,7 +494,7 @@ $(document).ready(function () {
                 $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
 
             } else {
-                $.notify(lang.general_error, {position: "left bottom", className: "error"});
+                $.notify(lang.canNotDeleteSub, {position: "left bottom", className: "error"});
             }
 
         })

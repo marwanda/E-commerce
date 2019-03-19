@@ -108,7 +108,9 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['online_shopping'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+
+
+                        <p><?php echo $lang['shopping_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -123,7 +125,7 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['latest_technology_news'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p><?php echo $lang['news_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -138,14 +140,14 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['suggest_a_project'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p><?php echo $lang['projects_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 service-padding">
                 <div class="service-item right-bord">
-                    <a href="offers-form">
+                    <a href="offer-form">
                         <div class="service-item-icon"><i class="fa fa-file-o fa-3x"></i>
                         </div>
                     </a>
@@ -153,7 +155,7 @@ if (mysqli_connect_errno()) {
                         <h3><?php echo $lang['suggest_an_offer'] ?></h3>
                     </div>
                     <div class="service-item-desc">
-                        <p>Laborum adipisicing do amet commodo occaecat do amet commodo occaecat.</p>
+                        <p> <?php echo $lang['offers_text'] ?></p>
                         <div class="content-title-underline-light"></div>
                     </div>
                 </div>
@@ -250,10 +252,10 @@ if (mysqli_connect_errno()) {
                                 </div>
                                 <div class="card-body">
                                     <a href="<?php echo $itm->link; ?>"><h3
-                                                class="card-title-custom news-card-title"><?php echo $itm->title; ?></h3>
+                                                class="card-title-custom news-card-title" dir="auto"><?php echo $itm->title; ?></h3>
                                     </a>
                                     <div dir="auto" class="desc news-card-text"><?php echo $itm->description ?></div>
-                                    <div class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
+                                    <div style="margin-top: 15px" class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </div>
                                 </div>

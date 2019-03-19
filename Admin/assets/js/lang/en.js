@@ -17,6 +17,8 @@ var lang = {
     all:"All",
     pleaseChoose:"Please choose",
     canNotDeleteProduct:"You can not delete this product, you have to process order: ",
+    canNotDeleteCat:"You can not delete this category, you have to delete the subcategories that are below this category",
+    canNotDeleteSub:"You can not delete this subcategory, you have to delete products that are below this subcategory",
 
 
 

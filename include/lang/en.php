@@ -26,6 +26,7 @@ $lang = array(
 
     'less_expensive_first' => 'Less expensive first',
     'more_expensive_first' => 'More expensive first',
+    'site_map' => 'Site Map',
 
 
 
@@ -93,6 +94,12 @@ $lang = array(
     'about'=>'About Us',
     'our_team'=>'Our Team',
     'leading_companies'=>'Leading Companies',
+    'leading_companies_desc'=>'The most important local companies',
+    'projects_text'=>'some text',
+    'news_text'=>'some text',
+    'offers_text'=>'some text',
+    'shopping_text'=>'some text',
+
 
 
     //general

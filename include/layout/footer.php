@@ -4,13 +4,14 @@
             <div class="col-sm-12 col-md-2 text-start margin-bottom-1">
                 <img src="<?php echo $APP_ROOT?>assets/img/logo3.png" class="card-img" alt="">
             </div>
-            <div class="col-sm-12 col-md-4 text-center margin-bottom-1">
+            <div class="col-sm-12 col-md-6 text-center margin-bottom-1">
                 <div class="footer-links d-flex justify-content-start">
-                    <a href="<?php echo $APP_ROOT . $pages['about'] ?>" class=" font-size-16 contact-us-title text-start"><?php echo $lang['our_team']?></a>
+                    <a href="<?php echo $APP_ROOT . $pages['about'] ?>" class=" font-size-16 contact-us-title text-start"><?php echo $lang['about']?></a>
                     <a href="<?php echo $APP_ROOT . $pages['companies'] ?>" class=" font-size-16 contact-us-title text-start"><?php echo $lang['leading_companies']?></a>
+                    <a href="<?php echo $APP_ROOT . $pages['site-map'] ?>" class=" font-size-16 contact-us-title text-start"><?php echo $lang['site_map']?></a>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 connect-us margin-bottom-1">
+            <div class="col-sm-12 col-md-4 connect-us margin-bottom-1">
                 <h3 class=" font-size-18 bold stay-connected"><?php echo $lang['stay_connected']?></h3>
                 <ul class="social-icon mt-sm-4 pr-sm-2">
                     <li>

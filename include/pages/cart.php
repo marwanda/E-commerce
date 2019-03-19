@@ -158,7 +158,7 @@ $disabled = false;
                     class="hidden-xs"><?php if(isset($order_status) && $order_status==2) echo $lang['pending']; else if (isset($msg) && !empty($msg)) echo $msg;else  ?></td>
                 <td class="hidden-xs text-center"><strong id="total-price"></strong></td>
                 <?php if (!$disabled) { ?>
-                    <td><a data-toggle="modal" data-target="#confirmation-modal" class="btn btn-general btn-green submit-cart"><?php echo $lang['submit'] ?><i
+                    <td><a  class="btn btn-general btn-green submit-cart"><?php echo $lang['submit'] ?><i
                                     class="fa fa-angle-right prev-arrow"></i></a></td>
                 <?php } ?>
 

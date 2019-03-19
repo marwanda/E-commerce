@@ -41,16 +41,23 @@ if (isset($_POST['submit-subcategory'])){
     }
 } else if (isset($_POST['action']) && $_POST['action'] == 'delete' && $_POST['sub_id']) {
     $sub_id = make_safe($_POST['sub_id']);
-    $query = "delete from subcategory where id = {$sub_id}";
 
-    if (mysqli_query($link, $query) === TRUE) {
-        echo 1;
-    } else {
 
-        echo -1;
-        exit;
 
-    }
+
+        $query = "delete from subcategory where id = {$sub_id}";
+
+        if (mysqli_query($link, $query) === TRUE) {
+            echo 1;
+        } else {
+
+            echo -1;
+            exit;
+
+        }
+
+
+
 } else if (isset($_POST['action']) && $_POST['action'] == 'change-status' && $_POST['sub_id'] && $_POST['status']) {
     $sub_id = make_safe($_POST['sub_id']);
     $status = make_safe($_POST['status']);

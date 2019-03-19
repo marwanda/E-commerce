@@ -23,6 +23,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['pro
 
     }
 
+    $query = "select pic from product where id = {$product_id}";
+    if ($result = mysqli_query($link, $query)) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            unlink('../../files/images/products/large/' . $row['pic']);
+
+        }
+    } else {
+
+        echo -1;
+        exit;
+
+    }
+
 
     $query = "select * from gallary where product_id = {$product_id}";
     if ($result = mysqli_query($link, $query)) {
@@ -34,7 +48,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['pro
 
                 if (mysqli_query($link, $query) === TRUE) {
 
-                    unlink( '../../files/images/products/large/' . $row['name']);
+                    unlink('../../files/images/products/large/' . $row['name']);
                 } else {
 
                     echo -1;

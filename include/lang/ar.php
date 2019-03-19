@@ -22,6 +22,13 @@ $lang= array(
 
     'less_expensive_first' => 'الأقل كلفة أولاً',
     'more_expensive_first' => 'الأكثر كلفة أولاً',
+    'site_map' => 'خريطة الموقع',
+    'projects_text'=>'نص معين',
+    'news_text'=>'نص معين',
+    'offers_text'=>'نص معين',
+    'shopping_text'=>'نص معين',
+
+
 
 
 
@@ -104,7 +111,7 @@ $lang= array(
     'slide_two' => 'أفضل الأسعار',
     'online_shopping' => 'تسوق الكتروني',
     'latest_technology_news' => 'آخر أخبار التكنولوحيا',
-    'latest_products' => 'أحدث المنتجات',
+    'latest_products' => 'آخر المنتجات',
     'latest_news' => 'آخر الأخبار',
     'footer_copyright' => 'حقوق الملكية: جميع الحقوق محفوظة لشركة IT-Source 2019',
     'stay_connected' => 'تواصل معنا',
@@ -116,6 +123,7 @@ $lang= array(
     'discover_more' => 'اكشتف المزيد',
     'company_name' => 'اسم الشركة',
     'business' => 'الأعمال',
+    'leading_companies_desc' => 'تعرف على أهم الشركات المحلية',
 
     /** project **/
     'file_type' => 'تستطيع رفع ملف من الانواع التالية: pdf , word , exel, text',

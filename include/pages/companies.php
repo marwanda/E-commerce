@@ -3,8 +3,8 @@
     ======================================================-->
     <div id="home-p" class="home-p pages-head1 text-center">
         <div class="container">
-            <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['about']?></h1>
-            <p><?php echo $lang['discover_about']?></p>
+            <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['leading_companies']?></h1>
+            <p><?php echo $lang['leading_companies_desc']?></p>
         </div>
         <!--/end container-->
     </div>

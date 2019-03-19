@@ -54,10 +54,10 @@
                             <?php if(isset($_SESSION['role']) && $_SESSION['role']==3){?>
                                 <li>
                                 <span> <?php echo $lang['you_can_be_vip_user']?> <a id="vip-read-more" href="#" style="color: #2196f3;"
-                                                                   data-toggle="modal" data-target="#vip-modal"
-                                                                   class=""><?php echo $lang['read_more']?></a></span>
+                                                                                    data-toggle="modal" data-target="#vip-modal"
+                                                                                    class=""><?php echo $lang['read_more']?></a></span>
                                 </li>
-                           <?php } ?>
+                            <?php } ?>
 
                             <li>
 
@@ -66,13 +66,17 @@
                     </div>
                     <div class="col-md-5">
                         <ul class="list-inline top-data">
-                            <li><a href="#" target="_empty"><i class="fa top-social fa-facebook"></i></a></li>
+                            <!--<li><a href="#" target="_empty"><i class="fa top-social fa-facebook"></i></a></li>-->
                             <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
                             <li><a href="<?php echo $page=='product-details'? '../':''?>requests/logout.php" class="log-top" ><?php echo $lang['logout']?></a>
                                 <?php }else{ ?>
                             <li><a href="#" class="log-top" data-toggle="modal" data-target="#login-modal"><?php echo $lang['login']?></a>
                                 <?php } ?>
 
+                            </li>
+                            <span class="text-muted">|</span>
+                            <li class="ml-1">
+                                <a style="font-size:14px;" href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="log-top"><?php if($_SESSION['lang']=='ar')  echo 'EN'; else echo $lang['arabic']?></a>
                             </li>
                         </ul>
                     </div>
@@ -87,7 +91,7 @@
             <a class="navbar-brand smooth-scroll" href="<?php echo $APP_ROOT . $pages['home'] ?>">
                 <img class="header-logo" src="<?php echo $APP_ROOT ?>assets/img/logo3.png" alt="logo">
             </a>
-<!--            <a style="border-radius: 50px;" href="--><?php //if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?><!--" class="btn btn-general btn-green">--><?php //if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?><!--</a>-->
+            <!--            <a style="border-radius: 50px;" href="--><?php //if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?><!--" class="btn btn-general btn-green">--><?php //if($_SESSION['lang']=='ar')  echo 'English'; else echo $lang['arabic']?><!--</a>-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -105,9 +109,9 @@
                                href="<?php echo $APP_ROOT . $pages['products-list'] ?>"><?php echo $lang['products']?></a>
                             <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
                                 <a class="dropdown-item" href="<?php echo $APP_ROOT . $pages['cart'] ?>"><?php echo $lang['cart']?></a>
-                    <?php } ?>
+                            <?php } ?>
 
-<!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['orders'] ?><!--">My Orders</a>-->
+                            <!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['orders'] ?><!--">My Orders</a>-->
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -121,53 +125,53 @@
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['news-list'] ?>"><?php echo $lang['news']?></a>
                     </li>
                     <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['about'] ?>"><?php echo $lang['about']?></a>
-<!--                    </li>-->
-<!--                    <li class="nav-item"><a class="nav-link smooth-scroll" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"-->
-<!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--><?php //echo $lang['about']?><!--</a>-->
-<!--                        <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">-->
-<!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['about'] ?><!--">--><?php //echo $lang['our_team']?><!--</a>-->
-<!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
-<!--                        </div>-->
-<!--                    </li>-->
-                    <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
-                        <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
-                        </li>
-                    <?php } ?>
-                    <li class="nav-item lang-nav-item">
-                        <a href="<?php if (isset($_SESSION['lang']) && $_SESSION['lang'] && $_SESSION['lang']=='en') echo '?lang=ar'; else echo '?lang=en';?>" class="btn btn-general btn-green header-btn"><?php if($_SESSION['lang']=='ar')  echo 'EN'; else echo $lang['arabic']?></a>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['companies'] ?>"><?php echo $lang['leading_companies']?></a>
+                        <!--                    </li>-->
+                        <!--                    <li class="nav-item"><a class="nav-link smooth-scroll" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
+                        <!--                    </li>-->
+                        <!--                    <li class="nav-item dropdown">-->
+                        <!--                        <a class="nav-link dropdown-toggle smooth-scroll" href="#" id="navbarDropdownMenuLink"-->
+                        <!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--><?php //echo $lang['about']?><!--</a>-->
+                        <!--                        <div class="dropdown-menu dropdown-cust" aria-labelledby="navbarDropdownMenuLink">-->
+                        <!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['about'] ?><!--">--><?php //echo $lang['our_team']?><!--</a>-->
+                        <!--                            <a class="dropdown-item" href="--><?php //echo $APP_ROOT . $pages['companies'] ?><!--">--><?php //echo $lang['leading_companies']?><!--</a>-->
+                        <!--                        </div>-->
+                        <!--                    </li>-->
+                        <?php if(isset($_SESSION['role']) && ($_SESSION['role']==2 || $_SESSION['role']==3)){?>
+                    <li class="nav-item"><a class="nav-link smooth-scroll" href="<?php echo $APP_ROOT . $pages['profile'] ?>"><?php echo $lang['profile']?></a>
                     </li>
+                    <?php } ?>
+
 
                     <li>
                         <div class="top-menubar-nav">
                             <div class="topmenu ">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-9">
-                                            <ul class="list-inline top-contacts">
-                                                <li>
-                                                    <i class="fa fa-envelope"></i> Email: <a
-                                                            href="mailto:info@htmlstream.com">info@htmlstream.com</a>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-phone"></i> Hotline: (1) 396 4587 99
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <ul class="list-inline top-data">
-                                                <li><a href="#" target="_empty"><i
-                                                                class="fa top-social fa-facebook"></i></a></li>
-                                                <li><a href="#" target="_empty"><i class="fa top-social fa-twitter"></i></a>
-                                                </li>
-                                                <li><a href="#" target="_empty"><i
-                                                                class="fa top-social fa-google-plus"></i></a></li>
-                                                <li><a href="#" class="log-top" data-toggle="modal"
-                                                       data-target="#login-modal">Login</a></li>
-                                            </ul>
-                                        </div>
+                                        <!--<div class="col-md-9">-->
+                                        <!--    <ul class="list-inline top-contacts">-->
+                                        <!--        <li>-->
+                                        <!--            <i class="fa fa-envelope"></i> Email: <a-->
+                                        <!--                    href="mailto:info@htmlstream.com">info@htmlstream.com</a>-->
+                                        <!--        </li>-->
+                                        <!--        <li>-->
+                                        <!--            <i class="fa fa-phone"></i> Hotline: (1) 396 4587 99-->
+                                        <!--        </li>-->
+                                        <!--    </ul>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                        <!--    <ul class="list-inline top-data">-->
+                                        <!--        <li><a href="#" target="_empty"><i-->
+                                        <!--                        class="fa top-social fa-facebook"></i></a></li>-->
+                                        <!--        <li><a href="#" target="_empty"><i class="fa top-social fa-twitter"></i></a>-->
+                                        <!--        </li>-->
+                                        <!--        <li><a href="#" target="_empty"><i-->
+                                        <!--                        class="fa top-social fa-google-plus"></i></a></li>-->
+                                        <!--        <li><a href="#" class="log-top" data-toggle="modal"-->
+                                        <!--               data-target="#login-modal">Login</a></li>-->
+
+                                        <!--    </ul>-->
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>

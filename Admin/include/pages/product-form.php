@@ -139,8 +139,7 @@ if (isset($_POST['edit-product'])) {
 
         } else {
 
-            echo -1;
-            exit;
+            echo -1;exit;
 
         }
 
@@ -150,7 +149,8 @@ if (isset($_POST['edit-product'])) {
 
     if (mysqli_query($link, $query) === TRUE) {
 
-
+        $_SESSION['error_msg'] = $lang['successfully_done'];
+        $_SESSION['msg_type'] = 1;
 
         if ($picture1['error'] != 4) {
             $uploadPath = 'products';
