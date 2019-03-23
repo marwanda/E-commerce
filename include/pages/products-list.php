@@ -131,9 +131,14 @@ if (mysqli_connect_errno()) {
                 </div>
             </div>
             <div class="col-lg-12">
-<!--                <div class="row">-->
-<!--                    <button id="find" class="btn btn-general btn-green ml-3" role="button">Find</button>-->
-<!--                </div>-->
+                <div class="lds-css lds-d-none ng-scope d-flex justify-content-center" id="lds-css">
+                    <div style="width:100%;height:100%" class="lds-eclipse">
+                        <div></div>
+                    </div>
+                </div>
+                <!--                <div class="row">-->
+                <!--                    <button id="find" class="btn btn-general btn-green ml-3" role="button">Find</button>-->
+                <!--                </div>-->
                 <div id="products_container" class="row">
                     <?php
                     if ($result = mysqli_query($link, $query)) {

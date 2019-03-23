@@ -265,7 +265,7 @@ figcaption i {
 }
 
 .social-icon li {
-    margin-left: 6em;
+    margin-left: 4em;
     margin-right: initial;
 }
 
@@ -304,6 +304,10 @@ figcaption i {
     margin-top: 0em;
 }
 
+.preview-thumbnail.nav-tabs li:last-of-type {
+     margin-right: 2.5%;
+}
+
 @media (max-width: 992px) and (min-width: 600px) {
     #cart .prod-desc {
         padding-right: 3em;
@@ -327,7 +331,7 @@ figcaption i {
 @media (max-width: 768px) {
 
     .stay-connected {
-        margin-left: 0em;
+        margin-left: 1em;
     }
 
     .footer-links {
