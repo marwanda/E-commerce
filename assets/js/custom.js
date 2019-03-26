@@ -524,6 +524,7 @@ $(document).on('changed.bs.select', '#sort_selecet', function () {
     }).done(function (msg) {
 
         $('#products_container').empty();
+        // $('#lds-css').removeClass('lds-d-none');
 
         jQuery(JSON.parse(msg)).each(function (i, item) {
 
@@ -535,6 +536,7 @@ $(document).on('changed.bs.select', '#sort_selecet', function () {
                 data: item
             }).done(function (msg) {
 
+                // $('#lds-css').addClass('lds-d-none');
                 $('#products_container').append(msg);
 
             })

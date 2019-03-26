@@ -898,12 +898,12 @@ p {
         margin: 0 auto 20px auto;
     }
 
-    .heading-border-light {
-        width: 30px;
-        height: 5px;
-        background-color: #2196f3;
-        margin: 0 0 20px 0;
-    }
+    /*.heading-border-light {*/
+        /*width: 30px;*/
+        /*height: 5px;*/
+        /*background-color: #2196f3;*/
+        /*margin: 0 0 20px 0;*/
+    /*}*/
 
     .title-bar p {
         color: #717171;
@@ -2334,4 +2334,10 @@ footer .divider {
     height: 200px !important;
     -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
     transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+
+.products-container {
+    height: 450px;
+    margin-bottom: 2em;
+    overflow-y: auto;
 }

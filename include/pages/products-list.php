@@ -87,7 +87,7 @@ if (mysqli_connect_errno()) {
 <section id="shop-p1" class="shop-p1">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="shop-p1-title">
                     <h3><?php echo $lang['categories'] ?></h3>
                     <div class="heading-border-light"></div>
@@ -96,7 +96,7 @@ if (mysqli_connect_errno()) {
                     <option value="-1" selected><?php echo $lang['all'] ?></option>
                 </select>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="shop-p1-title">
                     <h3><?php echo $lang['subcategories'] ?></h3>
                     <div class="heading-border-light"></div>
@@ -105,7 +105,7 @@ if (mysqli_connect_errno()) {
                     <option value="-1" selected><?php echo $lang['all'] ?></option>
                 </select>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="shop-p1-title">
                     <h3><?php echo $lang['sort_as'] ?></h3>
                     <div class="heading-border-light"></div>
@@ -117,8 +117,7 @@ if (mysqli_connect_errno()) {
                     <option value="4"><?php echo $lang['more_expensive_first'] ?></option>
                 </select>
             </div>
-
-            <div class="col-lg-3">
+            <div class="col-lg-12 mt-4 mb-3">
                 <div class="shop-p1-title">
                     <h3><?php echo $lang['price_range'] ?></h3>
                     <div class="heading-border-light"></div>
@@ -156,7 +155,7 @@ if (mysqli_connect_errno()) {
                 <!--                <div class="row">-->
                 <!--                    <button id="find" class="btn btn-general btn-green ml-3" role="button">Find</button>-->
                 <!--                </div>-->
-                <div id="products_container" class="row">
+                <div id="products_container" class="row products-container">
                     <?php
                     if ($result = mysqli_query($link, $query)) {
                         $count = mysqli_num_rows($result);
