@@ -1,4 +1,22 @@
 <?php
+
+$link = connectDb_mysqli();
+mysqli_set_charset($link, "utf8");
+
+$query = "select * from gallary_home where type= 10";
+
+if ($result = mysqli_query($link, $query)) {
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
 function is_connected()
 {
     $connected = @fsockopen("www.google.com", 80);
@@ -34,7 +52,7 @@ else
 <!--====================================================
                        HOME-P
 ======================================================-->
-<div id="home-p" class="home-p pages-head1 text-center">
+<div id="home-p" style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')" class="home-p pages-head1 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['news'] ?></h1>
         <p><?php echo $lang['discover_more'] ?></p>

@@ -42,7 +42,7 @@ if ($_POST) {
             if (mysqli_query($link, $query2) === TRUE) {
                 $_SESSION['role'] = 2;
                 $date = date('Y-m-d', time());
-                $query3 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
+                $query3 = "insert into orders (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
                 if (mysqli_query($link, $query3) === TRUE) {
                     $last_id = mysqli_insert_id($link);
                     $_SESSION['order_id'] = $last_id;

@@ -19,6 +19,16 @@
                             <i class="fa fa-facebook-f mt-lg-1"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="#" class=" btn btn-default">
+                            <i class="fa fa-instagram mt-lg-1"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class=" btn btn-default">
+                            <i class="fa fa-linkedin mt-lg-1"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

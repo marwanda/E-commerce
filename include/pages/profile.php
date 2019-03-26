@@ -1,16 +1,16 @@
 <?php
+
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
-    if($_SESSION['msg_type']==1)
-        echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    else if($_SESSION['msg_type']==-1)
-        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    if ($_SESSION['msg_type'] == 1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    else if ($_SESSION['msg_type'] == -1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     else
-        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     $_SESSION['error_msg'] = '';
     $_SESSION['msg_type'] = '';
 
 }
-
 
 //$phone='';
 //$name='';
@@ -23,14 +23,29 @@ $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
+
+$query = "select * from gallary_home where type= 9";
+
+if ($result = mysqli_query($link, $query)) {
+/*    style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')"*/
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
 $query = "select * from user where id = {$_SESSION['user_id']}";
 
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];
-    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    $_SESSION['error_msg'] ='';
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    $_SESSION['error_msg'] = '';
 }
-
 
 if ($result = mysqli_query($link, $query)) {
 
@@ -73,10 +88,10 @@ else {
 
 
 ?>
-<div id="home-p" class="home-p pages-head1 text-center">
+<div id="home-p" style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')" class="home-p pages-head1 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"
-            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['edit_profile']?></h1>
+            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['edit_profile'] ?></h1>
     </div><!--/end container-->
 </div>
 <div class="container-fluid bg-light-gray">
@@ -109,17 +124,17 @@ else {
 
                 <div class="service-h-tab">
                     <nav class="nav nav-tabs" id="myTab" role="tablist">
-                        <a class="nav-item nav-link <?php if(!isset($_SESSION['change_password']) ){?>
+                        <a class="nav-item nav-link <?php if (!isset($_SESSION['change_password'])) { ?>
                         active
     <?php } ?> " id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                           role="tab" aria-controls="nav-profile"><?php echo $lang['profile']?></a>
-                        <a class="nav-item nav-link <?php if(isset($_SESSION['change_password']) && $_SESSION['change_password']==1){?>
+                           role="tab" aria-controls="nav-profile"><?php echo $lang['profile'] ?></a>
+                        <a class="nav-item nav-link <?php if (isset($_SESSION['change_password']) && $_SESSION['change_password'] == 1) { ?>
                         active
     <?php } ?>  " id="nav-password-tab" data-toggle="tab" href="#nav-password"
-                           role="tab" aria-controls="nav-password"><?php echo $lang['change_password']?></a>
+                           role="tab" aria-controls="nav-password"><?php echo $lang['change_password'] ?></a>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade <?php if(!isset($_SESSION['change_password']) ){?>
+                        <div class="tab-pane fade <?php if (!isset($_SESSION['change_password'])) { ?>
   show active  <?php } ?>" id="nav-profile" role="tabpanel"
                              aria-labelledby="nav-profile-tab">
                             <form id="" action="requests/edit-profile.php" method="post"
@@ -133,15 +148,15 @@ else {
                                                value="<?php echo isset($name) ? $name : null; ?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-8 control-label align-elements"><?php echo $lang['mobile'] ?>
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <input placeholder="<?php echo $lang['mobile'] ?>" required class="form-control"
-                                               name="mobile" type="tel"
-                                               value="<?php echo isset($phone) ? $phone : null; ?>">
-                                    </div>
-                                </div>
+<!--                                <div class="form-group">-->
+<!--                                    <label class="col-lg-8 control-label align-elements">--><?php //echo $lang['mobile'] ?>
+<!--                                        :</label>-->
+<!--                                    <div class="col-lg-8">-->
+<!--                                        <input placeholder="--><?php //echo $lang['mobile'] ?><!--" required class="form-control"-->
+<!--                                               name="mobile" type="tel"-->
+<!--                                               value="--><?php //echo isset($phone) ? $phone : null; ?><!--">-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="form-group">
                                     <label class="col-lg-8 control-label align-elements"><?php echo $lang['email'] ?>
                                         :</label>
@@ -193,30 +208,33 @@ else {
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade <?php if(isset($_SESSION['change_password']) && $_SESSION['change_password']==1){?>
+                        <div class="tab-pane fade <?php if (isset($_SESSION['change_password']) && $_SESSION['change_password'] == 1) { ?>
                         show active
 <?php } ?> " id="nav-password" role="tabpanel"
                              aria-labelledby="nav-password-tab">
-                            <form id="change-password-form" action="requests/change-password.php" method="post" class="form-horizontal  col-8 "
+                            <form id="change-password-form" action="requests/change-password.php" method="post"
+                                  class="form-horizontal  col-8 "
                                   role="form">
-                                <?php if(!isset($_SESSION['change_password']) ){?>
+                                <?php if (!isset($_SESSION['change_password'])) { ?>
                                     <div class="form-group">
                                         <label class="col-lg-8 control-label align-elements"><?php echo $lang['current_password'] ?>
                                             :</label>
                                         <div class="col-lg-8">
-                                            <input required placeholder="<?php echo $lang['current_password'] ?>" class="form-control"
-                                               id="current-password"    name="current-password" type="password"
+                                            <input required placeholder="<?php echo $lang['current_password'] ?>"
+                                                   class="form-control"
+                                                   id="current-password" name="current-password" type="password"
                                                    value="">
                                         </div>
                                     </div>
-                               <?php } ?>
+                                <?php } ?>
 
                                 <div class="form-group">
                                     <label class="col-lg-8 control-label align-elements"><?php echo $lang['new_password'] ?>
                                         :</label>
                                     <div class="col-lg-8">
-                                        <input required placeholder="<?php echo $lang['new_password'] ?>" class="form-control"
-                                             id="new-password" name="new-password" type="password"
+                                        <input required placeholder="<?php echo $lang['new_password'] ?>"
+                                               class="form-control"
+                                               id="new-password" name="new-password" type="password"
                                                value="">
                                     </div>
                                 </div>

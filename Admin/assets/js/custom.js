@@ -506,40 +506,42 @@ $(document).ready(function () {
 
     })
 
-    /** our team **/
+    /** about **/
 
 
+    $('#add-about').click(function () {
 
-
-
-    $('#add-member').click(function () {
-
-        $('#our-team-modal').modal({show: true})
-
+        $('#about-form-modal').modal({show: true})
     })
 
-    $('#edit-member').click(function () {
-
-        $('#our-team-modal').modal({show: true})
-
+    $('.delete-about').click(function () {
+        $('#confirm-modal-delete-about').modal({show: true})
+        localStorage.setItem('about_id', $(this).data('id'))
     })
-
-    $('#delete-member').click(function () {
-
-        $('#confirm-modal').modal({show: true})
-
-
+    $('#yes-delete-about').click(function () {
+        $id = localStorage.getItem('about_id');
+        $selector = '#about-' + $id;
+        $.ajax({
+            method: "POST",
+            url: "requests/about-management.php",
+            data: {
+                id: $id,
+                action: 'delete',
+            }
+        }).done(function (msg) {
+            if (msg == 1) {
+                $('#about-' + $id).fadeOut(500, function () {
+                    $(this).remove();
+                })
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+            } else {
+                $.notify(lang.canNotDeleteCat, {position: "left bottom", className: "error"});
+            }
+        })
     })
-
-    $('#yes-member-delete').click(function () {
-
-    })
-
-    $('#no-member-delete').click(function () {
-
+    $('#no-delete-category').click(function () {
+        // $('#confirm-modal-product-status').hide();
         //remove tr
-
-
     })
 
     /** leading companies **/
@@ -548,35 +550,37 @@ $(document).ready(function () {
 
 
 
-    $('#add-company').click(function () {
+    $('#add-companies').click(function () {
 
-        $('#leading-companies-modal').modal({show: true})
-
+        $('#companies-form-modal').modal({show: true})
     })
 
-    $('#edit-company').click(function () {
-
-        $('#leading-companies-modal').modal({show: true})
-
+    $('.delete-companies').click(function () {
+        $('#confirm-modal-delete-companies').modal({show: true})
+        localStorage.setItem('companies_id', $(this).data('id'))
+    })
+    $('#yes-delete-companies').click(function () {
+        $id = localStorage.getItem('companies_id');
+        $selector = '#companies-' + $id;
+        $.ajax({
+            method: "POST",
+            url: "requests/companies-management.php",
+            data: {
+                id: $id,
+                action: 'delete',
+            }
+        }).done(function (msg) {
+            if (msg == 1) {
+                $('#companies-' + $id).fadeOut(500, function () {
+                    $(this).remove();
+                })
+                $.notify(lang.successfully_done, {position: "left bottom", className: "success"});
+            } else {
+                $.notify(lang.canNotDeleteCat, {position: "left bottom", className: "error"});
+            }
+        })
     })
 
-    $('#delete-company').click(function () {
-
-        $('#confirm-modal').modal({show: true})
-
-
-    })
-
-    $('#yes-company-delete').click(function () {
-
-    })
-
-    $('#no-company-delete').click(function () {
-
-        //remove tr
-
-
-    })
 
 
     $('#datatable').DataTable();

@@ -9,6 +9,7 @@
 
 //
 include "include/config.php";
+echo substr(strchr("0945352971", "0"), 1);
 //
 //if ($_POST) {
 ////var_dump($_FILES);
@@ -30,7 +31,7 @@ include "include/config.php";
 //
 //}
 //
-unlink('files/images/products/large/test.txt');
+//unlink('files/images/products/large/test.txt');
 ?>
 <!---->
 <!---->

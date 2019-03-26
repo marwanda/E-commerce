@@ -15,7 +15,7 @@ $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
-$query = "select o.id, o.user_id, u.name, u.phone, o.status, o.date, o.total, o.note from itsource.order o inner join user u on o.user_id = u.id where o.status = 2 ";
+$query = "select o.id, o.user_id, u.name, u.phone, o.status, o.date, o.total, o.note from orders o inner join user u on o.user_id = u.id where o.status = 2 ";
 
 
 if (mysqli_connect_errno()) {

@@ -9,7 +9,7 @@ $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
-$query = "select o.status from itsource.order o where o.id = {$_SESSION['order_id']}";
+$query = "select o.status from orders o where o.id = {$_SESSION['order_id']}";
 if ($result = mysqli_query($link, $query)) {
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -53,9 +53,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'add') {
 
         }
 
-        $query = "select o.status from itsource.order o where o.id = {$_SESSION['order_id']}";
+        $query = "select o.status from orders o where o.id = {$_SESSION['order_id']}";
         $date = date('Y-m-d', time());
-        $query1 = "insert into itsource.order (user_id, status, date) VALUES ({$user_id},1,{$sq}{$date}{$sq})";
+        $query1 = "insert into orders (user_id, status, date) VALUES ({$user_id},1,{$sq}{$date}{$sq})";
         $query2 = "insert into cart (product_id,order_id,quantity) VALUES ({$product_id},{$_SESSION['order_id']},1)";
         $query4 = "select * from cart where order_id = {$_SESSION['order_id']}";
 
@@ -294,10 +294,10 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST
     $date = date('Y-m-d', time());
     if (isset($_POST['note'])) {
         $note = make_safe($_POST['note']);
-        $query = "update itsource.order set note = {$sq}{$note}{$sq}, total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
+        $query = "update orders set note = {$sq}{$note}{$sq}, total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
 
     } else
-        $query = "update itsource.order set total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
+        $query = "update orders set total = {$total}, date= {$sq}{$date}{$sq}, status= 2 where id = {$_SESSION['order_id']}";
     if (mysqli_query($link, $query) === TRUE) {
       $_SESSION['error_msg']=$lang['successfully_done'];
       $_SESSION['msg_type']=1;

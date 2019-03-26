@@ -8,18 +8,18 @@ $birthday = isset($_POST['birthday']) ? make_safe($_POST['birthday']) : null;
 $address = isset($_POST['address']) ? make_safe($_POST['address']) : null;
 
 
-$_SESSION['phone'] = $mobile;
+//$_SESSION['phone'] = $mobile;
 
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
-if ($mobile != $_SESSION['phone'])
-    $role = 1;
-else
-    $role = $_SESSION['role'];
+//if ($mobile != $_SESSION['phone'])
+//    $role = 1;
+//else
+//    $role = $_SESSION['role'];
 
-$query = "update user set  name= {$sq}{$full_name}{$sq}, phone= {$sq}{$mobile}{$sq}, email = {$sq}{$email}{$sq}, gender = {$gender} , birthdate= {$sq}{$birthday}{$sq}, address= {$sq}{$address}{$sq}, role= {$role} where id= {$_SESSION['user_id']}";
+$query = "update user set  name= {$sq}{$full_name}{$sq}, email = {$sq}{$email}{$sq}, gender = {$gender} , birthdate= {$sq}{$birthday}{$sq}, address= {$sq}{$address}{$sq}, role= {$_SESSION['role']} where id= {$_SESSION['user_id']}";
 
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];

@@ -17,10 +17,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'change-status' && isset($_PO
 
     if (isset($_POST['note']) && !empty($_POST['note'])) {
         $note = make_safe($_POST['note']);
-        $query = "update itsource.order set status={$status},msg={$note} where id={$order_id}";
+        $query = "update orders set status={$status},msg={$note} where id={$order_id}";
     } else {
 
-        $query = "update itsource.order set status={$status} where id={$order_id}";
+        $query = "update orders set status={$status} where id={$order_id}";
 
     }
 

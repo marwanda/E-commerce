@@ -1,7 +1,29 @@
+<?php
+
+
+$link = connectDb_mysqli();
+mysqli_set_charset($link, "utf8");
+
+$query = "select * from gallary_home where type= 8";
+
+if ($result = mysqli_query($link, $query)) {
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
+
+?>
     <!--====================================================
                            HOME-P
     ======================================================-->
-    <div id="home-p" class="home-p pages-head1 text-center">
+    <div id="home-p" style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')" class="home-p pages-head1 text-center">
         <div class="container">
             <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['leading_companies']?></h1>
             <p><?php echo $lang['leading_companies_desc']?></p>
@@ -23,120 +45,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>D-Link</td>
-                    <td>IT</td>
-                    <td><select class="form-control select-form">
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                            <option>0966989698</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                            <option>john@example.com</option>
-                        </select></td>
-                    <td><select class="form-control select-form">
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                            <option>Damascus Bahsa</option>
-                        </select></td>
-                </tr>
+
+
+
+                <?php
+
+                $query = "select * from companies ";
+
+                if ($result = mysqli_query($link, $query)) {
+                    $count = mysqli_num_rows($result);
+                    if ($count > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            ?>
+                            <tr>
+                                <td><?php echo $row['name'] ?></td>
+                                <td><?php echo $row['business'] ?></td>
+                                <td><?php echo $row['phone'] ?></td>
+                                <td><?php echo $row['email'] ?></td>
+                                <td><?php echo $row['address'] ?></td>
+                            </tr>
+                      <?php  }
+                    }
+                }
+
+
+                ?>
+
+
                 </tbody>
             </table>
         </div>

@@ -1,11 +1,12 @@
 <?php
+
 if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_SESSION['msg_type'])) {
-    if($_SESSION['msg_type']==1)
-    echo '<input id="error-msg" data-type="success"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    else if($_SESSION['msg_type']==-1)
-        echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+    if ($_SESSION['msg_type'] == 1)
+        echo '<input id="error-msg" data-type="success"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    else if ($_SESSION['msg_type'] == -1)
+        echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     else
-        echo '<input id="error-msg" data-type="warn"  type="hidden" value="'.$_SESSION['error_msg'].'">';
+        echo '<input id="error-msg" data-type="warn"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
     $_SESSION['error_msg'] = '';
     $_SESSION['msg_type'] = '';
 
@@ -24,25 +25,62 @@ function is_connected()
     return $is_conn;
 }
 
-if (is_connected() && $_SESSION['lang']=='ar') {
+if (is_connected() && $_SESSION['lang'] == 'ar') {
     $xml = simplexml_load_file('https://www.zamanalwsl.net/news/rss/94/');
-}
-else if(is_connected() && $_SESSION['lang']=='en')
-{
+} else if (is_connected() && $_SESSION['lang'] == 'en') {
     $xml = simplexml_load_file('https://en.zamanalwsl.net/news/rss/52/');
-}
-    else $xml = null;
+} else $xml = null;
 
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
+
+$query = "select * from gallary_home where type= 1";
+$arr = array();
+if ($result = mysqli_query($link, $query)) {
+
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            if ($row['number'] == 1) {
+                $name1 = $row['name'];
+
+                $text1 = explode('-', $row['text']);
+
+                $arr1 = array('name' => $name1, 'text' => $text1[1], 'text_ar' => $text1[0]);
+                array_push($arr, $arr1);
+            } else if ($row['number'] == 2) {
+                $name2 = $row['name'];
+                $text2 = explode('-', $row['text']);
+
+
+                $arr1 = array('name' => $name2, 'text' => $text2[1], 'text_ar' => $text2[0]);
+                array_push($arr, $arr1);
+            } else if ($row['number'] == 3) {
+                $name3 = $row['name'];
+                $text3 = explode('-', $row['text']);
+
+
+                $arr1 = array('name' => $name3, 'text' => $text3[1], 'text_ar' => $text3[0]);
+                array_push($arr, $arr1);
+            }
+
+
+        }
+    }
+}
+
+$active = 1;
+
+
 $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where s.status=1 and c.status=1 order by date desc";
 //
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];
-    echo '<input id="error-msg" data-type="error"  type="hidden" value="'.$_SESSION['error_msg'].'">';
-    $_SESSION['error_msg'] ='';
+    echo '<input id="error-msg" data-type="error"  type="hidden" value="' . $_SESSION['error_msg'] . '">';
+    $_SESSION['error_msg'] = '';
 }
 
 //var_dump($_SESSION);
@@ -55,20 +93,30 @@ if (mysqli_connect_errno()) {
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('assets/img/shop/shop-banner-1.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3><?php echo $lang['slide_one'] ?></h3>
+
+            <?php
+            if (isset($arr)) foreach ($arr as $item) {
+                ?>
+                <div class="carousel-item <?php if ($active == 1) {
+                    echo 'active';
+                    $active = 0;
+                } ?>" style="background-image: url('<?php echo 'files/images/gallary/large/' . $item['name'] ?>')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3><?php if ($_SESSION['lang'] == 'ar') echo $item['text_ar']; else echo $item['text']; ?></h3>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
+
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('assets/img/shop/shop-banner-2.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3><?php echo $lang['slide_two'] ?></h3>
-                </div>
-            </div>
+            <!--            <div class="carousel-item" style="background-image: url('assets/img/shop/shop-banner-2.jpg')">-->
+            <!--                <div class="carousel-caption d-none d-md-block">-->
+            <!--                    <h3>--><?php //echo $lang['slide_two'] ?><!--</h3>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -247,15 +295,17 @@ if (mysqli_connect_errno()) {
                         <div data-id="<?php ?>" class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp news-card"
                              data-wow-delay="0.6s">
                             <div class="desc-comp-offer-cont custom-height" style="">
-                                <div class="thumbnail-blogs" >
+                                <div class="thumbnail-blogs">
                                     <img src="<?php echo $itm->enclosure['url'] ?>" class="news-card-img" alt="...">
                                 </div>
                                 <div class="card-body">
                                     <a href="<?php echo $itm->link; ?>"><h3
-                                                class="card-title-custom news-card-title" dir="auto"><?php echo $itm->title; ?></h3>
+                                                class="card-title-custom news-card-title"
+                                                dir="auto"><?php echo $itm->title; ?></h3>
                                     </a>
                                     <div dir="auto" class="desc news-card-text"><?php echo $itm->description ?></div>
-                                    <div style="margin-top: 15px" class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
+                                    <div style="margin-top: 15px"
+                                         class="text-center text-primary"><?php echo date("d-m-Y", strtotime($itm->pubDate)); ?>
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </div>
                                 </div>

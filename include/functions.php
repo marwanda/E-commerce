@@ -27,6 +27,19 @@
 //
 // }
 
+function sendSMS($user,$password,$from,$msg,$gsm){
+    $gsm = (int) $gsm;
+    $gsm = (string) $gsm;
+    $gsm = '963'.$gsm;
+    $msg = urlencode($msg);
+    $url = 'https://services.mtnsyr.com:7443/General/MTNSERVICES/ConcatenatedSender.aspx?User='.$user.'&Pass='.$password.'&From='.$from.'&Gsm='.$gsm.'&Msg='.$msg.'&Lang=1';
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $contents = curl_exec($ch);
+    curl_close($ch);
+}
+
 function GetRestURL($Function, $Service, $Params)
 {
     $escapees = array('\r\n', '\u2019', '\u00bb', '\u00ab', '\u201d', '\u201c', '\u00d7');

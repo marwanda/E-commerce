@@ -4,10 +4,25 @@ $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
+
+$query = "select * from gallary_home where type= 3";
+
+if ($result = mysqli_query($link, $query)) {
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
 $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where p.id=$id";
-$query2 = "SELECT * FROM itsource.gallary where product_id= {$id}";
+$query2 = "SELECT * FROM gallary where product_id= {$id}";
 $arr2 = array();
-//
+
 if (mysqli_connect_errno()) {
     $_SESSION['error_msg'] = $lang['sql_problem'];
     $_SESSION['msg_type'] = -1;
@@ -45,7 +60,6 @@ if (mysqli_connect_errno()) {
 
                     extract($arr);
 
-
                 }
             } else
                 redirect('404', '../');
@@ -66,7 +80,7 @@ if (mysqli_connect_errno()) {
 <!--====================================================
                        HOME-P
 ======================================================-->
-<div id="home-p" class="home-p pages-head3 text-center">
+<div id="home-p" style="background-image: url('../files/images/gallary/large/<?php echo $pic_name ?>')" class="home-p pages-head3 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['online_shopping'] ?></h1>
     </div><!--/end container-->

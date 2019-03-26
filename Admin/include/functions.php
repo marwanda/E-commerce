@@ -275,15 +275,16 @@ function upload_image($pic, $path, $size,$root='../../'){
 
             $handle->file_new_name_body = $file_name;
             $handle->mime_check = true;
-            $handle->image_resize = true;
+            $handle->image_resize = false;
             $handle->image_convert = 'png';
             $handle->dir_auto_create = true;
             $handle->image_ratio_crop = false;
             $handle->dir_auto_create = true;
 
 
-            $handle->image_x = $size['large']['image_x'];
-            $handle->image_y = $size['large']['image_y'];
+//            $handle->image_x = $size['large']['image_x'];
+//            $handle->image_y = $size['large']['image_y'];
+
             $handle->process($root.'files/'."images/".$path . '/large');
             if ($handle->processed) {
 

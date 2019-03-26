@@ -27,13 +27,19 @@ $Super_Admin_pages = array_merge(
         $pages['admins-list'],
         $pages['categories'],
         $pages['subcategories'],
-//        $pages['leading-companies'],
         $pages['projects-list'],
         $pages['register'],
         $pages['users-list'],
         $pages['offers-list'],
         $pages['change-password-admin'],
-//        $pages['our-team'],
+        $pages['about-list'],
+        $pages['companies-list'],
+        $pages['gallary-form'],
+        $pages['about-form'],
+        $pages['companies-form'],
+        $pages['sms-configurations'],
+
+
     )
 
 );

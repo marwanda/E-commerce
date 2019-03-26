@@ -45,11 +45,25 @@ if (mysqli_connect_errno()) {
 }
 
 if (mysqli_query($link, $query) === TRUE) {
-    /** todo send sms **/
+    $msg = 'Verification code is: ' . $code;
+    $mob = substr(strchr($_SESSION['phone'], "0"), 1);
+    $query = "select * from settings";
+    if ($result = mysqli_query($link, $query)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+        $pass=$row['password'];
+        $user=$row['username'];
+        $from=$row['sms_from'];
+    }
+
+    sendSMS($user,$pass,$from,$msg,$mob);
+}
+
+
+/** todo send sms **/
 //    $_SESSION['msg'] = $lang['successfully_done'];
-    echo 1;
-    mysqli_close($link);
-    exit();
+echo 1;
+mysqli_close($link);
+exit();
 }
 
 //}

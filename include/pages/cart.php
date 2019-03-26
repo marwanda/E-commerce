@@ -13,6 +13,21 @@ if (isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) && isset($_S
 //var_dump($_SESSION);
 $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
+
+$query = "select * from gallary_home where type= 3";
+
+if ($result = mysqli_query($link, $query)) {
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
 $sq = "'";
 $path = '../';
 $disabled = false;
@@ -51,9 +66,10 @@ $disabled = false;
 
     </div>
 </div>
-<div id="home-p" class="home-p pages-head3 text-center">
+<div id="home-p" style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')"
+     class="home-p pages-head3 text-center">
     <div class="container">
-        <h1 class="wow fadeInUp" data-wow-delay="0.1s">Shoping Box</h1>
+        <h1 class="wow fadeInUp" data-wow-delay="0.1s"><?php echo $lang['cart_text'] ?></h1>
     </div><!--/end container-->
 </div>
 
@@ -77,7 +93,7 @@ $disabled = false;
             <?php
             if(isset($_SESSION['user_id']) && isset($_SESSION['order_id']))
             {
-                $query = "select c.id as cart_id, c.product_id, c.sub_total, c.quantity, p.name, p.description_ar, p.description_en, p.pic, o.id as order_id, o.msg, o.status as order_status, o.user_id, p.price, p.price_vip from cart c inner join product p on c.product_id=p.id inner join itsource.order o on c.order_id=o.id where o.user_id={$_SESSION['user_id']} and o.id= {$_SESSION['order_id']}";
+                $query = "select c.id as cart_id, c.product_id, c.sub_total, c.quantity, p.name, p.description_ar, p.description_en, p.pic, o.id as order_id, o.msg, o.status as order_status, o.user_id, p.price, p.price_vip from cart c inner join product p on c.product_id=p.id inner join orders o on c.order_id=o.id where o.user_id={$_SESSION['user_id']} and o.id= {$_SESSION['order_id']}";
 
                 if ($result = mysqli_query($link, $query)) {
 
@@ -112,7 +128,7 @@ $disabled = false;
                         } else if ($row['order_status'] == 3 || $row['order_status'] == 4) {
                             $date = date('Y-m-d', time());
 
-                            $query1 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
+                            $query1 = "insert into orders (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
 
                             if (mysqli_query($link, $query1) === TRUE) {
                                 $last_id = mysqli_insert_id($link);

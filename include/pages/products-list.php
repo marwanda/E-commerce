@@ -25,6 +25,23 @@ $link = connectDb_mysqli();
 mysqli_set_charset($link, "utf8");
 $sq = "'";
 $path = '../';
+
+$query = "select * from gallary_home where type= 2";
+/*style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')"*/
+if ($result = mysqli_query($link, $query)) {
+
+    $count = mysqli_num_rows($result);
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $pic_name = $row['name'];
+            $pic_text = explode('-', $row['text']);
+
+        }
+    }
+}
+
+
 $query = "select p.id, p.name, p.price, p.price_vip, p.description_ar, p.description_en, p.pic, p.subcategory_id, p.quantity, p.date, p.status, s.name_ar as sub_name_ar, s.name_en as sub_name_en, s.status as sub_status, s.category_id, c.name_ar as cat_name_ar, c.name_en as cat_name_en, c.status as cat_status from product p inner join subcategory s on p.subcategory_id=s.id inner join category c on s.category_id = c.id where s.status=1 and c.status=1 order by date desc";
 //
 if (mysqli_connect_errno()) {
@@ -58,7 +75,7 @@ if (mysqli_connect_errno()) {
 //
 
 ?>
-<div id="home-p" class="home-p pages-head3 text-center">
+<div id="home-p"  style="background-image: url('files/images/gallary/large/<?php echo $pic_name ?>')" class="home-p pages-head3 text-center">
     <div class="container">
         <h1 class="wow fadeInUp" data-wow-delay="0.1s"
             style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><?php echo $lang['online_shopping'] ?></h1>

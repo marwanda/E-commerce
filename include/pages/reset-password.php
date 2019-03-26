@@ -41,9 +41,9 @@ if ($_POST) {
                     unset($_SESSION['user_id_verification']);
                     $_SESSION['change_password'] = 1;
                     if ($_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
-                        $query2 = "select o.id from itsource.order o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and (o.status=1 or o.status=2)";
+                        $query2 = "select o.id from orders o inner join user u on o.user_id = u.id where u.id= {$_SESSION['user_id']} and (o.status=1 or o.status=2)";
                         $date = date('Y-m-d', time());
-                        $query3 = "insert into itsource.order (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
+                        $query3 = "insert into orders (user_id, status, date) VALUES ({$_SESSION['user_id']},1,{$sq}{$date}{$sq})";
 
                         if ($result2 = mysqli_query($link, $query2)) {
 

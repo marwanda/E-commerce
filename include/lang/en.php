@@ -27,6 +27,8 @@ $lang = array(
     'less_expensive_first' => 'Less expensive first',
     'more_expensive_first' => 'More expensive first',
     'site_map' => 'Site Map',
+    'cart_text'=>'Shopping Cart',
+
 
 
 
@@ -95,10 +97,10 @@ $lang = array(
     'our_team'=>'Our Team',
     'leading_companies'=>'Leading Companies',
     'leading_companies_desc'=>'The most important local companies',
-    'projects_text'=>'some text',
-    'news_text'=>'some text',
-    'offers_text'=>'some text',
-    'shopping_text'=>'some text',
+    'projects_text'=>'Suggest your own projects and let us study',
+    'news_text'=>'Browse the latest world technology news',
+    'offers_text'=>'Price your own offer and let us study',
+    'shopping_text'=>'Browse and buy the latest products with best prices',
 
 
 
@@ -163,8 +165,8 @@ $lang = array(
     'send_note' => 'Send your notes to the admin:',
     'send_note_ex' => 'For example: the color you want..',
     'are_you_sure' => 'Are You Sure!?',
-    'create_new_project' => 'Suggest your new project !',
-    'create_new_offer' => 'Create new offer !',
+    'create_new_project' => 'Suggest a new project !',
+    'create_new_offer' => 'Price a new offer !',
     'change_password' => 'Change Password'
 
 

@@ -6,7 +6,6 @@ $pages = array(
     "404" => "404",
     "index" => "index",
     "login" => "login",
-    "about-form"=>"about-form",
     "admin-form"=>"admin-form",
     "admin-profile"=>"admin-profile",
     "admins-list"=>"admins-list",
@@ -25,5 +24,11 @@ $pages = array(
     "users-list"=>"users-list",
     "offers-list"=>"offers-list",
     "subcategories"=>"subcategories",
+    "about-list"=>"about-list",
+    "companies-list"=>"companies-list",
+    "companies-form"=>"companies-form",
+    "gallary-form"=>"gallary-form",
+    "about-form"=>"about-form",
+    "sms-configurations"=>"sms-configurations",
 
     );

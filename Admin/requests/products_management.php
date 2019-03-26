@@ -7,7 +7,7 @@ $sq = "'";
 $path = '../';
 if (isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['product_id'])) {
     $product_id = make_safe($_POST['product_id']);
-    $query = "select c.order_id from cart c inner join itsource.order o on c.order_id=o.id where c.product_id = {$product_id} and o.status=2 limit 1";
+    $query = "select c.order_id from cart c inner join orders o on c.order_id=o.id where c.product_id = {$product_id} and o.status=2 limit 1";
 
     if ($result = mysqli_query($link, $query)) {
 
