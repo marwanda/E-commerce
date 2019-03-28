@@ -255,6 +255,15 @@ figcaption i {
     margin-right: 1em;
 }
 
+/*.connect-us {*/
+    /*text-align: left;*/
+/*}*/
+
+/*.stay-connected {*/
+    /*margin-right: 0;*/
+    /*margin-left: 2em;*/
+/*}*/
+
 .connect-us {
     text-align: left;
 }
@@ -265,7 +274,7 @@ figcaption i {
 }
 
 .social-icon li {
-    margin-left: 4em;
+    margin-left: 1em;
     margin-right: initial;
 }
 
@@ -337,11 +346,18 @@ figcaption i {
 @media (max-width: 768px) {
 
     .stay-connected {
-        margin-left: 1em;
+        margin-left: 0em;
+        text-align: center;
     }
 
     .footer-links {
         margin-left: 0em;
+    }
+}
+
+@media (max-width: 585px) {
+    .social-icon {
+        padding-right: 0;
     }
 }
 
